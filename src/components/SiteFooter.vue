@@ -1,9 +1,7 @@
 <template>
   <footer class="site-footer">
-    <!-- 上段 -->
     <div class="footer-top">
       <div class="footer-content">
-        <!-- ページリンク -->
         <div class="page-links">
           <div v-for="category in footerLinks" :key="category.title" class="link-category">
             <h3>{{ category.title }}</h3>
@@ -14,7 +12,6 @@
             </ul>
           </div>
         </div>
-        <!-- SNSリンク -->
         <div class="social-links">
           <a href="#" aria-label="YouTube">
             <img src="../assets/youtube_logo.png" alt="YouTube">
@@ -28,7 +25,6 @@
         </div>
       </div>
     </div>
-    <!-- 下段 -->
     <div class="footer-bottom">
       <div class="footer-content">
         <p class="copyright">&copy; 2022-2025 Commonwealth of Yanmar Empire. All Rights Reserved.</p>
@@ -110,7 +106,7 @@ export default {
   flex-wrap: wrap;
 }
 
-.footer-bottom > .footer-content {
+.footer-bottom>.footer-content {
   align-items: center;
   gap: 1rem;
 }
@@ -119,6 +115,7 @@ export default {
   display: flex;
   flex-wrap: wrap;
   gap: 3rem;
+  flex-grow: 1;
 }
 
 .link-category h3 {
@@ -187,5 +184,37 @@ export default {
 .legal-links a:hover {
   color: #008037;
   text-decoration: underline;
+}
+
+@media (max-width: 992px) {
+  .page-links {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .footer-content {
+    flex-direction: column;
+  }
+  .footer-top {
+    padding: 2rem 1.5rem;
+  }
+  .footer-bottom {
+    padding: 1.5rem;
+  }
+  .footer-bottom>.footer-content {
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 480px) {
+  .legal-links {
+    flex-direction: column;
+    gap: 0.75rem;
+    align-items: flex-start;
+  }
 }
 </style>

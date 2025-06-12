@@ -5,22 +5,16 @@
       <div class="logo-area">
         <img src="../assets/logo.png" alt="やんまー帝国連邦 ロゴ" class="site-logo">
       </div>
+
+      <!-- Desktop Navigation -->
       <nav class="navigation">
         <ul @mouseleave="activeMenu = null">
-          <li
-            v-for="item in menuItems"
-            :key="item.name"
-            @mouseover="activeMenu = item.name"
-          >
+          <li v-for="item in menuItems" :key="item.name" @mouseover="activeMenu = item.name">
             <a href="#">{{ item.name }}</a>
             <transition name="mega-menu-fade">
               <div class="mega-menu" v-if="activeMenu === item.name">
                 <div class="mega-menu-content">
-                  <div
-                    class="mega-menu-column"
-                    v-for="category in item.children"
-                    :key="category.title"
-                  >
+                  <div class="mega-menu-column" v-for="category in item.children" :key="category.title">
                     <h3>{{ category.title }}</h3>
                     <ul>
                       <li v-for="link in category.links" :key="link.name">
@@ -34,7 +28,39 @@
           </li>
         </ul>
       </nav>
+
+      <!-- Hamburger Menu Button -->
+      <button class="hamburger-menu" @click="isMobileNavOpen = !isMobileNavOpen" aria-label="メニューを開く">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
+
     </div>
+
+    <!-- Mobile Navigation -->
+    <transition name="mobile-nav-fade">
+      <div class="mobile-nav" v-if="isMobileNavOpen">
+        <ul>
+          <li v-for="item in menuItems" :key="item.name">
+            <details>
+              <summary>{{ item.name }}</summary>
+              <div class="mobile-submenu">
+                <div class="mobile-menu-column" v-for="category in item.children" :key="category.title">
+                  <h4>{{ category.title }}</h4>
+                  <ul>
+                    <li v-for="link in category.links" :key="link.name">
+                      <a :href="link.url" @click="isMobileNavOpen = false">{{ link.name }}</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </details>
+          </li>
+        </ul>
+      </div>
+    </transition>
+
   </header>
 </template>
 
@@ -44,6 +70,7 @@ export default {
   data() {
     return {
       activeMenu: null,
+      isMobileNavOpen: false,
       menuItems: [
         {
           name: '帝国連邦について',
@@ -136,6 +163,7 @@ export default {
 .site-header {
   width: 100%;
   z-index: 100;
+  position: relative;
 }
 
 .top-bar {
@@ -166,6 +194,10 @@ export default {
   width: auto;
 }
 
+.navigation {
+  display: none;
+}
+
 .navigation ul {
   list-style-type: none;
   margin: 0;
@@ -173,18 +205,18 @@ export default {
   display: flex;
 }
 
-.navigation > ul > li {
+.navigation>ul>li {
   padding: 1.25rem;
 }
 
-.navigation > ul > li > a {
+.navigation>ul>li>a {
   text-decoration: none;
   color: #333;
   font-size: 1rem;
   transition: color 0.3s;
 }
 
-.navigation > ul > li:hover > a {
+.navigation>ul>li:hover>a {
   color: #008037;
 }
 
@@ -240,13 +272,128 @@ export default {
   text-decoration: underline;
 }
 
-.mega-menu-fade-enter-active,
-.mega-menu-fade-leave-active {
-  transition: opacity 0.2s ease;
+.hamburger-menu {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 2rem;
+  height: 2rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 110;
 }
 
+.hamburger-line {
+  width: 2rem;
+  height: 0.25rem;
+  background: #333;
+  border-radius: 0.625rem;
+}
+
+.mobile-nav {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background-color: #fff;
+  box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.1);
+  padding: 1rem 0;
+  border-top: 0.0625rem solid #e0e0e0;
+}
+
+.mobile-nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.mobile-nav details {
+  border-bottom: 1px solid #f0f0f0;
+}
+.mobile-nav details:last-child {
+  border-bottom: none;
+}
+
+.mobile-nav summary {
+  padding: 1rem 1.5rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  list-style: none; /* Hide default arrow */
+}
+
+.mobile-nav summary::-webkit-details-marker {
+  display: none; /* Hide default arrow for Chrome/Safari */
+}
+
+.mobile-submenu {
+  padding: 0 1.5rem 1rem 1.5rem;
+  background-color: #f8f8f8;
+}
+
+.mobile-menu-column {
+  padding-top: 1rem;
+}
+.mobile-menu-column:first-child {
+  padding-top: 0;
+}
+
+.mobile-menu-column h4 {
+  font-size: 1rem;
+  color: #008037;
+  margin: 0 0 0.5rem 0;
+}
+
+.mobile-menu-column ul {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.mobile-menu-column a {
+  display: block;
+  padding: 0.5rem 0;
+  color: #333;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.mobile-nav-fade-enter-active,
+.mobile-nav-fade-leave-active,
+.mega-menu-fade-enter-active,
+.mega-menu-fade-leave-active {
+  transition: opacity 0.3s ease;
+}
+
+.mobile-nav-fade-enter,
+.mobile-nav-fade-leave-to,
 .mega-menu-fade-enter,
 .mega-menu-fade-leave-to {
   opacity: 0;
+}
+
+/* Tablet and Desktop Styles */
+@media (min-width: 992px) {
+  .navigation {
+    display: flex;
+  }
+  .hamburger-menu {
+    display: none;
+  }
+  .mobile-nav {
+    display: none;
+  }
+}
+
+/* Mobile specific adjustments */
+@media (max-width: 991px) {
+  .main-header {
+    padding: 0 1.5rem;
+  }
+  .site-logo {
+    height: 3rem;
+  }
 }
 </style>

@@ -45,6 +45,13 @@ body {
 
 .main-content {
   flex: 1;
-  padding: 1.25rem 2.5rem; /* remに統一 */
+  padding: 1.25rem 2.5rem;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .main-content {
+    padding: 1.25rem 1.5rem;
+  }
 }
 </style>
