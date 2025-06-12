@@ -110,7 +110,6 @@ export default {
               title: '各種一覧',
               links: [
                 { name: '国内法人', url: '#' },
-                { name: 'ロール', url: '#' },
               ],
             },
           ],
@@ -141,7 +140,8 @@ export default {
               title: '連邦に参加',
               links: [
                 { name: '製作メンバーになる', url: '#' },
-                { name: 'サーバーのルール', url: '#' },
+                { name: 'サーバールール', url: '#' },
+                { name: 'ロール', url: '#' },
               ],
             },
             {

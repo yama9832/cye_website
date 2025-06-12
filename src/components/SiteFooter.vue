@@ -55,8 +55,9 @@ export default {
         {
           title: '国政情報',
           links: [
-            { name: '政策・広報', url: '#' },
+            { name: '政策', url: '#' },
             { name: '予算', url: '#' },
+            { name: '広報', url: '#' },
             { name: '法人一覧', url: '#' },
           ]
         },
@@ -71,6 +72,8 @@ export default {
           title: '参加・お問い合わせ',
           links: [
             { name: '製作メンバーになる', url: '#' },
+            { name: 'サーバールール', url: '#' },
+            { name: 'ロール', url: '#' },
             { name: 'よくある質問', url: '#' },
             { name: 'お問い合わせ', url: '#' },
           ]
