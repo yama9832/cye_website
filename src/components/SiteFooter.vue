@@ -49,7 +49,9 @@ export default {
             { name: '基本情報', url: '#' },
             { name: '構成国', url: '#' },
             { name: '憲法', url: '#' },
-            { name: '国の組織', url: '#' },
+            { name: '帝国議会', url: '#' },
+            { name: '府省庁', url: '#' },
+            { name: '裁判所', url: '#' },
           ]
         },
         {
@@ -58,13 +60,15 @@ export default {
             { name: '政策', url: '#' },
             { name: '予算', url: '#' },
             { name: '広報', url: '#' },
-            { name: '法人一覧', url: '#' },
+            { name: '国内法人', url: '#' },
           ]
         },
         {
           title: '観光・イベント',
           links: [
             { name: '観光案内', url: '#' },
+            { name: '国外からのアクセス', url: '#' },
+            { name: '交通情報', url: '#' },
             { name: 'イベント情報', url: '#' },
           ]
         },

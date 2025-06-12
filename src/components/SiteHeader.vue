@@ -81,14 +81,12 @@ export default {
                 { name: '基本情報', url: '#' },
                 { name: '構成国', url: '#' },
                 { name: '憲法', url: '#' },
-                { name: '国王陛下あいさつ', url: '#' },
               ],
             },
             {
               title: '国の組織',
               links: [
                 { name: '帝国議会', url: '#' },
-                { name: '内閣', url: '#' },
                 { name: '府省庁', url: '#' },
                 { name: '裁判所', url: '#' },
               ],
