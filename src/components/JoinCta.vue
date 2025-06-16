@@ -3,7 +3,7 @@
     <div class="cta-content">
       <h2>やんまー帝国連邦に参加しませんか？</h2>
       <p>やんまー帝国連邦では、共に活動する新たな仲間を随時募集しています。<br>あなたの参加を心よりお待ちしています。</p>
-      <a href="#" class="cta-button">製作メンバーになる</a>
+      <a href="/join" class="cta-button">製作メンバーになる</a>
     </div>
   </section>
 </template>

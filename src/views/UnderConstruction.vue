@@ -51,6 +51,7 @@ export default {
   max-width: 600px;
   width: 100%;
   margin: auto; /* 上下のマージンを自動に設定して中央揃え */
+  box-sizing: border-box; /* ★ 修正点1: ボックスサイズの計算方法を指定 */
 }
 
 .icon {
@@ -112,6 +113,11 @@ export default {
   .page-content-wrapper {
     margin-left: 0;
     margin-right: 0;
+  }
+  /* ★ 修正点2: スマホ表示時のスタイルを追記 */
+  .content-box {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
   }
 }
 </style>

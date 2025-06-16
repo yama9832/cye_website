@@ -21,7 +21,7 @@
             <p><span class="info-term">公用語</span> 日本語(事実上)</p>
             <p><span class="info-term">首都</span> 山摩市(事実上)</p>
             <p><span class="info-term">人口</span> 約2,110万人</p>
-            <p><span class="info-term">面積</span> 251,780km²</p>
+            <p><span class="info-term">面積</span> 151,780km²</p>
             <p><span class="info-term">国内総生産</span> 106兆1990億円</p>
             <p><span class="info-term">加盟機関</span> 主要国首脳会議(G6)、島嶼国連合(AIC)</p>
           </div>

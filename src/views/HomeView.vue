@@ -1,7 +1,7 @@
 <template>
   <div>
     <HeroSection />
-    <main class="main-content">
+    <main class="page-content-wrapper">
       <AppBreadcrumb />
       <JoinCta />
       <NewsSection />
@@ -30,17 +30,36 @@ export default {
 </script>
 
 <style scoped>
-.main-content {
-  width: 100%;
-  max-width: 75rem;
-  margin: 0 auto;
-  padding: 1.25rem 2.5rem;
+.page-content-wrapper {
+  margin-left: 25%;
+  margin-right: 25%;
+  padding: 2rem 2.5rem;
   box-sizing: border-box;
 }
 
+@media (max-width: 1600px) {
+  .page-content-wrapper {
+    margin-left: 20%;
+    margin-right: 20%;
+  }
+}
+@media (max-width: 1400px) {
+  .page-content-wrapper {
+    margin-left: 15%;
+    margin-right: 15%;
+  }
+}
+@media (max-width: 992px) {
+  .page-content-wrapper {
+    margin-left: 5%;
+    margin-right: 5%;
+    padding: 2rem 1.5rem;
+  }
+}
 @media (max-width: 768px) {
-  .main-content {
-    padding: 1.25rem 1.5rem;
+  .page-content-wrapper {
+    margin-left: 0;
+    margin-right: 0;
   }
 }
 </style>

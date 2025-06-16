@@ -123,4 +123,29 @@ export default {
   padding: 3rem 0;
   font-size: 1.1rem;
 }
+@media (max-width: 1600px) {
+  .page-content-wrapper {
+    margin-left: 20%;
+    margin-right: 20%;
+  }
+}
+@media (max-width: 1400px) {
+  .page-content-wrapper {
+    margin-left: 15%;
+    margin-right: 15%;
+  }
+}
+@media (max-width: 992px) {
+  .page-content-wrapper {
+    margin-left: 5%;
+    margin-right: 5%;
+    padding: 2rem 1.5rem;
+  }
+}
+@media (max-width: 768px) {
+  .page-content-wrapper {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
 </style>
