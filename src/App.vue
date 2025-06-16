@@ -1,11 +1,9 @@
 <template>
   <div id="app">
     <SiteHeader />
-    <main class="main-content">
-      <h1>メインコンテンツエリア</h1>
-      <p>この下に各ページのコンテンツが表示されます。</p>
-      <!-- 例: <router-view /> -->
-    </main>
+    
+    <router-view/>
+    
     <SiteFooter />
   </div>
 </template>
@@ -43,15 +41,4 @@ body {
   color: #2c3e50;
 }
 
-.main-content {
-  flex: 1;
-  padding: 1.25rem 2.5rem;
-}
-
-/* Responsive Styles */
-@media (max-width: 768px) {
-  .main-content {
-    padding: 1.25rem 1.5rem;
-  }
-}
 </style>
