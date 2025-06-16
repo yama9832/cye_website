@@ -17,7 +17,7 @@ export default {
 <style scoped>
 .join-cta-section {
   position: relative;
-  background-image: url('~@/assets/sanka.webp');
+  background-image: url('~@/assets/join.webp');
   background-size: cover;
   background-position: center;
   padding: 3rem 1.5rem;

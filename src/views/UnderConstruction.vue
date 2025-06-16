@@ -1,5 +1,7 @@
 <template>
-  <div class="under-construction-container">
+  <main class="page-content-wrapper">
+    <AppBreadcrumb />
+
     <div class="content-box">
       <div class="icon">
         <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>
@@ -11,35 +13,44 @@
       </p>
       <router-link to="/" class="home-link">トップページへ戻る</router-link>
     </div>
-  </div>
+  </main>
 </template>
 
 <script>
+// AppBreadcrumbコンポーネントをインポート
+import AppBreadcrumb from '@/components/AppBreadcrumb.vue';
+
 export default {
-  name: 'UnderConstruction'
+  name: 'UnderConstruction',
+  // コンポーネントを登録
+  components: {
+    AppBreadcrumb
+  }
 }
 </script>
 
 <style scoped>
-.under-construction-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-grow: 1;
-  min-height: 60vh;
-  padding: 2rem;
+/* AboutViewと同じラッパーを使用してレイアウトを統一 */
+.page-content-wrapper {
+  margin-left: 25%;
+  margin-right: 25%;
+  padding: 2rem 2.5rem;
   box-sizing: border-box;
-  background-color: #f9f9f9;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
 }
 
+/* 垂直方向の中央揃えを実現するためにflexを使用 */
 .content-box {
   background-color: #ffffff;
   padding: 2.5rem 3rem;
-  border-radius: 0.5rem;
+  border-radius: 8px;
   box-shadow: 0 4px 15px rgba(0,0,0,0.05);
   text-align: center;
   max-width: 600px;
   width: 100%;
+  margin: auto; /* 上下のマージンを自動に設定して中央揃え */
 }
 
 .icon {
@@ -75,5 +86,32 @@ export default {
 .home-link:hover {
   background-color: #006029;
   transform: translateY(-2px);
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 1600px) {
+  .page-content-wrapper {
+    margin-left: 20%;
+    margin-right: 20%;
+  }
+}
+@media (max-width: 1400px) {
+  .page-content-wrapper {
+    margin-left: 15%;
+    margin-right: 15%;
+  }
+}
+@media (max-width: 992px) {
+  .page-content-wrapper {
+    margin-left: 5%;
+    margin-right: 5%;
+    padding: 2rem 1.5rem;
+  }
+}
+@media (max-width: 768px) {
+  .page-content-wrapper {
+    margin-left: 0;
+    margin-right: 0;
+  }
 }
 </style>
