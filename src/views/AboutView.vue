@@ -247,7 +247,7 @@ export default {
   height: 100%;
   object-fit: cover;
   border-radius: 8px;
-  border: 1px solid #e9ecef;
+  border: 1px solid #008037;
 }
 
 
