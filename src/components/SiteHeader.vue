@@ -213,11 +213,13 @@ export default {
   box-sizing: border-box;
 }
 
-/* 新しいラッパー用のスタイル */
 .main-header-content {
-  width: 50%;
+  max-width: 80rem;
+  width: 100%;
   height: 100%;
   margin: 0 auto;
+  padding: 0 2.5rem;
+  box-sizing: border-box;
   display: flex;
   justify-content: space-between;
   align-items: center;

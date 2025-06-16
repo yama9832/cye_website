@@ -158,10 +158,10 @@ export default {
 </script>
 
 <style scoped>
-/* ページの基本ラッパー（中央50%の領域を確保） */
 .page-content-wrapper {
-  margin-left: 25%;
-  margin-right: 25%;
+  max-width: 80rem; /* ヘッダーと最大幅を統一 */
+  width: 100%;
+  margin: 0 auto; /* 中央寄せ */
   padding: 2rem 2.5rem;
   box-sizing: border-box;
 }
@@ -341,25 +341,8 @@ export default {
 }
 
 /* レスポンシブ対応 */
-@media (max-width: 1600px) {
-  .page-content-wrapper {
-    margin-left: 20%;
-    margin-right: 20%;
-  }
-}
-@media (max-width: 1400px) {
-  .page-content-wrapper {
-    margin-left: 15%;
-    margin-right: 15%;
-  }
-  .city-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
 @media (max-width: 992px) {
   .page-content-wrapper {
-    margin-left: 5%;
-    margin-right: 5%;
     padding: 2rem 1.5rem;
   }
    .section-title {
@@ -370,10 +353,6 @@ export default {
   }
 }
 @media (max-width: 768px) {
-  .page-content-wrapper {
-    margin-left: 0;
-    margin-right: 0;
-  }
   .page-header h1 {
     font-size: 2rem;
   }
