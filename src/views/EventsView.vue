@@ -73,18 +73,16 @@ export default {
     }
   },
   methods: {
-    getImageUrl(imageName) {
-      if (!imageName) return '';
-      try {
-        // `@` は `src` ディレクトリへのエイリアスです。
-        // require() を使用して、ビルド時にWebpackが画像を解決できるようにします。
-        return require(`@/assets/${imageName}`);
-      } catch (e) {
-        console.error(`Image not found: @/assets/${imageName}`);
-        // 画像が見つからない場合の代替画像
-        return 'https://placehold.co/1920x1080/e9ecef/6c757d?text=Image+Not+Found';
-      }
-    },
+  getImageUrl(imageName) {
+    if (!imageName) return '';
+    try {
+      // パスを修正
+      return require(`@/assets/events/${imageName}`);
+    } catch (e) {
+      console.error(`Image not found: @/assets/events/${imageName}`);
+      return 'https://placehold.co/1920x1080/e9ecef/6c757d?text=Image+Not+Found';
+    }
+  },
     imageLoadError(event) {
       console.error('Image failed to load:', event.target.src);
       // 画像の読み込みに失敗した場合の代替画像
