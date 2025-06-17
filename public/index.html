@@ -1,11 +1,33 @@
 <!DOCTYPE html>
-<html lang="">
+<html lang="ja"> <!-- lang属性を "ja" に変更 -->
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="icon" href="<%= BASE_URL %>favicon.ico">
     <title><%= htmlWebpackPlugin.options.title %></title>
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="やんまー帝国連邦の公式サイトへようこそ。サーバー情報、ルール、イベント、コミュニティ活動など、最新情報をお届けします。">
+    <meta name="keywords" content="やんまー帝国連邦, マインクラフト, Minecraft, サーバー, コミュニティ, ゲーム, イベント, ルール, 参加">
+    <meta name="author" content="やんまー帝国連邦製作委員会">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="yanma9832.com">
+    <meta property="og:title" content="<%= htmlWebpackPlugin.options.title %>">
+    <meta property="og:description" content="やんまー帝国連邦の公式サイトへようこそ。サーバー情報、ルール、イベント、コミュニティ活動など、最新情報をお届けします。">
+    <meta property="og:image" content="yanma9832.com/assets/logo.png">
+    <meta property="og:site_name" content="やんまー帝国連邦">
+    <meta property="og:locale" content="ja_JP">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="yanma9832.com">
+    <meta property="twitter:title" content="<%= htmlWebpackPlugin.options.title %>">
+    <meta property="twitter:description" content="やんまー帝国連邦の公式サイトへようこそ。サーバー情報、ルール、イベント、コミュニティ活動など、最新情報をお届けします。">
+    <meta property="twitter:image" content="あなたのサイトのTwitterカード画像のURL (例: <%= BASE_URL %>assets/logo.png)">
+    <!-- /SEO Meta Tags -->
   </head>
   <body>
     <noscript>
