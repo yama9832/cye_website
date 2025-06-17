@@ -36,7 +36,7 @@ export default {
       currentPage: 1,
       itemsPerPage: 5,
       newsItems: [
-        { id: 8, date: '2025.6.17', tag: 'お知らせ', text: '公式サイトを全面リニューアルしました。', url: '#' },
+        { id: 8, date: '2025.06.17', tag: 'お知らせ', text: '公式サイトを全面リニューアルしました。', url: '#' },
         { id: 7, date: '2024.10.28', tag: '更新', text: '「帝国議会」ページを更新しました。', url: '#' },
         { id: 6, date: '2024.09.21', tag: 'お知らせ', text: '二国府市と姉妹都市協定を締結しました。', url: null },
         { id: 5, date: '2024.08.22', tag: 'お知らせ', text: '公式サイトをレスポンシブ(スマホ・タブレット)対応にリニューアルしました。', url: null },
