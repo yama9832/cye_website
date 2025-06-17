@@ -5,33 +5,31 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="icon" href="https://yanma9832.com/favicon.ico">
+    
+    <!-- ▼ SEO & OGP Meta Tags ▼ -->
+    <!-- サイトの基本タイトル -->
     <title>やんまー帝国連邦公式サイト</title>
-    <!-- SEO Meta Tags -->
-    <meta name="description" content="やんまー帝国連邦の公式サイトへようこそ。サーバー情報、ルール、イベント、コミュニティ活動など、最新情報をお届けします。">
-    <meta name="keywords" content="やんまー帝国連邦, マインクラフト, Minecraft, サーバー, コミュニティ, ゲーム, イベント, ルール, 参加">
-    <meta name="author" content="やんまー帝国連邦製作委員会">
-    <meta name="robots" content="index, follow">
+    
+    <!-- idを付与して、JavaScriptから内容を書き換えられるようにします -->
+    <meta id="meta-description" name="description" content="Minecraftの都市開発プロジェクト「やんまー帝国連邦」の公式サイトです。国の情報、参加方法、サーバールールなどを掲載しています。">
+    <meta id="meta-keywords" name="keywords" content="やんまー帝国連邦,マイクラ,Minecraft,架空国家,国家運営,都市国家,都市開発,参加,コミュニティ,現代都市">
+    
+    <!-- OGP (Open Graph Protocol) tags for social media link previews -->
+    <meta property="og:title" content="やんまー帝国連邦公式サイト" />
+    <meta property="og:description" content="Minecraftの都市開発プロジェクト「やんまー帝国連邦」の公式サイトです。" />
+    <meta property="og:type" content="website" />
+    <!-- サイトのURL -->
+    <meta property="og:url" content="https://yanma9832.com" /> 
+    <!-- プレビュー画像のURL -->
+    <meta property="og:image" content="" />
+    <meta property="og:site_name" content="やんまー帝国連邦公式サイト" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <!-- ▲ SEO & OGP Meta Tags ▲ -->
 
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="yanma9832.com">
-    <meta property="og:title" content="<%= htmlWebpackPlugin.options.title %>">
-    <meta property="og:description" content="やんまー帝国連邦の公式サイトへようこそ。サーバー情報、ルール、イベント、コミュニティ活動など、最新情報をお届けします。">
-    <meta property="og:image" content="yanma9832.com/assets/logo.png">
-    <meta property="og:site_name" content="やんまー帝国連邦公式サイト">
-    <meta property="og:locale" content="ja_JP">
-
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="yanma9832.com">
-    <meta property="twitter:title" content="<%= htmlWebpackPlugin.options.title %>">
-    <meta property="twitter:description" content="やんまー帝国連邦の公式サイトへようこそ。サーバー情報、ルール、イベント、コミュニティ活動など、最新情報をお届けします。">
-    <meta property="twitter:image" content="あなたのサイトのTwitterカード画像のURL (例: <%= BASE_URL %>assets/logo.png)">
-    <!-- /SEO Meta Tags -->
   </head>
   <body>
     <noscript>
-      <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+      <strong>We're sorry but this site doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
     </noscript>
     <div id="app"></div>
     <!-- built files will be auto injected -->

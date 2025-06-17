@@ -8,9 +8,9 @@ const routes = [
     path: '/',
     name: 'home',
     component: HomeView,
-    meta: { 
-      title: 'トップ', 
-      fullTitle: 'トップ', // この項目でページタイトルを上書きします
+    meta: {
+      title: 'トップ',
+      fullTitle: 'トップ',
       description: 'Minecraftの架空国家プロジェクト「やんまー帝国連邦」の公式サイトです。国の情報、参加方法、サーバールールなどを掲載しています。',
       keywords: 'やんまー帝国連邦,マイクラ,Minecraft,架空国家,国家運営,都市国家'
     }
@@ -100,10 +100,10 @@ const routes = [
     name: 'privacy',
     component: () => import(/* webpackChunkName: "privacy" */ '../views/PrivacyView.vue'),
     meta: { 
-        breadcrumb: '個人情報保護方針',
-        title: '個人情報保護方針',
-        description: '当サイトのプライバシーポリシーです。個人情報の取得方法、利用目的、管理方法について定めています。',
-        keywords: 'プライバシーポリシー,個人情報保護方針,個人情報,Cookie'
+      breadcrumb: '個人情報保護方針',
+      title: '個人情報保護方針',
+      description: '当サイトのプライバシーポリシーです。個人情報の取得方法、利用目的、管理方法について定めています。',
+      keywords: 'プライバシーポリシー,個人情報保護方針,個人情報,Cookie'
     }
   },
 
@@ -119,7 +119,7 @@ const routes = [
   { path: '/corporations', name: 'corporations', component: UnderConstruction, meta: { breadcrumb: '国内法人' } },
   { path: '/tourism/guide', name: 'tourism-guide', component: UnderConstruction, meta: { breadcrumb: '観光案内' } },
   { path: '/tourism/access', name: 'tourism-access', component: UnderConstruction, meta: { breadcrumb: '国外からのアクセス' } },
-  { path: '/tourism/transport', name: 'tourism-transport', component: UnderConstruction, meta: { breadcrumb: '交通情報' } },
+  { path: '/tourism/transport', name: 'transport', component: UnderConstruction, meta: { breadcrumb: '交通情報' } },
   { path: '/events', name: 'events', component: UnderConstruction, meta: { breadcrumb: 'イベント情報' } },
   { path: '/faq', name: 'faq', component: UnderConstruction, meta: { breadcrumb: 'よくある質問' } },
 ]
@@ -147,12 +147,10 @@ router.afterEach((to) => {
   document.title = pageTitle;
   
   // metaタグの更新
-  const metaTitle = document.querySelector('#meta-title');
-  if (metaTitle) metaTitle.setAttribute('content', pageTitle);
-  
-  const description = to.meta.description || defaultDescription;
   const metaDescription = document.querySelector('#meta-description');
-  if (metaDescription) metaDescription.setAttribute('content', description);
+  if (metaDescription) {
+    metaDescription.setAttribute('content', to.meta.description || defaultDescription);
+  }
 
   const metaKeywords = document.querySelector('#meta-keywords');
   if (to.meta.keywords && metaKeywords) {
@@ -164,7 +162,7 @@ router.afterEach((to) => {
   if (ogTitle) ogTitle.setAttribute('content', pageTitle);
 
   const ogDescription = document.querySelector('meta[property="og:description"]');
-  if (ogDescription) ogDescription.setAttribute('content', description);
+  if (ogDescription) ogDescription.setAttribute('content', to.meta.description || defaultDescription);
   
   const ogUrl = document.querySelector('meta[property="og:url"]');
   if (ogUrl) ogUrl.setAttribute('content', window.location.href);
