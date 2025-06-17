@@ -8,6 +8,11 @@
         <p class="last-updated">更新日: 2025年6月17日</p>
       </header>
 
+      <div class="construction-notice">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-alert-triangle"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+        <p>このページは現在作成途中です。一部未完成の部分があります。</p>
+      </div>
+
       <section class="info-section">
         <h2 class="section-title">やんまー帝国連邦の概要</h2>
         <p class="section-description">
@@ -128,26 +133,26 @@ export default {
   data() {
     return {
       cities: [
-        { name: '水咲市', description: 'ここに都市の簡単な説明が入ります。' },
-        { name: 'XXXX市', description: 'ここに都市の簡単な説明が入ります。' },
-        { name: 'XXXX市', description: 'ここに都市の簡単な説明が入ります。' },
-        { name: 'XXXX市', description: 'ここに都市の簡単な説明が入ります。' },
-        { name: 'XXXX市', description: 'ここに都市の簡単な説明が入ります。' },
-        { name: 'XXXX市', description: 'ここに都市の簡単な説明が入ります。' },
-        { name: 'XXXX市', description: 'ここに都市の簡単な説明が入ります。' },
-        { name: 'XXXX市', description: 'ここに都市の簡単な説明が入ります。' },
-        { name: 'XXXX市', description: 'ここに都市の簡単な説明が入ります。' },
-        { name: 'XXXX市', description: 'ここに都市の簡単な説明が入ります。' },
-        { name: 'XXXX市', description: 'ここに都市の簡単な説明が入ります。' },
-        { name: 'XXXX市', description: 'ここに都市の簡単な説明が入ります。' },
-        { name: 'XXXX市', description: 'ここに都市の簡単な説明が入ります。' },
-        { name: 'XXXX市', description: 'ここに都市の簡単な説明が入ります。' },
-        { name: 'XXXX市', description: 'ここに都市の簡単な説明が入ります。' },
-        { name: 'XXXX市', description: 'ここに都市の簡単な説明が入ります。' },
-        { name: 'XXXX市', description: 'ここに都市の簡単な説明が入ります。' },
-        { name: 'XXXX市', description: 'ここに都市の簡単な説明が入ります。' },
-        { name: 'XXXX市', description: 'ここに都市の簡単な説明が入ります。' },
-        { name:- 'XXXX市', description: 'ここに都市の簡単な説明が入ります。' },
+        { name: '水咲市', description: '現在開発中の都市' },
+        { name: 'XXXX市', description: '都市の説明' },
+        { name: 'XXXX市', description: '都市の説明' },
+        { name: 'XXXX市', description: '都市の説明' },
+        { name: 'XXXX市', description: '都市の説明' },
+        { name: 'XXXX市', description: '都市の説明' },
+        { name: 'XXXX市', description: '都市の説明' },
+        { name: 'XXXX市', description: '都市の説明' },
+        { name: 'XXXX市', description: '都市の説明' },
+        { name: 'XXXX市', description: '都市の説明' },
+        { name: 'XXXX市', description: '都市の説明' },
+        { name: 'XXXX市', description: '都市の説明' },
+        { name: 'XXXX市', description: '都市の説明' },
+        { name: 'XXXX市', description: '都市の説明' },
+        { name: 'XXXX市', description: '都市の説明' },
+        { name: 'XXXX市', description: '都市の説明' },
+        { name: 'XXXX市', description: '都市の説明' },
+        { name: 'XXXX市', description: '都市の説明' },
+        { name: 'XXXX市', description: '都市の説明' },
+        { name: 'XXXX市', description: '都市の説明' },
       ]
     }
   }
@@ -184,6 +189,22 @@ export default {
   color: #6c757d;
   text-align: right;
   margin-top: 0.5rem;
+}
+
+.construction-notice {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background-color: #fffbe6;
+  color: #856404;
+  border: 1px solid #ffeeba;
+  border-radius: 8px;
+  padding: 1rem 1.5rem;
+  margin-bottom: 3rem;
+}
+.construction-notice p {
+  margin: 0;
+  font-weight: 500;
 }
 
 .info-section {
