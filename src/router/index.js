@@ -27,6 +27,19 @@ const routes = [
     component: () => import(/* webpackChunkName: "join" */ '../views/JoinView.vue'),
     meta: { breadcrumb: '製作メンバーになる' } // パンくず用の日本語名
   },
+  /* 免責事項・個人情報保護方針 */
+  {
+    path: '/disclaimer',
+    name: 'disclaimer',
+    component: () => import(/* webpackChunkName: "disclaimer" */ '../views/DisclaimerView.vue'),
+    meta: { breadcrumb: '免責事項' } // パンくず用の日本語名
+  },
+    {
+    path: '/privacy',
+    name: 'privacy',
+    component: () => import(/* webpackChunkName: "disclaimer" */ '../views/PrivacyView.vue'),
+    meta: { breadcrumb: '個人情報保護方針' } // パンくず用の日本語名
+  },
 
   // --- ここから下はすべて準備中ページ ---
   { path: '/nations', name: 'nations', component: UnderConstruction, meta: { breadcrumb: '構成国' } },
@@ -46,8 +59,6 @@ const routes = [
   { path: '/roles', name: 'roles', component: UnderConstruction, meta: { breadcrumb: 'ロール' } },
   { path: '/faq', name: 'faq', component: UnderConstruction, meta: { breadcrumb: 'よくある質問' } },
   { path: '/contact', name: 'contact', component: UnderConstruction, meta: { breadcrumb: 'お問い合わせ' } },
-  { path: '/disclaimer', name: 'disclaimer', component: UnderConstruction, meta: { breadcrumb: '免責事項' } },
-  { path: '/privacy', name: 'privacy', component: UnderConstruction, meta: { breadcrumb: '個人情報保護方針' } },
 ]
 
 const router = createRouter({
