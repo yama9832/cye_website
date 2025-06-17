@@ -495,5 +495,10 @@ export default {
   .list-title {
     font-size: 1.75rem;
   }
+  .card-grid {
+    /* On smaller screens like phones and portrait tablets, 
+       switch to a single column layout to prevent overflow. */
+    grid-template-columns: 1fr;
+  }
 }
 </style>
