@@ -56,12 +56,12 @@
             <div class="history-content">世界連盟加盟</div>
           </div>
           <div class="history-item">
-            <div class="history-year">1927年</div>
-            <div class="history-content">やんまー帝国憲法を施行し、大山間帝国からやんまー帝国に国号を改める</div>
+            <div class="history-year">1921年</div>
+            <div class="history-content">世界連盟脱退</div>
           </div>
           <div class="history-item">
-            <div class="history-year">1933年</div>
-            <div class="history-content">世界連盟脱退</div>
+            <div class="history-year">1927年</div>
+            <div class="history-content">やんまー帝国憲法を施行し、大山間帝国からやんまー帝国に国号を改める</div>
           </div>
           <div class="history-item">
             <div class="history-year">1951年</div>
@@ -86,7 +86,7 @@
           かつては中央集権国家だったが、1972年に憲法を改正し連邦制に移行した。やんまー帝国連邦の地方自治は、連邦直轄領の山摩市と連邦に加盟する19の市によって担われる。すべての市には市庁があり、市議会と市長が置かれる。市は、法律の範囲内で条例を制定することができる。
         </p>
         <div class="image-placeholder">
-          <span class="placeholder-text">（国家体制・政治体制の図）</span>
+          <img src="@/assets/cye-touchi.webp" alt="国家体制・政治体制の図">
         </div>
       </section>
 
@@ -98,7 +98,7 @@
           なお、特務機関BERG(ベルク)は内閣に唯一属さない行政機関である。
         </p>
         <div class="image-placeholder">
-          <span class="placeholder-text">（行政機関の図）</span>
+          <img src="@/assets/cye-gyouseikikou.webp" alt="行政機関の図">
         </div>
       </section>
 
@@ -351,6 +351,13 @@ export default {
   justify-content: center;
   align-items: center;
   margin-top: 1.5rem;
+}
+.image-placeholder img {
+  width: 100%; /* コンテナの幅に合わせる */
+  max-width: 1000px; /* 画像の最大幅を指定 (必要に応じて調整してください) */
+  height: auto; /* 高さを自動調整してアスペクト比を維持 */
+  display: block; /* 中央揃えのためにブロック要素にする */
+  margin: 20px auto; /* 上下に20pxのマージン、左右は自動で中央揃え */
 }
 .placeholder-text {
   font-size: 1rem;
