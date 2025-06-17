@@ -118,18 +118,15 @@
 </template>
 
 <script>
-// AppBreadcrumbコンポーネントをインポート
 import AppBreadcrumb from '@/components/AppBreadcrumb.vue';
 
 export default {
   name: 'AboutView',
-  // コンポーネントを登録
   components: {
     AppBreadcrumb
   },
   data() {
     return {
-      // 都市のデータをここで管理します。今後、都市名や説明を編集・追加する場合はこの配列を修正してください。
       cities: [
         { name: '水咲市', description: 'ここに都市の簡単な説明が入ります。' },
         { name: 'XXXX市', description: 'ここに都市の簡単な説明が入ります。' },
@@ -159,14 +156,13 @@ export default {
 
 <style scoped>
 .page-content-wrapper {
-  max-width: 80rem; /* ヘッダーと最大幅を統一 */
+  max-width: 80rem;
   width: 100%;
-  margin: 0 auto; /* 中央寄せ */
+  margin: 0 auto;
   padding: 2rem 2.5rem;
   box-sizing: border-box;
 }
 
-/* 影や背景を持たない透明なコンテナ */
 .about-container {
   margin: 0 auto;
 }
@@ -211,7 +207,7 @@ export default {
 .two-columns-layout {
   display: flex;
   gap: 2rem;
-  align-items: stretch; /* 高さを揃える */
+  align-items: stretch;
 }
 
 /* 情報リスト */
@@ -251,7 +247,7 @@ export default {
 }
 
 
-/* 沿革リスト（線なし） */
+/* 沿革リスト */
 .history-list {
   display: flex;
   flex-direction: column;

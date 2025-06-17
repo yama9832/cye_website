@@ -17,12 +17,10 @@
 </template>
 
 <script>
-// AppBreadcrumbコンポーネントをインポート
 import AppBreadcrumb from '@/components/AppBreadcrumb.vue';
 
 export default {
   name: 'UnderConstruction',
-  // コンポーネントを登録
   components: {
     AppBreadcrumb
   }
@@ -30,7 +28,6 @@ export default {
 </script>
 
 <style scoped>
-/* AboutViewと同じラッパーを使用してレイアウトを統一 */
 .page-content-wrapper {
   margin-left: 25%;
   margin-right: 25%;
@@ -41,7 +38,6 @@ export default {
   flex-grow: 1;
 }
 
-/* 垂直方向の中央揃えを実現するためにflexを使用 */
 .content-box {
   background-color: #ffffff;
   padding: 2.5rem 3rem;
@@ -50,8 +46,8 @@ export default {
   text-align: center;
   max-width: 600px;
   width: 100%;
-  margin: auto; /* 上下のマージンを自動に設定して中央揃え */
-  box-sizing: border-box; /* ★ 修正点1: ボックスサイズの計算方法を指定 */
+  margin: auto;
+  box-sizing: border-box;
 }
 
 .icon {
@@ -114,7 +110,6 @@ export default {
     margin-left: 0;
     margin-right: 0;
   }
-  /* ★ 修正点2: スマホ表示時のスタイルを追記 */
   .content-box {
     padding-left: 1.5rem;
     padding-right: 1.5rem;

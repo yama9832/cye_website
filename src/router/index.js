@@ -8,7 +8,6 @@ const routes = [
     path: '/',
     name: 'home',
     component: HomeView
-    // ホームにはパンくず不要なためmetaは設定しない
   },
   {
     path: '/about',
@@ -21,6 +20,12 @@ const routes = [
     name: 'search',
     component: () => import(/* webpackChunkName: "search" */ '../views/SearchView.vue'),
     meta: { breadcrumb: '検索結果' } // パンくず用の日本語名
+  },
+  {
+    path: '/join',
+    name: 'join',
+    component: () => import(/* webpackChunkName: "join" */ '../views/JoinView.vue'),
+    meta: { breadcrumb: '製作メンバーになる' } // パンくず用の日本語名
   },
 
   // --- ここから下はすべて準備中ページ ---
@@ -37,7 +42,6 @@ const routes = [
   { path: '/tourism/access', name: 'tourism-access', component: UnderConstruction, meta: { breadcrumb: '国外からのアクセス' } },
   { path: '/tourism/transport', name: 'tourism-transport', component: UnderConstruction, meta: { breadcrumb: '交通情報' } },
   { path: '/events', name: 'events', component: UnderConstruction, meta: { breadcrumb: 'イベント情報' } },
-  { path: '/join', name: 'join', component: UnderConstruction, meta: { breadcrumb: '製作メンバーになる' } },
   { path: '/rules', name: 'rules', component: UnderConstruction, meta: { breadcrumb: 'サーバールール' } },
   { path: '/roles', name: 'roles', component: UnderConstruction, meta: { breadcrumb: 'ロール' } },
   { path: '/faq', name: 'faq', component: UnderConstruction, meta: { breadcrumb: 'よくある質問' } },
