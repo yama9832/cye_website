@@ -5,7 +5,7 @@
     <div class="about-container">
       <header class="page-header">
         <h1>基本情報</h1>
-        <p class="last-updated">更新日: 2025年6月17日</p>
+        <p class="last-updated">更新日: 2025年6月18日</p>
       </header>
 
       <div class="construction-notice">
@@ -133,7 +133,7 @@ export default {
   data() {
     return {
       cities: [
-        { name: '水咲市', description: '現在開発中の都市' },
+        { name: '水咲市', description: '水と生きる、みずのまち' },
         { name: 'XXXX市', description: '都市の説明' },
         { name: 'XXXX市', description: '都市の説明' },
         { name: 'XXXX市', description: '都市の説明' },

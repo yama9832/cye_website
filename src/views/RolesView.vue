@@ -5,7 +5,7 @@
     <div class="roles-container">
       <header class="page-header">
         <h1>ロール</h1>
-        <p class="last-updated">最終更新日: 2025年6月17日</p>
+        <p class="last-updated">最終更新日: 2025年6月18日</p>
       </header>
 
       <div class="roles-content">

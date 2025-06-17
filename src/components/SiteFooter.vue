@@ -13,13 +13,13 @@
           </div>
         </div>
         <div class="social-links">
-          <a href="#" aria-label="YouTube">
+          <a href="https://www.youtube.com/@yanma-empire" target="_blank" aria-label="YouTube">
             <img src="@/assets/youtube_logo.png" alt="YouTube">
           </a>
-          <a href="#" aria-label="X (formerly Twitter)">
+          <a href="https://x.com/Yanma_Empire" target="_blank" aria-label="X (formerly Twitter)">
             <img src="@/assets/x_logo.png" alt="X (formerly Twitter)">
           </a>
-          <a href="#" aria-label="Instagram">
+          <a href="https://www.instagram.com/yanma_empire" target="_blank" aria-label="Instagram">
             <img src="@/assets/instagram_logo.png" alt="Instagram">
           </a>
         </div>

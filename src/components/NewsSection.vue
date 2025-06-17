@@ -4,7 +4,13 @@
     <div class="news-list-container">
       <ul class="news-list">
         <li v-for="item in paginatedNews" :key="item.id" class="news-item">
-          <a :href="item.url || '#'" class="news-link-wrapper">
+          <a
+            :href="item.url || '#'"
+            class="news-link-wrapper"
+            :target="isExternal(item.url) ? '_blank' : null"
+            :rel="isExternal(item.url) ? 'noopener noreferrer' : null"
+            :class="{ 'no-link': !item.url || item.url === '#' }"
+          >
             <div class="news-meta">
               <span class="news-date">{{ item.date }}</span>
               <span class="news-tag" :class="getTagClass(item.tag)">{{ item.tag }}</span>
@@ -36,14 +42,13 @@ export default {
       currentPage: 1,
       itemsPerPage: 5,
       newsItems: [
-        { id: 8, date: '2025.06.17', tag: 'お知らせ', text: '公式サイトを全面リニューアルしました。', url: '#' },
-        { id: 7, date: '2024.10.28', tag: '更新', text: '「帝国議会」ページを更新しました。', url: '#' },
-        { id: 6, date: '2024.09.21', tag: 'お知らせ', text: '二国府市と姉妹都市協定を締結しました。', url: null },
+        { id: 8, date: '2025.06.18', tag: 'お知らせ', text: '公式サイトを全面リニューアルしました。', url: '#' },
+        { id: 7, date: '2024.10.28', tag: '更新', text: '「帝国議会」ページを更新しました。', url: 'government/diet' },
+        { id: 6, date: '2024.09.21', tag: 'お知らせ', text: '二国府市と姉妹都市協定を締結しました。', url: 'https://x.com/Yanma_Empire/status/1837461333216006264' },
         { id: 5, date: '2024.08.22', tag: 'お知らせ', text: '公式サイトをレスポンシブ(スマホ・タブレット)対応にリニューアルしました。', url: null },
-        { id: 4, date: '2024.08.02', tag: 'お知らせ', text: 'サーバールールを改正しました。', url: '#' },
-        { id: 3, date: '2024.08.01', tag: 'お知らせ', text: '新メンバーの募集を再開しました。', url: '#' },
-        { id: 2, date: '2024.08.01', tag: '広報', text: '「やんまー帝国連邦 ver 1.12.2 紹介パンフレット」を公開しました。', url: '' },
-        { id: 1, date: '2024.08.01', tag: '更新', text: '「法人一覧」ページを更新しました。', url: '#' },
+        { id: 4, date: '2024.08.02', tag: 'お知らせ', text: 'サーバールールを改正しました。', url: '/rules' },
+        { id: 3, date: '2024.08.01', tag: 'お知らせ', text: '新メンバーの募集を再開しました。', url: '/join' },
+        { id: 1, date: '2024.08.01', tag: '更新', text: '「国内法人一覧」ページを更新しました。', url: '/corporations' },
       ]
     };
   },
@@ -69,6 +74,9 @@ export default {
         '更新': 'tag-update'
       };
       return tagMap[tag] || 'tag-default';
+    },
+    isExternal(url) {
+      return typeof url === 'string' && url.startsWith('http');
     }
   }
 }
@@ -82,7 +90,7 @@ export default {
 .news-item { border-bottom: 1px solid #f0f0f0; }
 .news-item:last-child { border-bottom: none; }
 .news-link-wrapper { display: flex; align-items: center; padding: 1.25rem 1.5rem; text-decoration: none; transition: background-color 0.3s ease; }
-.news-link-wrapper:hover { background-color: #f8f9fa; }
+.news-link-wrapper:hover:not(.no-link) { background-color: #f8f9fa; }
 .news-meta { display: flex; align-items: center; margin-right: 1.5rem; flex-shrink: 0; }
 .news-date { font-size: 0.9375rem; color: #6c757d; margin-right: 1rem; }
 .news-tag { font-size: 0.8125rem; color: #fff; padding: 0.25rem 0; border-radius: 0.25rem; font-weight: 700; min-width: 5rem; text-align: center; }
@@ -91,5 +99,6 @@ export default {
 .tag-update { background-color: #28a745; }
 .tag-default { background-color: #6c757d; }
 .news-text { font-size: 1rem; color: #343a40; margin: 0; line-height: 1.5; }
+.no-link { cursor: default; }
 @media (max-width: 768px) { .news-link-wrapper { flex-direction: column; align-items: flex-start; } .news-meta { margin-right: 0; margin-bottom: 0.5rem; } }
 </style>

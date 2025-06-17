@@ -5,19 +5,19 @@
     <div class="disclaimer-container">
       <header class="page-header">
         <h1>免責事項</h1>
-        <p class="last-updated">制定日: 2025年6月17日</p>
+        <p class="last-updated">制定日: 2025年6月18日</p>
       </header>
 
       <div class="disclaimer-content">
         <section class="info-section">
           <h2 class="section-title">総則</h2>
           <p>
-            「やんまー帝国連邦」（以下、当サイト）は、マインクラフト上の架空国家について情報を公開するウェブサイトです。当サイトに掲載されている人物、組織、団体、意匠等はすべてフィクションであり、実在のものとは一切関係ありません。
+            「やんまー帝国連邦公式サイト」（以下、当サイト）は、マインクラフト上の架空国家について情報を公開するウェブサイトです。当サイトに掲載されている人物、組織、団体、意匠等はすべてフィクションであり、実在のものとは一切関係ありません。
           </p>
         </section>
 
         <section class="info-section">
-          <h2 class="section-title">免責事項</h2>
+          <h2 class="section-title">責任について</h2>
           <p>
             当サイトに掲載された内容によって生じた損害等の一切の責任を負いかねますのでご了承ください。
           </p>

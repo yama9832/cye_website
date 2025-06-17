@@ -9,10 +9,21 @@ const routes = [
     name: 'home',
     component: HomeView,
     meta: {
-      title: 'トップ',
-      fullTitle: 'トップ',
+      title: 'やんまー帝国連邦公式サイト',
+      fullTitle: 'やんまー帝国連邦公式サイト',
       description: 'Minecraftの架空国家プロジェクト「やんまー帝国連邦」の公式サイトです。国の情報、参加方法、サーバールールなどを掲載しています。',
       keywords: 'やんまー帝国連邦,マイクラ,Minecraft,架空国家,国家運営,都市国家'
+    }
+  },
+  {
+    path: '/search',
+    name: 'search',
+    component: () => import(/* webpackChunkName: "search" */ '../views/SearchView.vue'),
+    meta: { 
+      breadcrumb: '検索結果',
+      title: 'サイト内検索',
+      description: 'サイト内のコンテンツを検索します。',
+      keywords: '検索'
     }
   },
   /* 基本情報 */
@@ -27,16 +38,51 @@ const routes = [
       keywords: '基本情報,国家概要,歴史,政治,行政,構成国'
     }
   },
-  {
-    path: '/search',
-    name: 'search',
-    component: () => import(/* webpackChunkName: "search" */ '../views/SearchView.vue'),
+  { 
+    path: '/government/diet', 
+    name: 'diet', 
+    component: () => import(/* webpackChunkName: "diet" */ '../views/DietView.vue'), 
     meta: { 
-      breadcrumb: '検索結果',
-      title: 'サイト内検索',
-      description: 'サイト内のコンテンツを検索します。',
-      keywords: '検索'
-    }
+      breadcrumb: '帝国議会',
+      title: '帝国議会',
+      description: 'やんまー帝国連邦の立法府、帝国議会の構成や役割について解説します。上院・下院の議席情報も掲載。',
+      keywords: '帝国議会,上院,下院,議席,政党,立法府'
+    } 
+  },
+  { 
+  path: '/government/ministries', 
+  name: 'ministries', 
+  component: () => import(/* webpackChunkName: "ministries" */ '../views/MinistriesView.vue'), 
+  meta: { 
+    breadcrumb: '府省庁',
+    title: '府省庁',
+    description: 'やんまー帝国連邦の行政を担う各府省庁の役割と組織について紹介します。',
+    keywords: '府省庁,行政,内閣,省庁,やんまー帝国連邦'
+  } 
+  },
+  /* 国政情報 */
+  { 
+  path: '/corporations', 
+  name: 'corporations', 
+  component: () => import(/* webpackChunkName: "corporations" */ '../views/CorporationsView.vue'), 
+  meta: { 
+    breadcrumb: '国内法人',
+    title: '国内法人一覧',
+    description: 'やんまー帝国連邦で活動する主要な法人、団体を紹介します。政府組織から民間企業、学校法人まで多岐にわたる組織をご覧いただけます。',
+    keywords: '法人,企業,団体,やんまー帝国連邦,政府組織,株式会社'
+  } 
+  },
+  /* 観光・イベント */
+  { 
+  path: '/events', 
+  name: 'events', 
+  component: () => import(/* webpackChunkName: "events" */ '../views/EventsView.vue'),
+  meta: { 
+    breadcrumb: 'イベント情報',
+    title: 'イベント情報',
+    description: 'やんまー帝国連邦で開催されるイベント情報をお知らせします。建築大会や季節のお祭りなど、様々な催しをチェックできます。',
+    keywords: 'イベント,祭り,大会,やんまー帝国連邦,建築'
+  }
   },
   /* 参加・お問い合わせ */
   {
@@ -110,17 +156,13 @@ const routes = [
   // --- ここから下はすべて準備中ページ ---
   { path: '/nations', name: 'nations', component: UnderConstruction, meta: { breadcrumb: '構成国' } },
   { path: '/constitution', name: 'constitution', component: UnderConstruction, meta: { breadcrumb: '憲法' } },
-  { path: '/government/diet', name: 'diet', component: UnderConstruction, meta: { breadcrumb: '帝国議会' } },
-  { path: '/government/ministries', name: 'ministries', component: UnderConstruction, meta: { breadcrumb: '府省庁' } },
   { path: '/government/courts', name: 'courts', component: UnderConstruction, meta: { breadcrumb: '裁判所' } },
   { path: '/politics/policy', name: 'policy', component: UnderConstruction, meta: { breadcrumb: '政策' } },
   { path: '/politics/budget', name: 'budget', component: UnderConstruction, meta: { breadcrumb: '予算' } },
   { path: '/politics/pr', name: 'pr', component: UnderConstruction, meta: { breadcrumb: '広報' } },
-  { path: '/corporations', name: 'corporations', component: UnderConstruction, meta: { breadcrumb: '国内法人' } },
   { path: '/tourism/guide', name: 'tourism-guide', component: UnderConstruction, meta: { breadcrumb: '観光案内' } },
   { path: '/tourism/access', name: 'tourism-access', component: UnderConstruction, meta: { breadcrumb: '国外からのアクセス' } },
   { path: '/tourism/transport', name: 'transport', component: UnderConstruction, meta: { breadcrumb: '交通情報' } },
-  { path: '/events', name: 'events', component: UnderConstruction, meta: { breadcrumb: 'イベント情報' } },
   { path: '/faq', name: 'faq', component: UnderConstruction, meta: { breadcrumb: 'よくある質問' } },
 ]
 

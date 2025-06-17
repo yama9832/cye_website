@@ -3,6 +3,7 @@
     <HeroSection />
     <main class="page-content-wrapper">
       <AppBreadcrumb />
+      <EventBanner />
       <JoinCta />
       <NewsSection />
       <BannerAds />
@@ -12,6 +13,7 @@
 
 <script>
 import HeroSection from '@/components/HeroSection.vue';
+import EventBanner from '@/components/EventBanner.vue';
 import AppBreadcrumb from '@/components/AppBreadcrumb.vue';
 import NewsSection from '@/components/NewsSection.vue';
 import JoinCta from '@/components/JoinCta.vue';
@@ -21,6 +23,7 @@ export default {
   name: 'HomeView',
   components: {
     HeroSection,
+    EventBanner,
     AppBreadcrumb,
     NewsSection,
     JoinCta,
