@@ -25,10 +25,8 @@ export default {
     breadcrumbs() {
       const crumbs = [];
 
-      // 常に「トップ」を追加
       crumbs.push({ text: 'トップ', to: '/' });
 
-      // 現在のルートにbreadcrumbメタ情報があれば追加
       if (this.$route.meta.breadcrumb) {
         crumbs.push({
           text: this.$route.meta.breadcrumb,

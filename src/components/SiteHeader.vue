@@ -247,13 +247,12 @@ export default {
 .navigation>ul>li {
   padding: 1.25rem;
 }
-/* スタイルを適用する対象をaタグからspanに変更 */
 .nav-item-name {
   text-decoration: none;
   color: #333;
   font-size: 1rem;
   transition: color 0.3s;
-  cursor: default; /* カーソルを標準に変更 */
+  cursor: default;
 }
 .navigation>ul>li:hover>.nav-item-name {
   color: #008037;

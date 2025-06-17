@@ -9,6 +9,7 @@ const routes = [
     name: 'home',
     component: HomeView
   },
+    /* 基本情報 */
   {
     path: '/about',
     name: 'about',
@@ -21,11 +22,30 @@ const routes = [
     component: () => import(/* webpackChunkName: "search" */ '../views/SearchView.vue'),
     meta: { breadcrumb: '検索結果' } // パンくず用の日本語名
   },
+    /* 参加・お問い合わせ */
   {
     path: '/join',
     name: 'join',
     component: () => import(/* webpackChunkName: "join" */ '../views/JoinView.vue'),
     meta: { breadcrumb: '製作メンバーになる' } // パンくず用の日本語名
+  },
+  {
+    path: '/rules',
+    name: 'rules',
+    component: () => import(/* webpackChunkName: "rules" */ '../views/RulesView.vue'),
+    meta: { breadcrumb: 'サーバールール' } // パンくず用の日本語名
+  },
+  {
+    path: '/roles',
+    name: 'roles',
+    component: () => import(/* webpackChunkName: "roles" */ '../views/RolesView.vue'),
+    meta: { breadcrumb: 'ロール' } // パンくず用の日本語名
+  },
+  {
+    path: '/contact',
+    name: 'contact',
+    component: () => import(/* webpackChunkName: "contact" */ '../views/ContactView.vue'),
+    meta: { breadcrumb: 'お問い合わせ' } // パンくず用の日本語名
   },
   /* 免責事項・個人情報保護方針 */
   {
@@ -55,10 +75,7 @@ const routes = [
   { path: '/tourism/access', name: 'tourism-access', component: UnderConstruction, meta: { breadcrumb: '国外からのアクセス' } },
   { path: '/tourism/transport', name: 'tourism-transport', component: UnderConstruction, meta: { breadcrumb: '交通情報' } },
   { path: '/events', name: 'events', component: UnderConstruction, meta: { breadcrumb: 'イベント情報' } },
-  { path: '/rules', name: 'rules', component: UnderConstruction, meta: { breadcrumb: 'サーバールール' } },
-  { path: '/roles', name: 'roles', component: UnderConstruction, meta: { breadcrumb: 'ロール' } },
   { path: '/faq', name: 'faq', component: UnderConstruction, meta: { breadcrumb: 'よくある質問' } },
-  { path: '/contact', name: 'contact', component: UnderConstruction, meta: { breadcrumb: 'お問い合わせ' } },
 ]
 
 const router = createRouter({

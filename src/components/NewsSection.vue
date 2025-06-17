@@ -36,13 +36,14 @@ export default {
       currentPage: 1,
       itemsPerPage: 5,
       newsItems: [
-        { id: 1, date: '2024.10.28', tag: 'お知らせ', text: '下院選の結果を「帝国議会」ページに反映しました。', url: '#' },
-        { id: 2, date: '2024.09.21', tag: 'お知らせ', text: '二国府市と姉妹都市協定を締結しました。', url: null },
-        { id: 3, date: '2024.08.22', tag: 'お知らせ', text: '公式サイトをレスポンシブ（スマホ・タブレット）対応にリニューアルしました。', url: null },
+        { id: 8, date: '2025.6.17', tag: 'お知らせ', text: '公式サイトを全面リニューアルしました。', url: '#' },
+        { id: 7, date: '2024.10.28', tag: '更新', text: '「帝国議会」ページを更新しました。', url: '#' },
+        { id: 6, date: '2024.09.21', tag: 'お知らせ', text: '二国府市と姉妹都市協定を締結しました。', url: null },
+        { id: 5, date: '2024.08.22', tag: 'お知らせ', text: '公式サイトをレスポンシブ(スマホ・タブレット)対応にリニューアルしました。', url: null },
         { id: 4, date: '2024.08.02', tag: 'お知らせ', text: 'サーバールールを改正しました。', url: '#' },
-        { id: 5, date: '2024.08.01', tag: 'お知らせ', text: '新メンバーの募集を再開しました。', url: '#' },
-        { id: 6, date: '2024.08.01', tag: '広報', text: '「やんまー帝国連邦 ver.1.12.2 紹介パンフレット」を公開しました。', url: '#' },
-        { id: 7, date: '2024.08.01', tag: '更新', text: '「法人一覧」ページを更新しました。', url: '#' },
+        { id: 3, date: '2024.08.01', tag: 'お知らせ', text: '新メンバーの募集を再開しました。', url: '#' },
+        { id: 2, date: '2024.08.01', tag: '広報', text: '「やんまー帝国連邦 ver 1.12.2 紹介パンフレット」を公開しました。', url: '' },
+        { id: 1, date: '2024.08.01', tag: '更新', text: '「法人一覧」ページを更新しました。', url: '#' },
       ]
     };
   },
@@ -51,6 +52,7 @@ export default {
       return Math.ceil(this.newsItems.length / this.itemsPerPage);
     },
     paginatedNews() {
+      // The array is now pre-sorted by ID descending, so we just slice.
       const start = (this.currentPage - 1) * this.itemsPerPage;
       const end = start + this.itemsPerPage;
       return this.newsItems.slice(start, end);

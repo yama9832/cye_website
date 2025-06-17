@@ -5,7 +5,7 @@
     <div class="about-container">
       <header class="page-header">
         <h1>基本情報</h1>
-        <p class="last-updated">更新日: 2025年6月30日</p>
+        <p class="last-updated">更新日: 2025年6月17日</p>
       </header>
 
       <section class="info-section">
