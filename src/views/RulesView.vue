@@ -11,7 +11,7 @@
       <div class="rules-content">
         <section class="info-section">
           <h2 class="section-title">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-book-open"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+            <span class="material-icons">menu_book</span>
             総括
           </h2>
           <p>
@@ -24,7 +24,7 @@
 
         <section class="info-section">
           <h2 class="section-title">
-             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check-square"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
+            <span class="material-icons">fact_check</span>
             基本事項
           </h2>
           <ol>
@@ -47,7 +47,7 @@
 
         <section class="info-section">
           <h2 class="section-title">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x-circle"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>
+            <span class="material-icons">cancel</span>
             禁止事項
           </h2>
           <ol>
@@ -61,7 +61,7 @@
 
         <section class="info-section">
           <h2 class="section-title">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-server"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect><rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect><line x1="6" y1="6" x2="6.01" y2="6"></line><line x1="6" y1="18" x2="6.01" y2="18"></line></svg>
+            <span class="material-icons">dns</span>
             マインクラフトサーバー上の禁止事項
           </h2>
           <ol>
@@ -78,7 +78,7 @@
         
         <section class="info-section">
           <h2 class="section-title">
-             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-shield"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+            <span class="material-icons">privacy_tip</span>
             個人情報の取り扱いについて
           </h2>
           <ol>
@@ -93,7 +93,7 @@
 
         <section class="info-section">
           <h2 class="section-title">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-log-out"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+            <span class="material-icons">logout</span>
             脱退時の対応
           </h2>
           <ol>
@@ -105,10 +105,10 @@
         </section>
 
         <section class="info-section">
-          <h2 class="section-title">
-             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-alert-triangle"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
-            違反時の対応
-          </h2>
+        <h2 class="section-title">
+          <span class="material-icons">warning</span>
+          違反時の対応
+        </h2>
           <ol>
             <li>サーバールール違反時は「注意→警告→懲罰」の手順で対応します。</li>
             <li>注意の時点で運営部の指示に従った場合、基本的に懲罰はされません。</li>
@@ -126,10 +126,10 @@
         </section>
         
         <section class="info-section">
-          <h2 class="section-title">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
-            改正
-          </h2>
+        <h2 class="section-title">
+          <span class="material-icons">gavel</span>
+          改正
+        </h2>
           <ol>
             <li>本ルールの改正は、運営部メンバーが発議し運営部会議の過半数の承認を経る必要があります。</li>
             <li>改正後の本ルールは、Discordチャンネル及び当サイトで掲示します。</li>
@@ -210,9 +210,8 @@ export default {
   padding-bottom: 0.75rem;
   border-bottom: 1px solid #e9ecef;
 }
-.section-title svg {
-    width: 28px;
-    height: 28px;
+.section-title .material-icons {
+    font-size: 1.75rem;
 }
 
 .info-section p, .info-section li {

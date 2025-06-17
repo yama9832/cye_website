@@ -17,7 +17,7 @@
         <!-- メンバー -->
         <section class="info-section">
           <h2 class="section-title">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-users"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+            <span class="material-icons">groups</span>
             メンバー
           </h2>
           <div class="card-grid">
@@ -106,8 +106,8 @@
 
         <!-- 製作委員会 -->
         <section class="info-section">
-           <h2 class="section-title">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-briefcase"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+          <h2 class="section-title">
+            <span class="material-icons">corporate_fare</span>
             やんまー帝国連邦製作委員会
           </h2>
           <p>製作委員会は運営部と広報部によって構成されています。</p>
@@ -157,8 +157,8 @@
 
         <!-- 外部組織 -->
         <section class="info-section">
-           <h2 class="section-title">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-layers"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+          <h2 class="section-title">
+            <span class="material-icons">layers</span>
             外部組織
           </h2>
           <p>製作委員会の外部組織です。ロールはありませんが、重要なので解説します。</p>
@@ -176,8 +176,8 @@
 
         <!-- 建築ジャンル -->
         <section class="info-section">
-           <h2 class="section-title">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+          <h2 class="section-title">
+            <span class="material-icons">apartment</span>
             建築ジャンル
           </h2>
           <p>自分が担当したい建築ジャンルごとにロールを付与します。詳細はDiscordのロールチャンネルをご覧ください。</p>
@@ -264,9 +264,8 @@ export default {
   padding-bottom: 0.75rem;
   border-bottom: 1px solid #e9ecef;
 }
-.section-title svg {
-    width: 28px;
-    height: 28px;
+.section-title .material-icons {
+    font-size: 1.75rem;
 }
 
 /* Role Cards */

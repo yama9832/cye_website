@@ -9,7 +9,7 @@
       </header>
 
       <div class="construction-notice">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-alert-triangle"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+        <span class="material-icons" style="font-size: 24px;">report_problem</span>
         <p>このページは現在作成途中です。一部未完成の部分があります。</p>
       </div>
 
@@ -353,11 +353,11 @@ export default {
   margin-top: 1.5rem;
 }
 .image-placeholder img {
-  width: 100%; /* コンテナの幅に合わせる */
-  max-width: 1000px; /* 画像の最大幅を指定 (必要に応じて調整してください) */
-  height: auto; /* 高さを自動調整してアスペクト比を維持 */
-  display: block; /* 中央揃えのためにブロック要素にする */
-  margin: 20px auto; /* 上下に20pxのマージン、左右は自動で中央揃え */
+  width: 100%;
+  max-width: 1000px;
+  height: auto; 
+  display: block; 
+  margin: 20px auto;
 }
 .placeholder-text {
   font-size: 1rem;

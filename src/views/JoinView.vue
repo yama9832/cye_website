@@ -11,28 +11,28 @@
       <!-- 参加資格 -->
       <section class="info-section">
         <h2 class="section-title">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check-circle"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+          <span class="material-icons">check_circle</span>
           参加資格
-        </h2>
+        </h2> 
         <div class="card-grid">
           <div class="card">
             <div class="card-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-box"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+              <span class="material-icons">account_box</span>
             </div>
             <h3 class="card-title">アカウント</h3>
             <p class="card-text">DiscordとMinecraft(Java/Bedrock Edition)のアカウントをお持ちの方。</p>
           </div>
           <div class="card">
-            <div class="card-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
-            </div>
+          <div class="card-icon">
+              <span class="material-icons">cake</span>
+          </div>
             <h3 class="card-title">年齢</h3>
             <p class="card-text">原則として、満14歳以上の方。</p>
           </div>
           <div class="card">
-             <div class="card-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-            </div>
+          <div class="card-icon">
+              <span class="material-icons">verified_user</span>
+          </div>
             <h3 class="card-title">マナー</h3>
             <p class="card-text">他のサーバーやコミュニティで問題行動を起こしていない方。</p>
           </div>
@@ -42,7 +42,7 @@
       <!-- 参加までの流れ -->
       <section class="info-section">
         <h2 class="section-title">
-           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-map"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"></polygon><line x1="8" y1="2" x2="8" y2="18"></line><line x1="16" y1="6" x2="16" y2="22"></line></svg>
+          <span class="material-icons">alt_route</span>
           参加までの流れ
         </h2>
         <div class="step-list">
@@ -81,7 +81,7 @@
       <!-- 注意事項 -->
       <section class="info-section">
         <h2 class="section-title">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-alert-triangle"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+          <span class="material-icons">warning</span>
           注意事項
         </h2>
         <ul class="notes-list">
@@ -156,11 +156,12 @@ export default {
   border-bottom: 1px solid #e0e0e0;
 }
 
-.section-title svg {
-  width: 28px;
-  height: 28px;
+.section-title .material-icons {
+    font-size: 1.75rem;
 }
-
+.card-icon .material-icons {
+    font-size: 2em;
+}
 /* 参加資格カード */
 .card-grid {
   display: grid;
