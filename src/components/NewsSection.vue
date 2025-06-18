@@ -4,7 +4,19 @@
     <div class="news-list-container">
       <ul class="news-list">
         <li v-for="item in paginatedNews" :key="item.id" class="news-item">
+          <router-link
+            v-if="!isExternal(item.url) && item.url"
+            :to="item.url"
+            class="news-link-wrapper"
+          >
+            <div class="news-meta">
+              <span class="news-date">{{ item.date }}</span>
+              <span class="news-tag" :class="getTagClass(item.tag)">{{ item.tag }}</span>
+            </div>
+            <p class="news-text">{{ item.text }}</p>
+          </router-link>
           <a
+            v-else
             :href="item.url || '#'"
             class="news-link-wrapper"
             :target="isExternal(item.url) ? '_blank' : null"
@@ -42,8 +54,8 @@ export default {
       currentPage: 1,
       itemsPerPage: 5,
       newsItems: [
-        { id: 8, date: '2025.06.18', tag: 'お知らせ', text: '公式サイトを全面リニューアルしました。', url: '#' },
-        { id: 7, date: '2024.10.28', tag: '更新', text: '「帝国議会」ページを更新しました。', url: 'government/diet' },
+        { id: 8, date: '2025.06.18', tag: 'お知らせ', text: '公式サイトを全面リニューアルしました。', url: null },
+        { id: 7, date: '2024.10.28', tag: '更新', text: '「帝国議会」ページを更新しました。', url: '/government/diet' },
         { id: 6, date: '2024.09.21', tag: 'お知らせ', text: '二国府市と姉妹都市協定を締結しました。', url: 'https://x.com/Yanma_Empire/status/1837461333216006264' },
         { id: 5, date: '2024.08.22', tag: 'お知らせ', text: '公式サイトをレスポンシブ(スマホ・タブレット)対応にリニューアルしました。', url: null },
         { id: 4, date: '2024.08.02', tag: 'お知らせ', text: 'サーバールールを改正しました。', url: '/rules' },

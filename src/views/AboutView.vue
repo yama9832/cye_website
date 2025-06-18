@@ -160,14 +160,6 @@ export default {
 </script>
 
 <style scoped>
-.page-content-wrapper {
-  max-width: 80rem;
-  width: 100%;
-  margin: 0 auto;
-  padding: 2rem 2.5rem;
-  box-sizing: border-box;
-}
-
 .about-container {
   margin: 0 auto;
 }
@@ -366,9 +358,6 @@ export default {
 
 /* レスポンシブ対応 */
 @media (max-width: 992px) {
-  .page-content-wrapper {
-    padding: 2rem 1.5rem;
-  }
    .section-title {
     font-size: 1.75rem;
   }

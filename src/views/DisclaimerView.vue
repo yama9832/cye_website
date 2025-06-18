@@ -67,14 +67,6 @@ export default {
 </script>
 
 <style scoped>
-.page-content-wrapper {
-  max-width: 80rem;
-  width: 100%;
-  margin: 0 auto;
-  padding: 2rem 2.5rem;
-  box-sizing: border-box;
-}
-
 .disclaimer-container {
   margin: 0 auto;
   background-color: #fff;
@@ -139,9 +131,6 @@ a:hover {
 
 /* レスポンシブ対応 */
 @media (max-width: 992px) {
-  .page-content-wrapper {
-    padding: 2rem 1.5rem;
-  }
   .disclaimer-container {
     padding: 2rem;
   }
