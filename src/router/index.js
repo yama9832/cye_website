@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import UnderConstruction from '../views/UnderConstruction.vue'
+import NotFoundView from '../views/NotFoundView.vue'
 
 const routes = [
   // --- 公開中のページ ---
@@ -154,8 +155,7 @@ const routes = [
     }
   },
 
-  // --- ここから下はすべて準備中ページ ---
-  // 各準備中ページにも breadcrumb を設定
+  // --- 準備中ページ ---
   { path: '/nations', name: 'nations', component: UnderConstruction, meta: { breadcrumb: [{ text: '基本情報' }, {text: '構成国' }] } },
   { path: '/constitution', name: 'constitution', component: UnderConstruction, meta: { breadcrumb: [{ text: '基本情報' }, { text: '憲法' }] } },
   { path: '/government/courts', name: 'courts', component: UnderConstruction, meta: { breadcrumb: [{ text: '基本情報' }, { text: '国の組織' }, { text: '裁判所' }] } },
@@ -166,6 +166,15 @@ const routes = [
   { path: '/tourism/access', name: 'tourism-access', component: UnderConstruction, meta: { breadcrumb: [{ text: '観光・イベント' }, { text: '観光案内' }, { text: '国外からのアクセス' }] } },
   { path: '/tourism/transport', name: 'transport', component: UnderConstruction, meta: { breadcrumb: [{ text: '観光・イベント' }, { text: '観光案内' }, { text: '交通情報' }] } },
   { path: '/faq', name: 'faq', component: UnderConstruction, meta: { breadcrumb: [{ text: '参加・お問い合わせ' }, { text: 'サポート' }, { text: 'よくある質問' }] } },
+  // --- 404 Not Found ---
+  {
+    path: '/:pathMatch(.*)*',
+    name: 'not-found',
+    component: NotFoundView,
+    meta: {
+        title: '404 - ページが見つかりません',
+    }
+  }
 ]
 
 const router = createRouter({

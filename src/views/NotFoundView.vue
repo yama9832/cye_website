@@ -1,18 +1,13 @@
 <template>
-  <main class="page-content-wrapper">
-    <!-- AppBreadcrumbは中央寄せの外に配置 -->
-    <div class="breadcrumb-area">
-      <AppBreadcrumb />
-    </div>
-    
+  <main class="not-found-page-wrapper">
     <div class="content-box">
       <div class="icon">
-        <span class="material-icons" style="font-size: 64px;">construction</span>
+        <span class="material-icons">error</span>
       </div>
-      <h1 class="title">このページは現在準備中です</h1>
+      <h1 class="title">404 - ページが見つかりません</h1>
       <p class="message">
-        ご指定のページは、現在コンテンツの準備を進めております。<br>
-        公開まで今しばらくお待ちくださいますよう、お願い申し上げます。
+        お探しのページは、移動または削除された可能性があります。<br>
+        URLをご確認の上、再度お試しいただくか、トップページへお戻りください。
       </p>
       <router-link to="/" class="home-link">トップページへ戻る</router-link>
     </div>
@@ -20,30 +15,16 @@
 </template>
 
 <script>
-import AppBreadcrumb from '@/components/AppBreadcrumb.vue';
-
 export default {
-  name: 'UnderConstruction',
-  components: {
-    AppBreadcrumb
-  }
+  name: 'NotFoundView',
 }
 </script>
 
 <style scoped>
-.page-content-wrapper {
+.not-found-page-wrapper {
   display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-  width: 100%;
-  box-sizing: border-box;
-}
-
-.breadcrumb-area {
-  max-width: 80rem;
-  width: 100%;
-  margin: 0 auto;
-  padding: 2rem 2.5rem 0;
+  flex-grow: 1; /* ヘッダーとフッターの間の空間を埋める */
+  padding: 2rem 1.5rem;
   box-sizing: border-box;
 }
 
@@ -55,13 +36,16 @@ export default {
   text-align: center;
   max-width: 600px;
   width: 100%;
-  margin: auto; 
+  margin: auto; /* 垂直・水平方向の中央揃え */
   box-sizing: border-box;
 }
 
 .icon {
-  color: #008037;
+  color: #c9171e; /* エラーを示す赤色 */
   margin-bottom: 1.5rem;
+}
+.icon .material-icons {
+    font-size: 64px;
 }
 
 .title {
@@ -94,17 +78,9 @@ export default {
   transform: translateY(-2px);
 }
 
-/* レスポンシブ対応 */
-@media (max-width: 992px) {
-  .breadcrumb-area {
-    padding: 2rem 1.5rem 0;
-  }
-}
-
 @media (max-width: 768px) {
   .content-box {
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
+    padding: 2rem 1.5rem;
   }
 }
 </style>

@@ -1,6 +1,8 @@
 <template>
   <main class="page-content-wrapper">
-    <AppBreadcrumb />
+    <div class="breadcrumb-area">
+        <AppBreadcrumb />
+    </div>
 
     <div class="contact-container">
       <header class="page-header">
@@ -33,8 +35,30 @@ export default {
 </script>
 
 <style scoped>
+.page-content-wrapper {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1; 
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.breadcrumb-area,
 .contact-container {
+  max-width: 80rem;
+  width: 100%;
   margin: 0 auto;
+  padding: 0 2.5rem;
+  box-sizing: border-box;
+}
+.breadcrumb-area {
+    padding-top: 2rem;
+}
+
+.contact-container {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; 
 }
 
 .page-header {
@@ -57,7 +81,7 @@ export default {
   text-align: center;
   max-width: 600px;
   width: 100%;
-  margin: auto;
+  margin: auto; 
   box-sizing: border-box;
 }
 
@@ -81,6 +105,13 @@ export default {
 }
 
 /* レスポンシブ対応 */
+@media (max-width: 992px) {
+  .breadcrumb-area,
+  .contact-container {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
 @media (max-width: 768px) {
   .page-header h1 {
     font-size: 2rem;
