@@ -5,7 +5,7 @@
     <div class="privacy-container">
       <header class="page-header">
         <h1>個人情報保護方針</h1>
-        <p class="last-updated">更新日: 2025年8月22日</p>
+        <p class="last-updated">更新日: 2025年6月18日</p>
       </header>
 
       <div class="privacy-content">
