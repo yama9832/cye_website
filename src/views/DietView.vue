@@ -161,13 +161,7 @@ export default {
 </script>
 
 <style scoped>
-.page-content-wrapper {
-  max-width: 80rem;
-  width: 100%;
-  margin: 0 auto;
-  padding: 2rem 2.5rem;
-  box-sizing: border-box;
-}
+
 
 .diet-container {
   margin: 0 auto;
@@ -234,7 +228,7 @@ export default {
 .chart-container img {
   width: 100%;
   border-radius: 8px;
-  background-color: #f8f9fa;
+  background-color: #ffffff;
   border: 2px dashed #ced4da; /* 枠線を点線に変更 */
   padding: 1rem; /* 画像と枠線の間に余白を追加 */
   box-sizing: border-box; /* paddingをwidth/heightに含める */
@@ -292,9 +286,7 @@ tbody tr:hover {
 
 /* レスポンシブ対応 */
 @media (max-width: 992px) {
-  .page-content-wrapper {
-    padding: 2rem 1.5rem;
-  }
+
   .charts-layout {
     flex-direction: column;
   }

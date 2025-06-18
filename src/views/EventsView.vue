@@ -6,7 +6,7 @@
       <header class="page-header">
         <h1>イベント情報</h1>
         <p class="header-description">
-          やんまー帝国連邦で開催される、季節ごとのイベントやお祭り、建築大会などの情報をお知らせします。
+          やんまー帝国連邦で開催される、季節ごとのイベントや建築大会などの情報をお知らせします。
         </p>
       </header>
 
@@ -64,7 +64,7 @@ export default {
           id: 1,
           title: '夏の建築大会',
           period: '2025年夏季(予定)',
-          description: '毎年恒例(にしたい)の夏の建築大会の開催を予定！テーマやルールなどの詳細は後日発表します。建築初心者から上級者まで、どなたでも大歓迎です！ぜひご参加ください！',
+          description: '毎年恒例(にしたい)夏の建築大会の開催を予定！テーマやルールなどの詳細は後日発表します。建築初心者から上級者まで、どなたでも大歓迎です！ぜひご参加ください！',
           image: 'mizusaki_view.webp', // 表示したい画像ファイル名
           status: '詳細は後日発表'
         }
@@ -93,13 +93,7 @@ export default {
 </script>
 
 <style scoped>
-.page-content-wrapper {
-  max-width: 80rem;
-  width: 100%;
-  margin: 0 auto;
-  padding: 2rem 2.5rem;
-  box-sizing: border-box;
-}
+
 
 .events-container {
   margin: 0 auto;
@@ -231,9 +225,7 @@ export default {
 }
 
 @media (max-width: 992px) {
-  .page-content-wrapper {
-    padding: 2rem 1.5rem;
-  }
+
 }
 @media (max-width: 768px) {
   .page-header h1 {

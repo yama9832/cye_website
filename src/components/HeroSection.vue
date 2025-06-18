@@ -2,7 +2,7 @@
   <div class="hero-slideshow">
     <div class="slides-container" :style="{ transform: `translateX(-${currentIndex * 100}%)` }">
       <div v-for="slide in slides" :key="slide.id" class="slide">
-        <img :src="slide.src" :alt="slide.alt">
+        <img :src="slide.src" :alt="slide.alt" loading="lazy">
       </div>
     </div>
     <button @click="prevSlide" class="nav-button prev" aria-label="前のスライドへ">&#10094;</button>
