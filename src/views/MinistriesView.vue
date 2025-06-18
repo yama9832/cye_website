@@ -186,7 +186,7 @@ export default {
 .image-placeholder {
   width: 100%;
   border: 2px dashed #ced4da;
-  background-color: #f8f9fa;
+  background-color: #ffffff;
   border-radius: 8px;
   padding: 1rem;
   box-sizing: border-box;

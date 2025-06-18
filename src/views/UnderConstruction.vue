@@ -28,16 +28,6 @@ export default {
 </script>
 
 <style scoped>
-.page-content-wrapper {
-  margin-left: 25%;
-  margin-right: 25%;
-  padding: 2rem 2.5rem;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-}
-
 .content-box {
   background-color: #ffffff;
   padding: 2.5rem 3rem;

@@ -1,18 +1,19 @@
 <template>
-  <nav v-if="breadcrumbs.length > 1" aria-label="breadcrumb" class="breadcrumb-container">
+  <nav v-if="breadcrumbs.length > 0" aria-label="breadcrumb" class="breadcrumb-container">
     <ol class="breadcrumb-list">
       <li
         v-for="(crumb, index) in breadcrumbs"
         :key="index"
         class="breadcrumb-item"
-        :class="{ 'active': index === breadcrumbs.length - 1 }"
       >
-        <router-link v-if="index < breadcrumbs.length - 1" :to="crumb.to">
-          {{ crumb.text }}
-        </router-link>
-        <span v-else>
-          {{ crumb.text }}
-        </span>
+        <!-- 最後の項目は現在のページなのでリンクにしない -->
+        <span v-if="index === breadcrumbs.length - 1">{{ crumb.text }}</span>
+        
+        <!-- 'to'プロパティがあればリンクにする（主にトップページ用） -->
+        <router-link v-else-if="crumb.to" :to="crumb.to">{{ crumb.text }}</router-link>
+        
+        <!-- 'to'がなければただのテキスト（階層カテゴリ用） -->
+        <span v-else>{{ crumb.text }}</span>
       </li>
     </ol>
   </nav>
@@ -23,17 +24,17 @@ export default {
   name: 'AppBreadcrumb',
   computed: {
     breadcrumbs() {
-      const crumbs = [];
-
-      crumbs.push({ text: 'トップ', to: '/' });
-
-      if (this.$route.meta.breadcrumb) {
-        crumbs.push({
-          text: this.$route.meta.breadcrumb,
-          to: this.$route.fullPath,
-        });
+      // ルートのmeta情報に breadcrumb がなければ何も表示しない
+      if (!this.$route.meta.breadcrumb || this.$route.meta.breadcrumb.length === 0) {
+        return [];
       }
-
+      
+      // 先頭に「トップ」を追加
+      const crumbs = [{ text: 'トップ', to: '/' }];
+      
+      // ルーターで定義したパンくずリストを追加
+      crumbs.push(...this.$route.meta.breadcrumb);
+      
       return crumbs;
     },
   },
@@ -59,11 +60,13 @@ export default {
 .breadcrumb-item a:hover {
   text-decoration: underline;
 }
-.breadcrumb-item.active {
+/* クリックできないテキストの色 */
+.breadcrumb-item span {
   color: #6c757d;
 }
+/* 区切り文字 */
 .breadcrumb-item + .breadcrumb-item::before {
-  content: '/';
+  content: '>';
   display: inline-block;
   padding: 0 0.5rem;
   color: #6c757d;

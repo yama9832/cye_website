@@ -1,22 +1,26 @@
 <template>
   <div id="app">
     <SiteHeader />
-    
     <router-view/>
-    
     <SiteFooter />
+    <!-- ScrollToTopコンポーネントを追加 -->
+    <ScrollToTop />
   </div>
 </template>
 
 <script>
 import SiteHeader from './components/SiteHeader.vue';
 import SiteFooter from './components/SiteFooter.vue';
+// ScrollToTopコンポーネントをインポート
+import ScrollToTop from './components/ScrollToTop.vue';
 
 export default {
   name: 'App',
   components: {
     SiteHeader,
-    SiteFooter
+    SiteFooter,
+    // ScrollToTopコンポーネントを登録
+    ScrollToTop
   }
 }
 </script>

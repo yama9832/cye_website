@@ -228,7 +228,7 @@ export default {
 .chart-container img {
   width: 100%;
   border-radius: 8px;
-  background-color: #f8f9fa;
+  background-color: #ffffff;
   border: 2px dashed #ced4da; /* 枠線を点線に変更 */
   padding: 1rem; /* 画像と枠線の間に余白を追加 */
   box-sizing: border-box; /* paddingをwidth/heightに含める */
