@@ -82,13 +82,12 @@ export default {
       isSwitching: false,
       menuItems: [
         {
-          name: '基本情報', // 名称を「基本情報」に戻す
-          // to プロパティを削除
+          name: '基本情報',
           children: [
             {
               title: '国の基本情報',
               links: [
-                { name: '基本情報', to: '/about' }, // 名称を「基本情報」に戻す
+                { name: '基本情報', to: '/about' },
                 { name: '構成国', to: '/nations' },
                 { name: '憲法', to: '/constitution' },
               ],
@@ -105,7 +104,6 @@ export default {
         },
         {
           name: '国政情報',
-          // to プロパティを削除
           children: [
             {
               title: '政策・広報',
@@ -125,13 +123,12 @@ export default {
         },
         {
           name: '観光・イベント',
-          // to プロパティを削除
           children: [
             {
               title: '観光案内',
               links: [
+                { name: '建築ギャラリー', to: '/gallery' }, 
                 { name: '観光案内', to: '/tourism/guide' },
-                { name: '国外からのアクセス', to: '/tourism/access' },
                 { name: '交通情報', to: '/tourism/transport' },
               ],
             },
@@ -139,13 +136,13 @@ export default {
               title: 'イベント',
               links: [
                 { name: 'イベント情報', to: '/events' },
+                { name: 'ブログ', to: '/blog' }, 
               ],
             },
           ],
         },
         {
           name: '参加・お問い合わせ',
-          // to プロパティを削除
           children: [
             {
               title: '連邦に参加',
@@ -171,6 +168,7 @@ export default {
   watch: {
     '$route'() {
       this.activeMenu = null;
+      this.isMobileNavOpen = false; // [追加] ルート変更時にモバイルメニューを閉じる
     }
   },
   methods: {

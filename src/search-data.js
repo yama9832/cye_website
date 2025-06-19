@@ -38,6 +38,18 @@ export const searchableData = [
   },
   {
     type: 'ページ',
+    title: 'ブログ',
+    description: '建築講座、開発日記、運営からのお知らせなど、やんまー帝国連邦の活動を発信します。',
+    to: '/blog'
+  },
+  {
+    type: 'ページ',
+    title: '建築ギャラリー',
+    description: 'やんまー帝国連邦の都市景観や建築物のスクリーンショットを掲載しています。',
+    to: '/gallery'
+  },
+  {
+    type: 'ページ',
     title: '製作メンバーになるには',
     description: 'Minecraft(Java版/統合版)ワールド製作への参加方法、参加資格、Discordサーバーへの招待、参加の流れについて。',
     to: '/join'
@@ -50,7 +62,7 @@ export const searchableData = [
   },
   {
     type: 'ページ',
-    title: 'ロール（役職）',
+    title: 'ロール(役職)',
     description: 'サーバー内での役職、権限、昇格条件について。ビギナー、スタンダード、カスタムメンバー、運営部、広報部など。',
     to: '/roles'
   },
@@ -72,6 +84,11 @@ export const searchableData = [
     description: 'プライバシーポリシー、Cookie(クッキー)、Googleアナリティクスの利用について。',
     to: '/privacy'
   },
+
+  // --- ブログ記事 ---
+  { type: 'ブログ', title: 'マイクラで作る近代建築デザインパターン集', date: '2025.06.19', description: '都市開発で使える、リアルな近代建築をデザインするための基本的な考え方やパターンをいくつか紹介します。', to: '/blog/modern-architecture-patterns' },
+  { type: 'ブログ', title: '開発日記：水咲駅周辺地区の再開発', date: '2025.06.10', description: '現在進行中の水咲駅周辺の再開発プロジェクト。高層ビルの建設現場から最新情報をお届けします。', to: '/blog/dev-diary-mizusaki-station' },
+  { type: 'ブログ', title: '2025年6月度 サーバールール改定のお知らせ', date: '2025.06.01', description: 'より快適なコミュニティ運営のため、サーバールールの一部を改定しました。', to: '/blog/server-rules-update-202506' },
 
   // --- 新着情報 ---
   { type: '新着情報', title: '公式サイトを全面リニューアルしました。', date: '2025.06.18', description: 'ウェブサイトのデザインを一新し、より使いやすくなりました。', to: '/' },

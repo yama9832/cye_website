@@ -66,10 +66,11 @@ export default {
         {
           title: '観光・イベント',
           links: [
+            { name: '建築ギャラリー', to: '/gallery' }, 
             { name: '観光案内', to: '/tourism/guide' },
-            { name: '国外からのアクセス', to: '/tourism/access' },
             { name: '交通情報', to: '/tourism/transport' },
             { name: 'イベント情報', to: '/events' },
+            { name: 'ブログ', to: '/blog' },
           ]
         },
         {
