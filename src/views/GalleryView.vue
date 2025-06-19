@@ -145,7 +145,6 @@ export default {
   border-bottom: 2px solid #008037;
   padding-bottom: 1rem;
   margin-bottom: 3rem;
-  text-align: center;
 }
 .page-header h1 {
   font-size: 2.5rem;
@@ -155,8 +154,6 @@ export default {
 .header-description {
   font-size: 1.1rem;
   color: #6c757d;
-  max-width: 600px;
-  margin: 0 auto;
 }
 
 /* Gallery Grid */
