@@ -14,7 +14,6 @@
         <article v-for="post in paginatedPosts" :key="post.slug" class="post-card">
           <router-link :to="`/blog/${post.slug}`" class="post-link">
             <div class="post-image-placeholder">
-              <!-- [変更] post.imagesが空の場合、デフォルト画像 'image.webp' を表示 -->
               <img 
                 :src="getImageUrl(post.images && post.images.length > 0 ? post.images[0] : 'image.webp')" 
                 :alt="post.title" 
@@ -156,10 +155,6 @@ export default {
   height: 100%;
   object-fit: cover;
   transition: transform 0.3s;
-}
-
-.post-card:hover .post-image-placeholder img {
-  transform: scale(1.05);
 }
 
 .post-content {

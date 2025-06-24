@@ -5,6 +5,7 @@
       <AppBreadcrumb />
       <EventBanner />
       <JoinCta />
+      <PageLinksSection />
       <NewsSection />
       <BannerAds />
     </main>
@@ -18,6 +19,7 @@ import AppBreadcrumb from '@/components/AppBreadcrumb.vue';
 import NewsSection from '@/components/NewsSection.vue';
 import JoinCta from '@/components/JoinCta.vue';
 import BannerAds from '@/components/BannerAds.vue';
+import PageLinksSection from '@/components/PageLinksSection.vue';
 
 export default {
   name: 'HomeView',
@@ -27,7 +29,8 @@ export default {
     AppBreadcrumb,
     NewsSection,
     JoinCta,
-    BannerAds
+    BannerAds,
+    PageLinksSection
   }
 }
 </script>

@@ -54,6 +54,7 @@ export default {
       currentPage: 1,
       itemsPerPage: 5,
       newsItems: [
+        { id: 6, date: '2025.06.25', tag: '更新', text: '「建築ギャラリー」「ブログ」ページを追加しました。', url: '/blog/info-2025-06-25' },
         { id: 6, date: '2025.06.18', tag: 'お知らせ', text: '公式サイトを全面リニューアルしました。', url: '/blog/info-2025-06-18' },
         { id: 5, date: '2024.10.28', tag: '更新', text: '「帝国議会」ページを更新しました。', url: '/government/diet' },
         { id: 4, date: '2024.09.21', tag: 'お知らせ', text: '二国府市と姉妹都市協定を締結しました。', url: 'https://x.com/Yanma_Empire/status/1837461333216006264' },
