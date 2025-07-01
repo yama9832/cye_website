@@ -9,12 +9,107 @@
       </header>
 
       <p class="section-description">
-        やんまー帝国連邦の立法府である帝国議会は、「国権の最高機関」として位置づけられています。帝国議会は国民を代表する選挙された議員で構成される上院と下院の二院制を採用しており、法律の制定、予算の議決、内閣総理大臣の指名など、国政の根幹に関わる重要な役割を担っています。
-        上院議員は山摩市議会から24名、各市議会から4名ずつ選ばれます。その際、上院議員は市議会議員の役職を失います。下院議員は直接選挙で選ばれます。
-        なお、与党が政権を維持するために必要な過半数の議席は、国王指定議席として公職選挙法により確保されています。そのため、政権交代には公職選挙法の改正、または国王による指定議席の変更が不可欠です。
+        やんまー帝国連邦の立法府である帝国議会は、「国権の最高機関」として位置づけられています。帝国議会は国民を代表する選挙された議員で構成される上院と下院の二院制を採用しており、法律の制定、予算の議決、内閣総理大臣の指名など、国政の根幹に関わる重要な役割を担っています。 上院議員は山摩市議会から24名、各市議会から4名ずつ選ばれます。その際、上院議員は市議会議員の役職を失います。下院議員は直接選挙で選ばれます。 なお、与党が政権を維持するために必要な過半数の議席は、国王指定議席として公職選挙法により確保されています。そのため、政権交代には公職選挙法の改正、または国王による指定議席の変更が不可欠です。
       </p>
 
-      <!-- 上院構成表 -->
+      <section class="chamber-section">
+        <h2 class="section-title">議員構成図</h2>
+        <div class="chart-wrapper">
+          <h3 class="chart-title">上院</h3>
+          <div class="chart-grid">
+            <div class="party-list ruling">
+              <div class="party-group-title">与党</div>
+              <div class="party-total">{{ jouinData.rulingTotal }}</div>
+              <div class="party-breakdown-grid">
+                <div v-for="party in jouinData.ruling" :key="party.name" class="party-box">
+                  <div class="party-box-header" :style="{ backgroundColor: party.color }"></div>
+                  <div class="party-box-name">{{ party.abbr }}</div>
+                  <div class="party-box-seats">{{ party.seats }}</div>
+                </div>
+              </div>
+            </div>
+            <div class="chart-container">
+              <div class="majority-line">過半数 50</div>
+              <DoughnutChart :data="jouinChartData" :options="chartOptions"/>
+              <div class="chart-info">
+                <div class="total-seats">定数 <strong>100</strong></div>
+              </div>
+            </div>
+            <div class="party-list opposition">
+              <div class="party-group-title">野党</div>
+              <div class="party-total">{{ jouinData.oppositionTotal }}</div>
+               <div class="opposition-group">
+                <h4 class="opposition-sub-title">野党共闘</h4>
+                <div class="party-breakdown-grid">
+                  <div v-for="party in jouinData.oppositionKyotou" :key="party.name" class="party-box">
+                    <div class="party-box-header" :style="{ backgroundColor: party.color }"></div>
+                    <div class="party-box-name">{{ party.abbr }}</div>
+                    <div class="party-box-seats">{{ party.seats }}</div>
+                  </div>
+                </div>
+              </div>
+              <div class="opposition-group">
+                 <h4 class="opposition-sub-title">野党諸派</h4>
+                <div class="party-breakdown-grid">
+                  <div v-for="party in jouinData.oppositionShoha" :key="party.name" class="party-box">
+                    <div class="party-box-header" :style="{ backgroundColor: party.color }"></div>
+                    <div class="party-box-name">{{ party.abbr }}</div>
+                    <div class="party-box-seats">{{ party.seats }}</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="chart-wrapper">
+          <h3 class="chart-title">下院</h3>
+          <div class="chart-grid">
+            <div class="party-list ruling">
+              <div class="party-group-title">与党</div>
+              <div class="party-total">{{ kainData.rulingTotal }}</div>
+              <div class="party-breakdown-grid">
+                <div v-for="party in kainData.ruling" :key="party.name" class="party-box">
+                  <div class="party-box-header" :style="{ backgroundColor: party.color }"></div>
+                  <div class="party-box-name">{{ party.abbr }}</div>
+                  <div class="party-box-seats">{{ party.seats }}</div>
+                </div>
+              </div>
+            </div>
+            <div class="chart-container">
+               <div class="majority-line">過半数 150</div>
+              <DoughnutChart :data="kainChartData" :options="chartOptions" />
+              <div class="chart-info">
+                <div class="total-seats">定数 <strong>300</strong></div>
+              </div>
+            </div>
+            <div class="party-list opposition">
+              <div class="party-group-title">野党</div>
+              <div class="party-total">{{ kainData.oppositionTotal }}</div>
+              <div class="opposition-group">
+                <h4 class="opposition-sub-title">野党共闘</h4>
+                <div class="party-breakdown-grid">
+                    <div v-for="party in kainData.oppositionKyotou" :key="party.name" class="party-box">
+                    <div class="party-box-header" :style="{ backgroundColor: party.color }"></div>
+                    <div class="party-box-name">{{ party.abbr }}</div>
+                    <div class="party-box-seats">{{ party.seats }}</div>
+                    </div>
+                </div>
+              </div>
+              <div class="opposition-group">
+                <h4 class="opposition-sub-title">野党諸派</h4>
+                <div class="party-breakdown-grid">
+                    <div v-for="party in kainData.oppositionShoha" :key="party.name" class="party-box">
+                    <div class="party-box-header" :style="{ backgroundColor: party.color }"></div>
+                    <div class="party-box-name">{{ party.abbr }}</div>
+                    <div class="party-box-seats">{{ party.seats }}</div>
+                    </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section class="chamber-section">
         <h2 class="section-title">政党別議席数（上院）</h2>
         <div class="table-container">
@@ -72,7 +167,6 @@
           </div>
       </section>
 
-      <!-- 下院構成表 -->
       <section class="chamber-section">
         <h2 class="section-title">政党別議席数（下院）</h2>
         <div class="table-container">
@@ -129,75 +223,121 @@
             </div>
           </div>
       </section>
-
-      <!-- 議員構成図 -->
-      <section class="chamber-section">
-        <h2 class="section-title">議員構成図</h2>
-        <div class="charts-layout">
-          <div class="chart-container">
-            <h3>上院</h3>
-            <img src="@/assets/jouin.webp" alt="帝国議会 上院 議員構成">
-          </div>
-          <div class="chart-container">
-            <h3>下院</h3>
-            <img src="@/assets/kain.webp" alt="帝国議会 下院 議員構成">
-          </div>
-        </div>
-      </section>
-
     </div>
   </main>
 </template>
 
 <script>
 import AppBreadcrumb from '@/components/AppBreadcrumb.vue';
+import DoughnutChart from '@/components/DoughnutChart.vue';
 
 export default {
   name: 'DietView',
   components: {
-    AppBreadcrumb
+    AppBreadcrumb,
+    DoughnutChart
+  },
+  data() {
+    const partyColors = {
+      jiyuuSankan: '#008442',
+      yammaKyosan: '#c82d33',
+      sankanMinshu: '#f1aa32',
+      sankanYuusha: '#91c327',
+      yanmaKokumin: '#63c7e0',
+      mushozoku: '#a9a9a9',
+    };
+
+    const jouinData = {
+      ruling: [ { name: '自由山間党', abbr: '自山', seats: 64, color: partyColors.jiyuuSankan } ],
+      oppositionKyotou: [ { name: '自由ヤンマシア解放戦線', abbr: '解放', seats: 18, color: partyColors.yammaKyosan }, { name: '山間民主党', abbr: '山民', seats: 10, color: partyColors.sankanMinshu } ],
+      oppositionShoha: [ { name: '山間勇者の会', abbr: '山勇会', seats: 4, color: partyColors.sankanYuusha }, { name: 'やんまーから国民を守る党', abbr: '国民', seats: 2, color: partyColors.yanmaKokumin }, { name: '無所属', abbr: '無所属', seats: 2, color: partyColors.mushozoku } ],
+    };
+    jouinData.rulingTotal = jouinData.ruling.reduce((sum, p) => sum + p.seats, 0);
+    jouinData.oppositionTotal = [...jouinData.oppositionKyotou, ...jouinData.oppositionShoha].reduce((sum, p) => sum + p.seats, 0);
+
+    const kainData = {
+      ruling: [ { name: '自由山間党', abbr: '自山', seats: 151, color: partyColors.jiyuuSankan } ],
+      oppositionKyotou: [ { name: '自由ヤンマシア解放戦線', abbr: '解放', seats: 101, color: partyColors.yammaKyosan }, { name: '山間民主党', abbr: '山民', seats: 35, color: partyColors.sankanMinshu } ],
+      oppositionShoha: [ { name: '山間勇者の会', abbr: '山勇会', seats: 5, color: partyColors.sankanYuusha }, { name: 'やんまーから国民を守る党', abbr: '国民', seats: 6, color: partyColors.yanmaKokumin }, { name: '無所属', abbr: '無所属', seats: 2, color: partyColors.mushozoku } ],
+    };
+    kainData.rulingTotal = kainData.ruling.reduce((sum, p) => sum + p.seats, 0);
+    kainData.oppositionTotal = [...kainData.oppositionKyotou, ...kainData.oppositionShoha].reduce((sum, p) => sum + p.seats, 0);
+    
+    const createChartData = (data) => {
+        const allParties = [...data.ruling, ...data.oppositionKyotou, ...data.oppositionShoha];
+        return {
+            labels: allParties.map(p => p.abbr),
+            datasets: [{
+                data: allParties.map(p => p.seats),
+                backgroundColor: allParties.map(p => p.color),
+                borderWidth: 2,
+                borderColor: '#f8f9fa'
+            }]
+        }
+    };
+
+    // グラフのオプション
+    const chartOptions = {
+        responsive: true,
+        maintainAspectRatio: false,
+        rotation: -90,
+        circumference: 180,
+        cutout: '60%',
+        plugins: {
+          tooltip: { enabled: false },
+          legend: { display: false },
+          datalabels: {
+            // ★数字をすべて非表示にする
+            display: false,
+          }
+        }
+      };
+
+
+    return {
+      jouinData,
+      kainData,
+      jouinChartData: createChartData(jouinData),
+      kainChartData: createChartData(kainData),
+      chartOptions
+    }
   }
 }
 </script>
 
 <style scoped>
-
-
 .diet-container {
   margin: 0 auto;
 }
-
 .page-header {
   border-bottom: 2px solid #008037;
   padding-bottom: 1rem;
   margin-bottom: 3rem;
 }
-
 .page-header h1 {
   font-size: 2.5rem;
   color: #343a40;
   margin: 0;
 }
-
 .last-updated {
   font-size: 0.875rem;
   color: #6c757d;
   text-align: right;
   margin-top: 0.5rem;
 }
-
 .section-description {
   font-size: 1rem;
   line-height: 1.8;
   color: #333;
-  margin-top: -1rem; /* Adjust to bring it closer to the header */
+  margin-top: -1rem;
   margin-bottom: 3rem;
 }
-
 .chamber-section {
   margin-bottom: 4rem;
 }
-
+.chamber-section:last-child {
+  margin-bottom: 0;
+}
 .section-title {
   font-size: 2rem;
   color: #008037;
@@ -206,98 +346,154 @@ export default {
   border-bottom: 1px solid #e9ecef;
 }
 
-/* Charts Layout */
-.charts-layout {
-  display: flex;
-  gap: 2rem;
-  align-items: flex-start;
-}
-
-.chart-container {
-  flex: 1;
-  min-width: 300px;
-}
-
-.chart-container h3 {
-    text-align: center;
-    font-size: 1.5rem;
-    margin: 0 0 1rem 0;
-    color: #343a40;
-}
-
-.chart-container img {
-  width: 100%;
+/* Chart Layout */
+.chart-wrapper {
+  background-color: #f8f9fa;
+  border: 1px solid #e9ecef;
   border-radius: 8px;
-  background-color: #ffffff;
-  border: 2px dashed #ced4da; /* 枠線を点線に変更 */
-  padding: 1rem; /* 画像と枠線の間に余白を追加 */
-  box-sizing: border-box; /* paddingをwidth/heightに含める */
+  padding: 2.5rem;
+  margin-bottom: 2.5rem;
+}
+.chart-title {
+  text-align: center;
+  font-size: 2.25rem;
+  color: #343a40;
+  margin: 0 0 2.5rem 0;
+  font-weight: bold;
+}
+.chart-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr 1fr;
+  align-items: flex-start;
+  gap: 2rem;
+}
+.chart-container {
+  position: relative;
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+  padding-top: 1rem;
+}
+.chart-info {
+  position: absolute;
+  top: 78%;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+}
+.majority-line {
+  position: absolute;
+  top: 0.2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #495057;
+  font-size: 0.9rem;
+  white-space: nowrap;
+}
+.majority-line::before {
+  content: '';
+  position: absolute;
+  top: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1px;
+  height: 25px;
+  background-color: #495057;
+}
+.total-seats {
+  color: #343a40;
+  font-size: 1.25rem;
+}
+.total-seats strong {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+/* Party List & Boxes */
+.party-list {
+  text-align: center;
+}
+.party-group-title {
+  font-size: 2.25rem;
+  font-weight: 700;
+}
+.party-list.ruling .party-group-title { color: #008442; }
+.party-list.opposition .party-group-title { color: #c82d33; }
+.party-total {
+  font-size: 4rem;
+  font-weight: 700;
+  line-height: 1;
+  margin-bottom: 1rem;
+}
+.party-breakdown-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 65px);
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+    justify-content: center;
+}
+.party-box {
+    border: 1px solid #dee2e6;
+    border-radius: 4px;
+    background-color: #fff;
+    text-align: center;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+.party-box-header {
+    height: 5px;
+}
+.party-box-name {
+    font-size: 0.8rem;
+    padding: 0.3rem 0.2rem 0.2rem;
+    color: #343a40;
+    font-weight: bold;
+}
+.party-box-seats {
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding: 0 0.2rem 0.4rem;
+    color: #212529;
+}
+.opposition-group {
+  margin-top: 0.75rem;
+}
+.opposition-group:first-of-type {
+    margin-top: 0;
+}
+.opposition-sub-title {
+  font-weight: bold;
+  color: #495057;
+  margin-bottom: 0.75rem;
+  text-align: center;
+  font-size: 1.1rem;
 }
 
 /* Table Layout */
-.table-container {
-  width: 100%;
-}
-
-.table-caption {
-    text-align: right;
-    color: #6c757d;
-    font-size: 0.9rem;
-    margin: 0 0 0.5rem 0;
-}
-
-.table-wrapper {
-    overflow-x: auto;
-    border: 1px solid #e0e0e0;
-    border-radius: 8px;
-    /* box-shadow: 0 4px 15px rgba(0,0,0,0.05); */ /* 影を削除 */
-}
-
-table {
-  width: 100%;
-  border-collapse: collapse;
-  background-color: #fff;
-  white-space: nowrap;
-}
-
-th, td {
-  padding: 0.75rem 1rem;
-  text-align: left;
-  border-bottom: 1px solid #e0e0e0;
-}
-td:nth-child(4), th:nth-child(4) {
-    text-align: right;
-}
-
-thead th {
-  background-color: #f8f9fa;
-  font-weight: 700;
-  color: #343a40;
-}
-
-tbody tr:last-child td {
-    border-bottom: none;
-}
-
-tbody tr:hover {
-    background-color: #f8f9fa;
-}
+.table-container { width: 100%; }
+.table-caption { text-align: right; color: #6c757d; font-size: 0.9rem; margin: 0 0 0.5rem 0; }
+.table-wrapper { overflow-x: auto; border: 1px solid #e0e0e0; border-radius: 8px; }
+table { width: 100%; border-collapse: collapse; background-color: #fff; white-space: nowrap; }
+th, td { padding: 0.75rem 1rem; text-align: left; border-bottom: 1px solid #e0e0e0; }
+td:nth-child(4), th:nth-child(4) { text-align: right; }
+thead th { background-color: #f8f9fa; font-weight: 700; color: #343a40; }
+tbody tr:last-child td { border-bottom: none; }
+tbody tr:hover { background-color: #f8f9fa; }
 
 
 /* レスポンシブ対応 */
 @media (max-width: 992px) {
-
-  .charts-layout {
-    flex-direction: column;
+  .chart-grid {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 2.5rem;
+  }
+  .chart-container {
+    order: -1; 
   }
 }
-
 @media (max-width: 768px) {
-  .page-header h1 {
-    font-size: 2rem;
-  }
-  .section-title {
-    font-size: 1.75rem;
-  }
+  .page-header h1 { font-size: 2rem; }
+  .section-title, .chart-title { font-size: 1.75rem; }
 }
 </style>
