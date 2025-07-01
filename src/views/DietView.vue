@@ -5,11 +5,18 @@
     <div class="diet-container">
       <header class="page-header">
         <h1>帝国議会</h1>
-        <p class="last-updated">更新日: 2024年10月28日</p>
+        <p class="last-updated">更新日: 2025年7月1日</p>
       </header>
 
+      <div class="election-notice">
+        <span class="material-icons">info</span>
+        <p>7月20日に上院選挙が実施されます。それに伴い、議席数が変動する可能性があります。</p>
+      </div>
+
       <p class="section-description">
-        やんまー帝国連邦の立法府である帝国議会は、「国権の最高機関」として位置づけられています。帝国議会は国民を代表する選挙された議員で構成される上院と下院の二院制を採用しており、法律の制定、予算の議決、内閣総理大臣の指名など、国政の根幹に関わる重要な役割を担っています。 上院議員は山摩市議会から24名、各市議会から4名ずつ選ばれます。その際、上院議員は市議会議員の役職を失います。下院議員は直接選挙で選ばれます。 なお、与党が政権を維持するために必要な過半数の議席は、国王指定議席として公職選挙法により確保されています。そのため、政権交代には公職選挙法の改正、または国王による指定議席の変更が不可欠です。
+        やんまー帝国連邦の立法府である帝国議会は、「国権の最高機関」として位置づけられています。帝国議会は国民を代表する選挙された議員で構成される上院と下院の二院制を採用しており、法律の制定、予算の議決、内閣総理大臣の指名など、国政の根幹に関わる重要な役割を担っています。 <br>
+        上院議員は大選挙区比例代表並立制、下院議員は小選挙区比例代表並立制による直接選挙で選ばれます。大選挙区は各構成国を1つの選挙区として扱い、小選挙区は各構成国内を分割して選挙区として扱います。<br>
+        なお、与党が政権を維持するために必要な過半数の議席は、国王指定議席として公職選挙法により確保されています。そのため、政権交代には公職選挙法の改正、または国王による指定議席の変更が不可欠です。
       </p>
 
       <section class="chamber-section">
@@ -287,7 +294,6 @@ export default {
           tooltip: { enabled: false },
           legend: { display: false },
           datalabels: {
-            // ★数字をすべて非表示にする
             display: false,
           }
         }
@@ -312,7 +318,7 @@ export default {
 .page-header {
   border-bottom: 2px solid #008037;
   padding-bottom: 1rem;
-  margin-bottom: 3rem;
+  margin-bottom: 1.5rem; /* 調整 */
 }
 .page-header h1 {
   font-size: 2.5rem;
@@ -324,6 +330,21 @@ export default {
   color: #6c757d;
   text-align: right;
   margin-top: 0.5rem;
+}
+.election-notice {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background-color: #e6f2ff;
+  color: #004085;
+  border: 1px solid #b8daff;
+  border-radius: 8px;
+  padding: 1rem 1.5rem;
+  margin-bottom: 2.5rem;
+}
+.election-notice p {
+  margin: 0;
+  font-weight: 500;
 }
 .section-description {
   font-size: 1rem;
