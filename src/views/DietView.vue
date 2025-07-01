@@ -318,7 +318,7 @@ export default {
 .page-header {
   border-bottom: 2px solid #008037;
   padding-bottom: 1rem;
-  margin-bottom: 1.5rem; /* 調整 */
+  margin-bottom: 1.5rem;
 }
 .page-header h1 {
   font-size: 2.5rem;
@@ -503,18 +503,56 @@ tbody tr:hover { background-color: #f8f9fa; }
 
 
 /* レスポンシブ対応 */
+@media (max-width: 1200px) {
+    .chart-grid {
+        gap: 1.5rem;
+    }
+    .chart-wrapper {
+        padding: 2rem;
+    }
+}
 @media (max-width: 992px) {
   .chart-grid {
     grid-template-columns: 1fr;
-    text-align: center;
     gap: 2.5rem;
   }
   .chart-container {
     order: -1; 
+    max-width: 380px; /* スマホ用にグラフの最大幅を小さくする */
+  }
+  .party-list {
+    text-align: left; /* 左寄せに変更 */
+  }
+  .party-breakdown-grid {
+    justify-content: flex-start; /* 左寄せに変更 */
+    grid-template-columns: repeat(auto-fill, 65px); /* 折り返しを有効に */
+  }
+  .party-list.ruling {
+      order: -2;
+  }
+  .party-list.opposition {
+      order: 1;
+  }
+  .opposition-sub-title {
+      text-align: left; /* 左寄せに変更 */
   }
 }
 @media (max-width: 768px) {
   .page-header h1 { font-size: 2rem; }
   .section-title, .chart-title { font-size: 1.75rem; }
+  .chart-wrapper {
+      padding: 1.5rem;
+  }
+  .party-total {
+      font-size: 3.5rem;
+  }
+}
+@media (max-width: 480px) {
+    .party-group-title {
+        font-size: 2rem;
+    }
+    .party-total {
+        font-size: 3rem;
+    }
 }
 </style>
