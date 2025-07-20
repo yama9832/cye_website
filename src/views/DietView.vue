@@ -36,10 +36,10 @@
               </div>
             </div>
             <div class="chart-container">
-              <div class="majority-line">過半数 100</div>
+              <div class="majority-line">過半数 108</div>
               <DoughnutChart :data="jouinChartData" :options="chartOptions"/>
               <div class="chart-info">
-                <div class="total-seats">定数 <strong>200</strong></div>
+                <div class="total-seats">定数 <strong>215</strong></div>
               </div>
             </div>
             <div class="party-list opposition">
@@ -83,10 +83,10 @@
               </div>
             </div>
             <div class="chart-container">
-               <div class="majority-line">過半数 150</div>
+               <div class="majority-line">過半数 163</div>
               <DoughnutChart :data="kainChartData" :options="chartOptions" />
               <div class="chart-info">
-                <div class="total-seats">定数 <strong>300</strong></div>
+                <div class="total-seats">定数 <strong>325</strong></div>
               </div>
             </div>
             <div class="party-list opposition">
@@ -120,7 +120,7 @@
       <section class="chamber-section">
         <h2 class="section-title">政党別議席数（上院）</h2>
         <div class="table-container">
-            <p class="table-caption">定数200名</p>
+            <p class="table-caption">定数215名</p>
             <div class="table-wrapper">
               <table>
                 <thead>
@@ -136,19 +136,19 @@
                     <td>与党</td>
                     <td>自由山間党</td>
                     <td>中道右派</td>
-                    <td>128議席</td>
+                    <td>138議席</td>
                   </tr>
                   <tr>
                     <td>野党第一党</td>
                     <td>自由ヤンマシア解放戦線 (旧山間共産党)</td>
                     <td>急進左翼</td>
-                    <td>36議席</td>
+                    <td>39議席</td>
                   </tr>
                   <tr>
                     <td>野党第二党</td>
                     <td>山間民主党</td>
                     <td>中道左派</td>
-                    <td>20議席</td>
+                    <td>22議席</td>
                   </tr>
                    <tr>
                     <td>野党第三党</td>
@@ -177,7 +177,7 @@
       <section class="chamber-section">
         <h2 class="section-title">政党別議席数（下院）</h2>
         <div class="table-container">
-            <p class="table-caption">定数300名</p>
+            <p class="table-caption">定数325名</p>
             <div class="table-wrapper">
               <table>
                 <thead>
@@ -193,19 +193,19 @@
                     <td>与党</td>
                     <td>自由山間党</td>
                     <td>中道右派</td>
-                    <td>151議席</td>
+                    <td>164議席</td>
                   </tr>
                   <tr>
                     <td>野党第一党</td>
                     <td>自由ヤンマシア解放戦線 (旧山間共産党)</td>
                     <td>急進左翼</td>
-                    <td>101議席</td>
+                    <td>109議席</td>
                   </tr>
                   <tr>
                     <td>野党第二党</td>
                     <td>山間民主党</td>
                     <td>中道左派</td>
-                    <td>35議席</td>
+                    <td>38議席</td>
                   </tr>
                    <tr>
                     <td>野党第三党</td>
@@ -217,7 +217,7 @@
                     <td>野党第四党</td>
                     <td>やんまーから国民を守る党</td>
                     <td>ポピュリズム</td>
-                    <td>6議席</td>
+                    <td>7議席</td>
                   </tr>
                   <tr>
                     <td>その他</td>
@@ -255,17 +255,17 @@ export default {
     };
 
     const jouinData = {
-      ruling: [ { name: '自由山間党', abbr: '自山', seats: 128, color: partyColors.jiyuuSankan } ],
-      oppositionKyotou: [ { name: '自由ヤンマシア解放戦線', abbr: '解放', seats: 36, color: partyColors.yammaKyosan }, { name: '山間民主党', abbr: '山民', seats: 20, color: partyColors.sankanMinshu } ],
+      ruling: [ { name: '自由山間党', abbr: '自山', seats: 138, color: partyColors.jiyuuSankan } ],
+      oppositionKyotou: [ { name: '自由ヤンマシア解放戦線', abbr: '解放', seats: 39, color: partyColors.yammaKyosan }, { name: '山間民主党', abbr: '山民', seats: 22, color: partyColors.sankanMinshu } ],
       oppositionShoha: [ { name: '山間勇者の会', abbr: '山勇会', seats: 8, color: partyColors.sankanYuusha }, { name: 'やんまーから国民を守る党', abbr: '国民', seats: 4, color: partyColors.yanmaKokumin }, { name: '無所属', abbr: '無所属', seats: 4, color: partyColors.mushozoku } ],
     };
     jouinData.rulingTotal = jouinData.ruling.reduce((sum, p) => sum + p.seats, 0);
     jouinData.oppositionTotal = [...jouinData.oppositionKyotou, ...jouinData.oppositionShoha].reduce((sum, p) => sum + p.seats, 0);
 
     const kainData = {
-      ruling: [ { name: '自由山間党', abbr: '自山', seats: 151, color: partyColors.jiyuuSankan } ],
-      oppositionKyotou: [ { name: '自由ヤンマシア解放戦線', abbr: '解放', seats: 101, color: partyColors.yammaKyosan }, { name: '山間民主党', abbr: '山民', seats: 35, color: partyColors.sankanMinshu } ],
-      oppositionShoha: [ { name: '山間勇者の会', abbr: '山勇会', seats: 5, color: partyColors.sankanYuusha }, { name: 'やんまーから国民を守る党', abbr: '国民', seats: 6, color: partyColors.yanmaKokumin }, { name: '無所属', abbr: '無所属', seats: 2, color: partyColors.mushozoku } ],
+      ruling: [ { name: '自由山間党', abbr: '自山', seats: 164, color: partyColors.jiyuuSankan } ],
+      oppositionKyotou: [ { name: '自由ヤンマシア解放戦線', abbr: '解放', seats: 109, color: partyColors.yammaKyosan }, { name: '山間民主党', abbr: '山民', seats: 38, color: partyColors.sankanMinshu } ],
+      oppositionShoha: [ { name: '山間勇者の会', abbr: '山勇会', seats: 5, color: partyColors.sankanYuusha }, { name: 'やんまーから国民を守る党', abbr: '国民', seats: 7, color: partyColors.yanmaKokumin }, { name: '無所属', abbr: '無所属', seats: 2, color: partyColors.mushozoku } ],
     };
     kainData.rulingTotal = kainData.ruling.reduce((sum, p) => sum + p.seats, 0);
     kainData.oppositionTotal = [...kainData.oppositionKyotou, ...kainData.oppositionShoha].reduce((sum, p) => sum + p.seats, 0);
@@ -518,7 +518,7 @@ tbody tr:hover { background-color: #f8f9fa; }
   }
   .chart-container {
     order: -1; 
-    max-width: 380px; /* スマホ用にグラフの最大幅を小さくする */
+    max-width: 100%; /* スマホ用にグラフの最大幅を変更 */
   }
   .party-list {
     text-align: left; /* 左寄せに変更 */
