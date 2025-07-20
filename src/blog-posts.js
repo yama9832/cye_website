@@ -8,7 +8,8 @@ export const posts = [
     date: '2025.07.21',
     category: 'ニュース',
    images: [
-      '2025-jouin.webp'
+      '2025-jouin.webp' ,
+      '2025-jouin2.webp'
     ],
     content: `
     <h2>自由山間党が単独過半数を維持</h2>
