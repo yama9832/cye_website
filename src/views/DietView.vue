@@ -14,57 +14,6 @@
         なお、与党が政権を維持するために必要な過半数の議席は、国王指定議席として公職選挙法により確保されています。そのため、政権交代には公職選挙法の改正、または国王による指定議席の変更が不可欠です。
       </p>
 
-      <section class="election-results-section">
-        <h2 class="section-title">上院選挙2025結果</h2>
-        <div class="results-layout">
-          <!-- 与党 -->
-          <div class="results-group">
-            <h3 class="results-group-title ruling-party">与党</h3>
-            <div class="results-grid single-party">
-              <div class="result-party jisan">
-                <h3 class="party-name">自山</h3>
-                <p class="seats">0<span>議席</span></p>
-              </div>
-            </div>
-          </div>
-
-          <!-- 野党 -->
-          <div class="results-group">
-            <h3 class="results-group-title opposition-party">野党</h3>
-            <div class="results-grid">
-              <div class="result-party kaihou">
-                <h3 class="party-name">解放</h3>
-                <p class="seats">0<span>議席</span></p>
-              </div>
-              <div class="result-party sanmin">
-                <h3 class="party-name">山民</h3>
-                <p class="seats">0<span>議席</span></p>
-              </div>
-              <div class="result-party sanyukai">
-                <h3 class="party-name">山勇会</h3>
-                <p class="seats">0<span>議席</span></p>
-              </div>
-              <div class="result-party senmetsu">
-                <h3 class="party-name">殲滅</h3>
-                <p class="seats">0<span>議席</span></p>
-              </div>
-              <div class="result-party shinsen">
-                <h3 class="party-name">新鮮</h3>
-                <p class="seats">0<span>議席</span></p>
-              </div>
-              <div class="result-party yakokuto">
-                <h3 class="party-name">や国党</h3>
-                <p class="seats">0<span>議席</span></p>
-              </div>
-              <div class="result-party others">
-                <h3 class="party-name">無所属</h3>
-                <p class="seats">0<span>議席</span></p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       <section class="chamber-section">
         <h2 class="section-title">議員構成図</h2>
         <div class="chart-wrapper">
@@ -182,37 +131,37 @@
                     <td>与党</td>
                     <td>自由山間党</td>
                     <td>中道右派</td>
-                    <td>138議席</td>
+                    <td>108議席</td>
                   </tr>
                   <tr>
                     <td>野党第一党</td>
                     <td>自由ヤンマシア解放戦線 (旧山間共産党)</td>
                     <td>急進左翼</td>
-                    <td>39議席</td>
+                    <td>48議席</td>
                   </tr>
                   <tr>
                     <td>野党第二党</td>
                     <td>山間民主党</td>
                     <td>中道左派</td>
-                    <td>22議席</td>
+                    <td>35議席</td>
                   </tr>
                    <tr>
                     <td>野党第三党</td>
                     <td>山間勇者の会</td>
                     <td>中道左派</td>
-                    <td>8議席</td>
+                    <td>9議席</td>
                   </tr>
                   <tr>
                     <td>野党第四党</td>
                     <td>やんまーから国民を守る党</td>
                     <td>ポピュリズム</td>
-                    <td>4議席</td>
+                    <td>9議席</td>
                   </tr>
                   <tr>
                     <td>その他</td>
                     <td>無所属・諸派</td>
                     <td>-</td>
-                    <td>4議席</td>
+                    <td>5議席</td>
                   </tr>
                 </tbody>
               </table>
@@ -265,17 +214,11 @@
                     <td>アナキズム</td>
                     <td>3議席</td>
                   </tr>
-                   <tr>
-                    <td>野党諸派</td>
-                    <td>やんま新鮮組</td>
-                    <td>左派ポピュリズム</td>
-                    <td>2議席</td>
-                  </tr>
                   <tr>
                     <td>野党諸派</td>
                     <td>やんまーから国民を守る党</td>
                     <td>ポピュリズム</td>
-                    <td>1議席</td>
+                    <td>3議席</td>
                   </tr>
                   <tr>
                     <td>その他</td>
@@ -317,9 +260,9 @@ export default {
     };
 
     const jouinData = {
-      ruling: [ { name: '自由山間党', abbr: '自山', seats: 138, color: partyColors.jiyuuSankan } ],
-      oppositionKyotou: [ { name: '自由ヤンマシア解放戦線', abbr: '解放', seats: 39, color: partyColors.yammaKyosan }, { name: '山間民主党', abbr: '山民', seats: 22, color: partyColors.sankanMinshu } ],
-      oppositionShoha: [ { name: '山間勇者の会', abbr: '山勇会', seats: 8, color: partyColors.sankanYuusha }, { name: 'やんまーから国民を守る党', abbr: 'や国党', seats: 4, color: partyColors.yanmaKokumin }, { name: '無所属', abbr: '無所属', seats: 4, color: partyColors.mushozoku } ],
+      ruling: [ { name: '自由山間党', abbr: '自山', seats: 108, color: partyColors.jiyuuSankan } ],
+      oppositionKyotou: [ { name: '自由ヤンマシア解放戦線', abbr: '解放', seats: 48, color: partyColors.yammaKyosan }, { name: '山間民主党', abbr: '山民', seats: 35, color: partyColors.sankanMinshu } ],
+      oppositionShoha: [ { name: '山間勇者の会', abbr: '山勇会', seats: 9, color: partyColors.sankanYuusha }, { name: 'やんまーから国民を守る党', abbr: 'や国党', seats: 9, color: partyColors.yanmaKokumin }, { name: '無所属', abbr: '無所属', seats: 4, color: partyColors.mushozoku } ],
     };
     jouinData.rulingTotal = jouinData.ruling.reduce((sum, p) => sum + p.seats, 0);
     jouinData.oppositionTotal = [...jouinData.oppositionKyotou, ...jouinData.oppositionShoha].reduce((sum, p) => sum + p.seats, 0);
@@ -330,8 +273,7 @@ export default {
       oppositionShoha: [ 
         { name: '山間勇者の会', abbr: '山勇会', seats: 14, color: partyColors.sankanYuusha }, 
         { name: '殲滅党', abbr: '殲滅', seats: 3, color: partyColors.senmetsu },
-        { name: 'やんま新鮮組', abbr: '新鮮', seats: 2, color: partyColors.shinsen },
-        { name: 'やんまーから国民を守る党', abbr: 'や国党', seats: 1, color: partyColors.yanmaKokumin },
+        { name: 'やんまーから国民を守る党', abbr: 'や国党', seats: 3, color: partyColors.yanmaKokumin },
         { name: '無所属', abbr: '無所属', seats: 3, color: partyColors.mushozoku } 
       ],
     };
