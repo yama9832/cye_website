@@ -4,15 +4,15 @@
 
     <div class="election-container">
       <header class="page-header">
-        <h1>参議院選挙2025 特設ページ</h1>
+        <h1>上院選挙2025 特設ページ</h1>
         <p class="last-updated">更新日: 2025年7月20日</p>
       </header>
 
       <p class="section-description">
-        2025年7月に行われた第33回上議員通常選挙の結果速報です。このページでは、選挙後の新しい議席構成、各政党の獲得議席数、そして選挙前との比較をまとめています。<br>
+        2025年7月に行われた第33回上院議員通常選挙の結果速報です。このページでは、選挙後の新しい議席構成、各政党の獲得議席数、そして選挙前との比較をまとめています。<br>
       </p>
 
-      <!-- 参議院選挙2025結果 -->
+      <!-- 上院選挙2025結果 -->
       <section class="election-section">
         <h2 class="section-title">選挙結果と新勢力図</h2>
         
