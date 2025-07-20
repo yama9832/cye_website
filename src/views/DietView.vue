@@ -268,7 +268,7 @@ export default {
     const jouinData = {
       ruling: [ { name: '自由山間党', abbr: '自山', seats: 108, color: partyColors.jiyuuSankan } ],
       oppositionKyotou: [ { name: '自由ヤンマシア解放戦線', abbr: '解放', seats: 48, color: partyColors.yammaKyosan }, { name: '山間民主党', abbr: '山民', seats: 35, color: partyColors.sankanMinshu } ],
-      oppositionShoha: [ { name: '山間勇者の会', abbr: '山勇会', seats: 9, color: partyColors.sankanYuusha }, { name: 'やんまーから国民を守る党', abbr: 'や国党', seats: 9, color: partyColors.yanmaKokumin }, { name: '無所属', abbr: '無所属', seats: 4, color: partyColors.mushozoku } ],
+      oppositionShoha: [ { name: '山間勇者の会', abbr: '山勇会', seats: 9, color: partyColors.sankanYuusha }, { name: 'やんまーから国民を守る党', abbr: 'や国党', seats: 9, color: partyColors.yanmaKokumin }, { name: '無所属', abbr: '無所属', seats: 5, color: partyColors.mushozoku } ],
     };
     jouinData.rulingTotal = jouinData.ruling.reduce((sum, p) => sum + p.seats, 0);
     jouinData.oppositionTotal = [...jouinData.oppositionKyotou, ...jouinData.oppositionShoha].reduce((sum, p) => sum + p.seats, 0);
