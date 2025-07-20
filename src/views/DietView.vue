@@ -5,19 +5,65 @@
     <div class="diet-container">
       <header class="page-header">
         <h1>帝国議会</h1>
-        <p class="last-updated">更新日: 2025年7月1日</p>
+        <p class="last-updated">更新日: 2025年7月21日</p>
       </header>
-
-      <div class="election-notice">
-        <span class="material-icons">info</span>
-        <p>7月20日に上院選挙が実施されます。それに伴い、議席数が変動する可能性があります。</p>
-      </div>
 
       <p class="section-description">
         やんまー帝国連邦の立法府である帝国議会は、「国権の最高機関」として位置づけられています。帝国議会は国民を代表する選挙された議員で構成される上院と下院の二院制を採用しており、法律の制定、予算の議決、内閣総理大臣の指名など、国政の根幹に関わる重要な役割を担っています。 <br>
         上院議員は大選挙区比例代表並立制、下院議員は小選挙区比例代表並立制による直接選挙で選ばれます。大選挙区は各構成国を1つの選挙区として扱い、小選挙区は各構成国内を分割して選挙区として扱います。<br>
         なお、与党が政権を維持するために必要な過半数の議席は、国王指定議席として公職選挙法により確保されています。そのため、政権交代には公職選挙法の改正、または国王による指定議席の変更が不可欠です。
       </p>
+
+      <section class="election-results-section">
+        <h2 class="section-title">上院選挙2025結果</h2>
+        <div class="results-layout">
+          <!-- 与党 -->
+          <div class="results-group">
+            <h3 class="results-group-title ruling-party">与党</h3>
+            <div class="results-grid single-party">
+              <div class="result-party jisan">
+                <h3 class="party-name">自山</h3>
+                <p class="seats">0<span>議席</span></p>
+              </div>
+            </div>
+          </div>
+
+          <!-- 野党 -->
+          <div class="results-group">
+            <h3 class="results-group-title opposition-party">野党</h3>
+            <div class="results-grid">
+              <div class="result-party kaihou">
+                <h3 class="party-name">解放</h3>
+                <p class="seats">0<span>議席</span></p>
+              </div>
+              <div class="result-party sanmin">
+                <h3 class="party-name">山民</h3>
+                <p class="seats">0<span>議席</span></p>
+              </div>
+              <div class="result-party sanyukai">
+                <h3 class="party-name">山勇会</h3>
+                <p class="seats">0<span>議席</span></p>
+              </div>
+              <div class="result-party senmetsu">
+                <h3 class="party-name">殲滅</h3>
+                <p class="seats">0<span>議席</span></p>
+              </div>
+              <div class="result-party shinsen">
+                <h3 class="party-name">新鮮</h3>
+                <p class="seats">0<span>議席</span></p>
+              </div>
+              <div class="result-party yakokuto">
+                <h3 class="party-name">や国党</h3>
+                <p class="seats">0<span>議席</span></p>
+              </div>
+              <div class="result-party others">
+                <h3 class="party-name">無所属</h3>
+                <p class="seats">0<span>議席</span></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
       <section class="chamber-section">
         <h2 class="section-title">議員構成図</h2>
@@ -39,7 +85,7 @@
               <div class="majority-line">過半数 108</div>
               <DoughnutChart :data="jouinChartData" :options="chartOptions"/>
               <div class="chart-info">
-                <div class="total-seats">定数 <strong>215</strong></div>
+                <div class="total-seats">定数 <strong>214</strong></div>
               </div>
             </div>
             <div class="party-list opposition">
@@ -120,7 +166,7 @@
       <section class="chamber-section">
         <h2 class="section-title">政党別議席数（上院）</h2>
         <div class="table-container">
-            <p class="table-caption">定数215名</p>
+            <p class="table-caption">定数214名</p>
             <div class="table-wrapper">
               <table>
                 <thead>
@@ -193,37 +239,49 @@
                     <td>与党</td>
                     <td>自由山間党</td>
                     <td>中道右派</td>
-                    <td>164議席</td>
+                    <td>163議席</td>
                   </tr>
                   <tr>
                     <td>野党第一党</td>
                     <td>自由ヤンマシア解放戦線 (旧山間共産党)</td>
-                    <td>急進左翼</td>
-                    <td>109議席</td>
+                    <td>急進左派</td>
+                    <td>107議席</td>
                   </tr>
                   <tr>
                     <td>野党第二党</td>
                     <td>山間民主党</td>
                     <td>中道左派</td>
-                    <td>38議席</td>
+                    <td>32議席</td>
                   </tr>
                    <tr>
                     <td>野党第三党</td>
                     <td>山間勇者の会</td>
                     <td>中道左派</td>
-                    <td>5議席</td>
+                    <td>14議席</td>
+                  </tr>
+                   <tr>
+                    <td>野党諸派</td>
+                    <td>殲滅党</td>
+                    <td>アナキズム</td>
+                    <td>3議席</td>
+                  </tr>
+                   <tr>
+                    <td>野党諸派</td>
+                    <td>やんま新鮮組</td>
+                    <td>左派ポピュリズム</td>
+                    <td>2議席</td>
                   </tr>
                   <tr>
-                    <td>野党第四党</td>
+                    <td>野党諸派</td>
                     <td>やんまーから国民を守る党</td>
                     <td>ポピュリズム</td>
-                    <td>7議席</td>
+                    <td>1議席</td>
                   </tr>
                   <tr>
                     <td>その他</td>
-                    <td>無所属・諸派</td>
+                    <td>無所属</td>
                     <td>-</td>
-                    <td>2議席</td>
+                    <td>3議席</td>
                   </tr>
                 </tbody>
               </table>
@@ -252,20 +310,30 @@ export default {
       sankanYuusha: '#91c327',
       yanmaKokumin: '#63c7e0',
       mushozoku: '#a9a9a9',
+      senmetsu: '#000000',
+      kyosan: '#ff0000',
+      shinsen: '#ffc0cb',
+      sanpo: '#add8e6',
     };
 
     const jouinData = {
       ruling: [ { name: '自由山間党', abbr: '自山', seats: 138, color: partyColors.jiyuuSankan } ],
       oppositionKyotou: [ { name: '自由ヤンマシア解放戦線', abbr: '解放', seats: 39, color: partyColors.yammaKyosan }, { name: '山間民主党', abbr: '山民', seats: 22, color: partyColors.sankanMinshu } ],
-      oppositionShoha: [ { name: '山間勇者の会', abbr: '山勇会', seats: 8, color: partyColors.sankanYuusha }, { name: 'やんまーから国民を守る党', abbr: '国民', seats: 4, color: partyColors.yanmaKokumin }, { name: '無所属', abbr: '無所属', seats: 4, color: partyColors.mushozoku } ],
+      oppositionShoha: [ { name: '山間勇者の会', abbr: '山勇会', seats: 8, color: partyColors.sankanYuusha }, { name: 'やんまーから国民を守る党', abbr: 'や国党', seats: 4, color: partyColors.yanmaKokumin }, { name: '無所属', abbr: '無所属', seats: 4, color: partyColors.mushozoku } ],
     };
     jouinData.rulingTotal = jouinData.ruling.reduce((sum, p) => sum + p.seats, 0);
     jouinData.oppositionTotal = [...jouinData.oppositionKyotou, ...jouinData.oppositionShoha].reduce((sum, p) => sum + p.seats, 0);
 
     const kainData = {
-      ruling: [ { name: '自由山間党', abbr: '自山', seats: 164, color: partyColors.jiyuuSankan } ],
-      oppositionKyotou: [ { name: '自由ヤンマシア解放戦線', abbr: '解放', seats: 109, color: partyColors.yammaKyosan }, { name: '山間民主党', abbr: '山民', seats: 38, color: partyColors.sankanMinshu } ],
-      oppositionShoha: [ { name: '山間勇者の会', abbr: '山勇会', seats: 5, color: partyColors.sankanYuusha }, { name: 'やんまーから国民を守る党', abbr: '国民', seats: 7, color: partyColors.yanmaKokumin }, { name: '無所属', abbr: '無所属', seats: 2, color: partyColors.mushozoku } ],
+      ruling: [ { name: '自由山間党', abbr: '自山', seats: 163, color: partyColors.jiyuuSankan } ],
+      oppositionKyotou: [ { name: '自由ヤンマシア解放戦線', abbr: '解放', seats: 107, color: partyColors.yammaKyosan }, { name: '山間民主党', abbr: '山民', seats: 32, color: partyColors.sankanMinshu } ],
+      oppositionShoha: [ 
+        { name: '山間勇者の会', abbr: '山勇会', seats: 14, color: partyColors.sankanYuusha }, 
+        { name: '殲滅党', abbr: '殲滅', seats: 3, color: partyColors.senmetsu },
+        { name: 'やんま新鮮組', abbr: '新鮮', seats: 2, color: partyColors.shinsen },
+        { name: 'やんまーから国民を守る党', abbr: 'や国党', seats: 1, color: partyColors.yanmaKokumin },
+        { name: '無所属', abbr: '無所属', seats: 3, color: partyColors.mushozoku } 
+      ],
     };
     kainData.rulingTotal = kainData.ruling.reduce((sum, p) => sum + p.seats, 0);
     kainData.oppositionTotal = [...kainData.oppositionKyotou, ...kainData.oppositionShoha].reduce((sum, p) => sum + p.seats, 0);
@@ -331,21 +399,6 @@ export default {
   text-align: right;
   margin-top: 0.5rem;
 }
-.election-notice {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  background-color: #e6f2ff;
-  color: #004085;
-  border: 1px solid #b8daff;
-  border-radius: 8px;
-  padding: 1rem 1.5rem;
-  margin-bottom: 2.5rem;
-}
-.election-notice p {
-  margin: 0;
-  font-weight: 500;
-}
 .section-description {
   font-size: 1rem;
   line-height: 1.8;
@@ -353,7 +406,7 @@ export default {
   margin-top: -1rem;
   margin-bottom: 3rem;
 }
-.chamber-section {
+.chamber-section, .election-results-section {
   margin-bottom: 4rem;
 }
 .chamber-section:last-child {
@@ -366,6 +419,89 @@ export default {
   padding-bottom: 0.75rem;
   border-bottom: 1px solid #e9ecef;
 }
+
+/* Election Results */
+.election-results-section {
+  background-color: #f8f9fa;
+  border: 1px solid #e9ecef;
+  border-radius: 8px;
+  padding: 2rem 2.5rem;
+}
+.results-layout {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+}
+.results-group {
+  flex: 3;
+}
+.results-group:first-child {
+  flex: 1;
+}
+.results-group:last-child {
+  margin-bottom: 0;
+}
+.results-group-title {
+  font-size: 1.5rem;
+  margin: 0 0 1.5rem 0;
+  padding-bottom: 0.75rem;
+  border-bottom: 2px solid;
+  font-weight: 700;
+}
+.results-group-title.ruling-party {
+  color: #008442;
+  border-color: #008442;
+}
+.results-group-title.opposition-party {
+  color: #c82d33;
+  border-color: #c82d33;
+}
+.results-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 1.5rem;
+  text-align: center;
+}
+.results-grid.single-party {
+  grid-template-columns: minmax(120px, 1fr);
+}
+.result-party {
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 1.5rem 1rem;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  border-top: 5px solid;
+}
+.party-name {
+  margin: 0 0 0.75rem 0;
+  font-size: 1.25rem;
+  color: #343a40;
+  font-weight: 700;
+}
+.seats {
+  margin: 0;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #343a40;
+}
+.seats span {
+  font-size: 1rem;
+  font-weight: normal;
+  color: #6c757d;
+  margin-left: 0.25rem;
+}
+/* Party Colors */
+.result-party.jisan { border-color: #008442; }
+.result-party.kaihou { border-color: #c82d33; }
+.result-party.sanmin { border-color: #f1aa32; }
+.result-party.sanyukai { border-color: #91c327; }
+.result-party.senmetsu { border-color: #000000; }
+.result-party.kyosan { border-color: #ff0000; }
+.result-party.shinsen { border-color: #ffc0cb; }
+.result-party.sanpo { border-color: #add8e6; }
+.result-party.yakokuto { border-color: #63c7e0; }
+.result-party.others { border-color: #a9a9a9; }
+
 
 /* Chart Layout */
 .chart-wrapper {
@@ -535,6 +671,9 @@ tbody tr:hover { background-color: #f8f9fa; }
   }
   .opposition-sub-title {
       text-align: left; /* 左寄せに変更 */
+  }
+  .results-layout {
+    flex-direction: column;
   }
 }
 @media (max-width: 768px) {
