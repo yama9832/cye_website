@@ -19,7 +19,7 @@
         <!-- 議席構成図（選挙結果） -->
         <div class="chart-wrapper">
           <h3 class="chart-title">議席構成</h3>
-          <p class="chart-subtitle">議席数は「改選議席 (非改選議席)」で表示しています。グラフの濃い色は非改選議席です。</p>
+          <p class="chart-subtitle">議席数は「改選議席 (非改選議席)」で表示しています。グラフの薄い色は非改選議席です。</p>
           <div class="chart-grid">
             <!-- 与党 -->
             <div class="party-list ruling">
