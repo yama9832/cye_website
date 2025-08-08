@@ -54,10 +54,8 @@ export default {
       currentPage: 1,
       itemsPerPage: 5,
       newsItems: [
-        { id: 10, date: '2025.07.21', tag: 'ニュース', text: '2025上院選挙 与党「自由山間党」が単独過半数を維持', url: '/blog/info-2025-07-21' },
-        { id: 9, date: '2025.07.20', tag: 'お知らせ', text: '2025上院選挙特設ページを開設しました', url: '/special/2025-jouin' },
-        { id: 8, date: '2025.07.01', tag: 'お知らせ', text: '2025年7月20日に上院選挙が実施されます。', url: '/blog/info-2025-07-01' },
-        { id: 7, date: '2024.07.01', tag: '更新', text: '「帝国議会」ページの議員構成図を更新しました。', url: '/government/diet' },
+        { id: 9, date: '2025.07.21', tag: 'ニュース', text: '2025上院選挙 与党「自由山間党」が単独過半数を維持', url: '/blog/info-2025-07-21' },
+        { id: 8, date: '2025.07.20', tag: 'お知らせ', text: '2025上院選挙特設ページを開設しました', url: '/special/2025-jouin' },        { id: 7, date: '2024.07.01', tag: '更新', text: '「帝国議会」ページの議員構成図を更新しました。', url: '/government/diet' },
         { id: 6, date: '2025.06.25', tag: '更新', text: '「建築ギャラリー」「ブログ」ページを追加しました。', url: '/blog/info-2025-06-25' },
         { id: 6, date: '2025.06.18', tag: 'お知らせ', text: '公式サイトを全面リニューアルしました。', url: '/blog/info-2025-06-18' },
         { id: 5, date: '2024.10.28', tag: '更新', text: '「帝国議会」ページを更新しました。', url: '/government/diet' },
