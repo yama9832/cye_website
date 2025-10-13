@@ -181,18 +181,6 @@ const routes = [
       keywords: 'プライバシーポリシー, 個人情報保護方針, 個人情報, Cookie'
     }
   },
-    /* 特設ページ */
-  {
-    path: '/special/2025-jouin',
-    name: 'jouin2025',
-    component: () => import(/* webpackChunkName: "jouin2025" */ '../views/special/2025-jouin.vue'),
-    meta: {
-      breadcrumb: [{ text: '2025年上院選挙' }],
-      title: '2025年上院選挙',
-      description: '2025年7月に行われた第33回上院議員通常選挙の結果速報です。',
-      keywords: '2025年, 上院選挙, 選挙結果, 政治'
-    }
-  },
 
   // --- 準備中ページ ---
   // 共通のコンポーネントを使い回す場合も、ルート定義は個別に行い、

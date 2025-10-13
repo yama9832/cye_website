@@ -8,6 +8,16 @@
         <p class="header-description">やんまー帝国連邦の活動に参加し、一緒に国を創りませんか？</p>
       </header>
 
+      <section class="notice-section" aria-live="polite">
+        <div class="notice-banner">
+          <span class="material-icons" aria-hidden="true">construction</span>
+          <div class="notice-text">
+            <h2>現在、受付を停止しています</h2>
+            <p>サーバーの再構築を行っております。再開まで今しばらくお待ちください。</p>
+          </div>
+        </div>
+      </section>
+
       <!-- 参加資格 -->
       <section class="info-section">
         <h2 class="section-title">
@@ -51,7 +61,7 @@
             <div class="step-content">
               <h3>Discordサーバーに参加</h3>
               <p>まずは公式Discordサーバーにご参加ください。サーバー内のチャンネルをご確認お願いします。</p>
-              <a href="https://discord.gg/tY2BzUGxRb" class="cta-button" target="_blank" rel="noopener noreferrer">Discordサーバーに参加する</a>
+              <span class="cta-button cta-button--disabled" aria-disabled="true">準備中</span>
             </div>
           </div>
           <div class="step-item">
@@ -132,6 +142,31 @@ export default {
   color: #6c757d;
   max-width: 600px;
   margin: 0 auto;
+}
+
+.notice-section {
+  margin-bottom: 2.5rem;
+}
+
+.notice-banner {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background-color: #fff3cd;
+  color: #856404;
+  border: 1px solid #ffeeba;
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+
+.notice-text h2 {
+  margin: 0 0 0.25rem 0;
+  font-size: 1.4rem;
+}
+
+.notice-text p {
+  margin: 0;
+  line-height: 1.6;
 }
 
 .info-section {
@@ -269,6 +304,13 @@ export default {
 .cta-button:hover {
   background-color: #006029;
   transform: translateY(-2px);
+}
+
+.cta-button--disabled {
+  background-color: #adb5bd;
+  cursor: not-allowed;
+  pointer-events: none;
+  transform: none;
 }
 
 /* 注意事項 */
