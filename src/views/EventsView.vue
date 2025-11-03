@@ -13,33 +13,18 @@
       <!-- 開催予定のイベント -->
       <section class="info-section">
         <h2 class="section-title">開催予定のイベント</h2>
-        <div v-if="upcomingEvents.length > 0" class="event-grid">
-          <div v-for="event in upcomingEvents" :key="event.id" class="event-card">
-            <div class="event-image-placeholder">
-              <img v-if="event.image" :src="getImageUrl(event.image)" :alt="event.title" @error="imageLoadError">
-              <span v-else class="material-icons">architecture</span>
-            </div>
-            <div class="event-content">
-              <p class="event-period">{{ event.period }}</p>
-              <h3 class="event-title">{{ event.title }}</h3>
-              <p class="event-description">{{ event.description }}</p>
-              <div class="event-details-status">
-                <span class="status-badge">{{ event.status }}</span>
-              </div>
-            </div>
+        <div class="no-events-message highlight">
+          <span class="material-icons" aria-hidden="true">event_busy</span>
+          <div>
+            <p class="no-events-title">現在、開催予定のイベントはありません。</p>
+            <p class="no-events-description">再開の準備が整い次第、このページでお知らせします。</p>
           </div>
-        </div>
-        <div v-else class="no-events-message">
-          <p>現在予定されているイベントはありません。</p>
         </div>
       </section>
 
       <!-- 過去のイベント -->
       <section class="info-section">
         <h2 class="section-title">過去のイベント</h2>
-         <div v-if="pastEvents.length > 0" class="event-grid">
-          <!-- 過去のイベントをここに表示 -->
-        </div>
         <div class="no-events-message">
           <p>終了したイベントはありません。</p>
         </div>
@@ -58,43 +43,11 @@ export default {
   components: {
     AppBreadcrumb,
     PageContainer
-  },
-  data() {
-    return {
-      upcomingEvents: [
-        {
-          id: 1,
-          title: '夏の建築大会',
-          period: '2025年夏季(予定)',
-          description: '毎年恒例(にしたい)夏の建築大会の開催を予定！テーマやルールなどの詳細は後日発表します。建築初心者から上級者まで、どなたでも大歓迎です！ぜひご参加ください！',
-          image: 'mizusaki_view.webp', // 表示したい画像ファイル名
-          status: '詳細は後日発表'
-        }
-      ],
-      pastEvents: []
-    }
-  },
-  methods: {
-    getImageUrl(imageName) {
-      if (!imageName) return '';
-      try {
-        return require(`@/assets/events/${imageName}`);
-      } catch (e) {
-        console.error(`Image not found: @/assets/events/${imageName}`);
-        return 'https://placehold.co/1920x1080/e9ecef/6c757d?text=Image+Not+Found';
-      }
-    },
-    imageLoadError(event) {
-      console.error('Image failed to load:', event.target.src);
-      event.target.src = 'https://placehold.co/1920x1080/e9ecef/6c757d?text=Load+Error';
-    }
   }
 }
 </script>
 
 <style scoped>
-
-
 .events-container {
   margin: 0 auto;
 }
@@ -130,109 +83,53 @@ export default {
   border-bottom: 1px solid #e9ecef;
 }
 
-.event-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-    gap: 1.5rem;
-}
-
-.event-card {
-    background-color: #fff;
-    border: 1px solid #e0e0e0;
-    border-radius: 12px;
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-    transition: box-shadow 0.3s, transform 0.3s;
-}
-.event-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-}
-
-.event-image-placeholder {
-    aspect-ratio: 16 / 9;
-    background-color: #343a40;
-    color: #fff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-}
-.event-image-placeholder img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-.event-image-placeholder .material-icons {
-    font-size: 4rem;
-    opacity: 0.8;
-}
-
-.event-content {
-    padding: 1.5rem;
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-}
-
-.event-period {
-    font-size: 0.9rem;
-    font-weight: 700;
-    color: #008037;
-    margin-bottom: 0.5rem;
-}
-
-.event-title {
-    margin: 0 0 1rem 0;
-    font-size: 1.5rem;
-    color: #343a40;
-}
-
-.event-description {
-    margin: 0 0 1.5rem 0;
-    font-size: 0.95rem;
-    line-height: 1.7;
-    color: #555;
-    flex-grow: 1;
-}
-
-.event-details-status {
-    text-align: right;
-}
-
-.status-badge {
-    display: inline-block;
-    padding: 0.5rem 1rem;
-    background-color: #6c757d;
-    color: #fff;
-    border-radius: 20px;
-    font-size: 0.9rem;
-    font-weight: 700;
-}
-
 .no-events-message {
-    background-color: #f8f9fa;
-    padding: 2rem;
-    border-radius: 8px;
-    text-align: center;
-    border: 1px solid #e0e0e0;
-}
-.no-events-message p {
-    margin: 0;
-    color: #6c757d;
-    font-size: 1rem;
+  background-color: #f8f9fa;
+  padding: 2rem;
+  border-radius: 12px;
+  border: 1px solid #e0e0e0;
+  color: #495057;
+  text-align: center;
 }
 
-@media (max-width: 992px) {
-
+.no-events-message.highlight {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  border-color: #ffeeba;
+  background-color: #fff8e5;
+  color: #8a6d3b;
 }
+
+.no-events-message.highlight .material-icons {
+  font-size: 2rem;
+}
+
+.no-events-title {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.no-events-description {
+  margin: 0.25rem 0 0;
+  color: #6c757d;
+  font-size: 0.95rem;
+}
+
 @media (max-width: 768px) {
   .page-header h1 {
     font-size: 2rem;
   }
+
   .section-title {
     font-size: 1.75rem;
+  }
+
+  .no-events-message.highlight {
+    flex-direction: column;
+    text-align: center;
   }
 }
 </style>
