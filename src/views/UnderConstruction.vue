@@ -1,10 +1,7 @@
 <template>
-  <main class="page-content-wrapper">
-    <!-- AppBreadcrumbは中央寄せの外に配置 -->
-    <div class="breadcrumb-area">
-      <AppBreadcrumb />
-    </div>
-    
+  <PageContainer>
+    <AppBreadcrumb />
+
     <div class="content-box">
       <div class="icon">
         <span class="material-icons" style="font-size: 64px;">construction</span>
@@ -16,37 +13,23 @@
       </p>
       <router-link to="/" class="home-link">トップページへ戻る</router-link>
     </div>
-  </main>
+  </PageContainer>
 </template>
 
 <script>
 import AppBreadcrumb from '@/components/AppBreadcrumb.vue';
+import PageContainer from '@/components/layout/PageContainer.vue';
 
 export default {
   name: 'UnderConstruction',
   components: {
-    AppBreadcrumb
+    AppBreadcrumb,
+    PageContainer
   }
 }
 </script>
 
 <style scoped>
-.page-content-wrapper {
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-  width: 100%;
-  box-sizing: border-box;
-}
-
-.breadcrumb-area {
-  max-width: 80rem;
-  width: 100%;
-  margin: 0 auto;
-  padding: 2rem 2.5rem 0;
-  box-sizing: border-box;
-}
-
 .content-box {
   background-color: #ffffff;
   padding: 2.5rem 3rem;
@@ -95,12 +78,6 @@ export default {
 }
 
 /* レスポンシブ対応 */
-@media (max-width: 992px) {
-  .breadcrumb-area {
-    padding: 2rem 1.5rem 0;
-  }
-}
-
 @media (max-width: 768px) {
   .content-box {
     padding-left: 1.5rem;

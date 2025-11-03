@@ -1,0 +1,74 @@
+{
+  "primary": [
+    {
+      "label": "基本情報",
+      "groups": [
+        {
+          "label": "国の基本情報",
+          "pages": ["about"]
+        },
+        {
+          "label": "国の組織",
+          "pages": ["government-diet", "government-ministries"]
+        }
+      ]
+    },
+    {
+      "label": "国政情報",
+      "groups": [
+        {
+          "label": "各種一覧",
+          "pages": ["corporations"]
+        }
+      ]
+    },
+    {
+      "label": "観光・イベント",
+      "groups": [
+        {
+          "label": "観光案内",
+          "pages": ["gallery"]
+        },
+        {
+          "label": "イベント",
+          "pages": ["events", "blog"]
+        }
+      ]
+    },
+    {
+      "label": "参加・お問い合わせ",
+      "groups": [
+        {
+          "label": "連邦に参加",
+          "pages": ["join", "rules", "roles"]
+        },
+        {
+          "label": "サポート",
+          "pages": ["contact"]
+        }
+      ]
+    }
+  ],
+  "footer": [
+    {
+      "label": "基本情報",
+      "pages": ["about", "government-diet", "government-ministries"]
+    },
+    {
+      "label": "国政情報",
+      "pages": ["corporations"]
+    },
+    {
+      "label": "観光・イベント",
+      "pages": ["gallery", "events", "blog"]
+    },
+    {
+      "label": "参加・お問い合わせ",
+      "pages": ["join", "rules", "roles", "contact"]
+    },
+    {
+      "label": "法的情報",
+      "pages": ["disclaimer", "privacy"]
+    }
+  ]
+}

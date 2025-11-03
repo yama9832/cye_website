@@ -1,5 +1,5 @@
 <template>
-  <main class="page-content-wrapper">
+  <PageContainer>
     <AppBreadcrumb />
 
     <div class="diet-container">
@@ -238,17 +238,19 @@
           </div>
       </section>
     </div>
-  </main>
+  </PageContainer>
 </template>
 
 <script>
 import AppBreadcrumb from '@/components/AppBreadcrumb.vue';
+import PageContainer from '@/components/layout/PageContainer.vue';
 import DoughnutChart from '@/components/DoughnutChart.vue';
 
 export default {
   name: 'DietView',
   components: {
     AppBreadcrumb,
+    PageContainer,
     DoughnutChart
   },
   data() {

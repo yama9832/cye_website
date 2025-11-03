@@ -1,5 +1,5 @@
 <template>
-  <main class="page-content-wrapper">
+  <PageContainer>
     <AppBreadcrumb />
 
     <div v-if="post" class="post-container">
@@ -12,8 +12,17 @@
           <h1 class="post-title">{{ post.title }}</h1>
         </header>
 
-        <div class="post-content" v-html="post.content"></div>
-        
+        <div class="post-content">
+          <component
+            v-for="(block, index) in post.body"
+            :is="blockTag(block)"
+            :key="index"
+            :class="block.type === 'heading' ? 'post-heading' : 'post-paragraph'"
+          >
+            {{ block.text }}
+          </component>
+        </div>
+
         <div v-if="post.images && post.images.length > 0" class="post-image-gallery">
           <div v-for="(image, index) in post.images" :key="index" class="gallery-image-wrapper">
              <img :src="getImageUrl(image)" :alt="`${post.title} - 画像${index + 1}`" @error="imageLoadError">
@@ -24,28 +33,30 @@
     <div v-else class="not-found-container">
       <NotFoundView />
     </div>
-  </main>
+  </PageContainer>
 </template>
 
 <script>
 import AppBreadcrumb from '@/components/AppBreadcrumb.vue';
 import NotFoundView from '@/views/NotFoundView.vue';
+import PageContainer from '@/components/layout/PageContainer.vue';
 import { ref, onMounted, watch } from 'vue';
 import { useRoute } from 'vue-router';
-import { posts } from '@/blog-posts.js';
+import { blogPostsBySlug } from '@/utils/siteData';
 
 export default {
   name: 'BlogPostView',
   components: {
     AppBreadcrumb,
-    NotFoundView
+    NotFoundView,
+    PageContainer
   },
   setup() {
     const route = useRoute();
     const post = ref(null);
 
     const findPost = (slug) => {
-      post.value = posts.find(p => p.slug === slug) || null;
+      post.value = blogPostsBySlug[slug] || null;
     };
 
     const getImageUrl = (fileName) => {
@@ -64,6 +75,16 @@ export default {
       event.target.src = 'https://placehold.co/1920x1080/e0e0e0/6c757d?text=Load+Error';
     };
 
+    const blockTag = (block) => {
+      if (block.type === 'heading') {
+        const level = block.level && Number(block.level) >= 1 && Number(block.level) <= 6
+          ? Number(block.level)
+          : 2;
+        return `h${level}`;
+      }
+      return 'p';
+    };
+
     onMounted(() => {
       findPost(route.params.slug);
     });
@@ -72,7 +93,7 @@ export default {
       findPost(newSlug);
     });
 
-    return { post, getImageUrl, imageLoadError };
+    return { post, getImageUrl, imageLoadError, blockTag };
   }
 }
 </script>
@@ -119,18 +140,22 @@ export default {
 
 .post-content {
   font-size: 1rem;
-  line-height: 2;
+  line-height: 1.9;
   color: #333;
   margin-bottom: 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
 }
 
-.post-content ::v-deep(a) {
-  color: #008037;
-  text-decoration: none;
-  font-weight: 700;
+.post-heading {
+  font-size: 1.6rem;
+  margin: 2rem 0 0.5rem;
+  color: #2b2f32;
 }
-.post-content ::v-deep(a:hover) {
-  text-decoration: underline;
+
+.post-paragraph {
+  margin: 0;
 }
 
 .post-image-gallery {

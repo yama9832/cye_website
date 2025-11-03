@@ -1,5 +1,5 @@
 <template>
-  <main class="page-content-wrapper">
+  <PageContainer>
     <AppBreadcrumb />
 
     <div class="blog-container">
@@ -14,9 +14,9 @@
         <article v-for="post in paginatedPosts" :key="post.slug" class="post-card">
           <router-link :to="`/blog/${post.slug}`" class="post-link">
             <div class="post-image-placeholder">
-              <img 
-                :src="getImageUrl(post.images && post.images.length > 0 ? post.images[0] : 'image.webp')" 
-                :alt="post.title" 
+              <img
+                :src="getImageUrl(post.images && post.images.length > 0 ? post.images[0] : 'image.webp')"
+                :alt="post.title"
                 @error="imageLoadError"
               >
             </div>
@@ -26,6 +26,7 @@
                 <span class="post-category">{{ post.category }}</span>
               </p>
               <h2 class="post-title">{{ post.title }}</h2>
+              <p class="post-excerpt">{{ post.excerpt }}</p>
               <span class="read-more">記事を読む</span>
             </div>
           </router-link>
@@ -39,25 +40,27 @@
         @page-changed="changePage"
       />
     </div>
-  </main>
+  </PageContainer>
 </template>
 
 <script>
 import AppBreadcrumb from '@/components/AppBreadcrumb.vue';
 import BasePagination from '@/components/BasePagination.vue';
-import { posts } from '@/blog-posts.js';
+import PageContainer from '@/components/layout/PageContainer.vue';
+import { blogPostsData } from '@/utils/siteData';
 
 export default {
   name: 'BlogView',
   components: {
     AppBreadcrumb,
-    BasePagination
+    BasePagination,
+    PageContainer
   },
   data() {
     return {
       currentPage: 1,
       itemsPerPage: 6,
-      allPosts: posts
+      allPosts: blogPostsData
     };
   },
   computed: {
@@ -186,6 +189,13 @@ export default {
   margin: 0 0 1rem 0;
   line-height: 1.4;
   flex-grow: 1;
+}
+
+.post-excerpt {
+  margin: 0 0 1rem 0;
+  color: #6c757d;
+  font-size: 0.95rem;
+  line-height: 1.6;
 }
 
 .read-more {

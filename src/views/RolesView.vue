@@ -1,5 +1,5 @@
 <template>
-  <main class="page-content-wrapper">
+  <PageContainer>
     <AppBreadcrumb />
 
     <div class="roles-container">
@@ -184,16 +184,18 @@
         </section>
       </div>
     </div>
-  </main>
+  </PageContainer>
 </template>
 
 <script>
 import AppBreadcrumb from '@/components/AppBreadcrumb.vue';
+import PageContainer from '@/components/layout/PageContainer.vue';
 
 export default {
   name: 'RolesView',
   components: {
-    AppBreadcrumb
+    AppBreadcrumb,
+    PageContainer
   }
 }
 </script>

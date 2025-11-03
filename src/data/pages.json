@@ -1,0 +1,316 @@
+[
+  {
+    "id": "home",
+    "name": "home",
+    "path": "/",
+    "view": "HomeView",
+    "label": "トップ",
+    "section": "home",
+    "meta": {
+      "title": "やんまー帝国連邦公式サイト",
+      "fullTitle": "やんまー帝国連邦公式サイト",
+      "description": "Minecraft(マインクラフト)で架空国家を運営するプロジェクト「やんまー帝国連邦」の公式サイト。現代都市開発やマルチプレイに興味がある方はぜひご覧ください。",
+      "keywords": [
+        "マイクラ",
+        "Minecraft",
+        "架空国家",
+        "都市開発",
+        "マルチサーバー",
+        "やんまー帝国連邦",
+        "マルチプレイ",
+        "クロスプレイ",
+        "Java",
+        "BE",
+        "統合版"
+      ],
+      "breadcrumb": []
+    },
+    "search": {
+      "type": "ページ"
+    }
+  },
+  {
+    "id": "search",
+    "name": "search",
+    "path": "/search",
+    "view": "SearchView",
+    "label": "検索",
+    "section": "utility",
+    "meta": {
+      "title": "サイト内検索",
+      "description": "やんまー帝国連邦公式サイト内のコンテンツを検索します。",
+      "keywords": ["検索", "サイト内検索"],
+      "breadcrumb": [
+        { "text": "検索結果" }
+      ]
+    },
+    "search": {
+      "type": "ユーティリティ",
+      "searchable": false
+    }
+  },
+  {
+    "id": "about",
+    "name": "about",
+    "path": "/about",
+    "view": "AboutView",
+    "label": "基本情報",
+    "section": "basics",
+    "meta": {
+      "title": "基本情報",
+      "description": "架空国家「やんまー帝国連邦」の国家概要、歴史、政治体制、構成国などの基本情報を紹介します。マイクラでの国家運営や世界観設定の参考に。",
+      "keywords": ["架空国家", "基本情報", "国家概要", "歴史", "政治", "行政", "構成国", "マイクラ", "世界観"],
+      "breadcrumb": [
+        { "text": "基本情報" }
+      ]
+    },
+    "search": {
+      "type": "ページ"
+    }
+  },
+  {
+    "id": "government-diet",
+    "name": "diet",
+    "path": "/government/diet",
+    "view": "DietView",
+    "label": "帝国議会",
+    "section": "basics",
+    "meta": {
+      "title": "帝国議会",
+      "description": "やんまー帝国連邦の立法府、帝国議会の構成や役割について。上院・下院の議席情報、政党情報など、架空国家の政治設定を紹介します。",
+      "keywords": ["架空国家", "帝国議会", "政治", "政党", "上院", "下院", "議席", "立法府", "マイクラ", "国家運営"],
+      "breadcrumb": [
+        { "text": "基本情報" },
+        { "text": "国の組織" },
+        { "text": "帝国議会" }
+      ]
+    },
+    "search": {
+      "type": "ページ"
+    }
+  },
+  {
+    "id": "government-ministries",
+    "name": "ministries",
+    "path": "/government/ministries",
+    "view": "MinistriesView",
+    "label": "府省庁",
+    "section": "basics",
+    "meta": {
+      "title": "府省庁",
+      "description": "やんまー帝国連邦の行政を担う各府省庁の役割と組織を紹介。架空国家における詳細な省庁設定。",
+      "keywords": ["架空国家", "府省庁", "行政", "内閣", "省庁", "設定", "やんまー帝国連邦"],
+      "breadcrumb": [
+        { "text": "基本情報" },
+        { "text": "国の組織" },
+        { "text": "府省庁" }
+      ]
+    },
+    "search": {
+      "type": "ページ"
+    }
+  },
+  {
+    "id": "corporations",
+    "name": "corporations",
+    "path": "/corporations",
+    "view": "CorporationsView",
+    "label": "国内法人",
+    "section": "policy",
+    "meta": {
+      "title": "国内法人一覧",
+      "description": "やんまー帝国連邦で活動する主要な法人、企業、団体を紹介。架空の企業設定や経済活動に興味がある方向け。",
+      "keywords": ["架空国家", "企業", "法人", "団体", "経済", "設定", "マイクラ"],
+      "breadcrumb": [
+        { "text": "国政情報" },
+        { "text": "各種一覧" },
+        { "text": "国内法人" }
+      ]
+    },
+    "search": {
+      "type": "ページ"
+    }
+  },
+  {
+    "id": "gallery",
+    "name": "gallery",
+    "path": "/gallery",
+    "view": "GalleryView",
+    "label": "建築ギャラリー",
+    "section": "explore",
+    "meta": {
+      "title": "建築ギャラリー",
+      "description": "やんまー帝国連邦の美しい都市景観や築物の数々を写真で紹介します。マイクラ建築のインスピレーションに。",
+      "keywords": ["マイクラ建築", "マイクラ都市", "建築ギャラリー", "Minecraft", "スクリーンショット", "現代建築"],
+      "breadcrumb": [
+        { "text": "観光・イベント" },
+        { "text": "建築ギャラリー" }
+      ]
+    },
+    "search": {
+      "type": "ページ"
+    }
+  },
+  {
+    "id": "events",
+    "name": "events",
+    "path": "/events",
+    "view": "EventsView",
+    "label": "イベント",
+    "section": "explore",
+    "meta": {
+      "title": "イベント情報",
+      "description": "やんまー帝国連邦で開催されるイベント情報。マイクラ建築大会や季節のお祭りなど、マルチプレイで楽しめる催しをチェック。",
+      "keywords": ["マイクライベント", "マイクラ大会", "建築大会", "マルチプレイ", "やんまー帝国連邦"],
+      "breadcrumb": [
+        { "text": "観光・イベント" },
+        { "text": "イベント" },
+        { "text": "イベント情報" }
+      ]
+    },
+    "search": {
+      "type": "ページ"
+    }
+  },
+  {
+    "id": "blog",
+    "name": "blog",
+    "path": "/blog",
+    "view": "BlogView",
+    "label": "ブログ",
+    "section": "explore",
+    "meta": {
+      "title": "ブログ",
+      "description": "やんまー帝国連邦の活動を発信するブログ。建築講座、開発日記、運営からのお知らせなど。",
+      "keywords": ["マイクラブログ", "マイクラ建築講座", "開発日記", "架空国家"],
+      "breadcrumb": [
+        { "text": "ブログ" }
+      ]
+    },
+    "search": {
+      "type": "ページ"
+    }
+  },
+  {
+    "id": "join",
+    "name": "join",
+    "path": "/join",
+    "view": "JoinView",
+    "label": "製作メンバーになる",
+    "section": "participate",
+    "meta": {
+      "title": "製作メンバーになる",
+      "description": "マインクラフトのサーバーに参加して、一緒に都市開発をしませんか？参加資格や参加方法、Discordサーバーへの招待リンクはこちら。",
+      "keywords": ["マイクラサーバー参加", "Minecraftマルチプレイ", "建築メンバー募集", "都市開発サーバー", "参加方法", "Discord"],
+      "breadcrumb": [
+        { "text": "参加・お問い合わせ" },
+        { "text": "連邦に参加" },
+        { "text": "製作メンバーになる" }
+      ]
+    },
+    "search": {
+      "type": "ページ"
+    }
+  },
+  {
+    "id": "rules",
+    "name": "rules",
+    "path": "/rules",
+    "view": "RulesView",
+    "label": "サーバールール",
+    "section": "participate",
+    "meta": {
+      "title": "サーバールール",
+      "description": "マルチサーバー参加者全員が遵守すべきルールです。禁止事項、建築ルールなどを定めています。参加前に必ずご確認ください。",
+      "keywords": ["マイクラルール", "マイクラマルチサーバー", "サーバールール", "禁止事項", "建築ルール"],
+      "breadcrumb": [
+        { "text": "参加・お問い合わせ" },
+        { "text": "連邦に参加" },
+        { "text": "サーバールール" }
+      ]
+    },
+    "search": {
+      "type": "ページ"
+    }
+  },
+  {
+    "id": "roles",
+    "name": "roles",
+    "path": "/roles",
+    "view": "RolesView",
+    "label": "ロール",
+    "section": "participate",
+    "meta": {
+      "title": "ロール",
+      "description": "サーバー内での役職（ロール）と権限、昇格条件について解説。マイクラでのロールプレイや国家運営にご興味のある方はご覧ください。",
+      "keywords": ["マイクラ", "役職", "権限", "国家運営", "架空国家"],
+      "breadcrumb": [
+        { "text": "参加・お問い合わせ" },
+        { "text": "連邦に参加" },
+        { "text": "ロール" }
+      ]
+    },
+    "search": {
+      "type": "ページ"
+    }
+  },
+  {
+    "id": "contact",
+    "name": "contact",
+    "path": "/contact",
+    "view": "ContactView",
+    "label": "お問い合わせ",
+    "section": "participate",
+    "meta": {
+      "title": "お問い合わせ",
+      "description": "やんまー帝国連邦へのお問い合わせはこちらから。公式Discordサーバーの専用チャンネルをご案内します。",
+      "keywords": ["お問い合わせ", "連絡", "質問", "Discord"],
+      "breadcrumb": [
+        { "text": "参加・お問い合わせ" },
+        { "text": "サポート" },
+        { "text": "お問い合わせ" }
+      ]
+    },
+    "search": {
+      "type": "ページ"
+    }
+  },
+  {
+    "id": "disclaimer",
+    "name": "disclaimer",
+    "path": "/disclaimer",
+    "view": "DisclaimerView",
+    "label": "免責事項",
+    "section": "legal",
+    "meta": {
+      "title": "免責事項",
+      "description": "当サイトの免責事項です。サイトの情報の正確性、著作権、引用について記載しています。",
+      "keywords": ["免責事項", "著作権", "引用"],
+      "breadcrumb": [
+        { "text": "免責事項" }
+      ]
+    },
+    "search": {
+      "type": "ページ"
+    }
+  },
+  {
+    "id": "privacy",
+    "name": "privacy",
+    "path": "/privacy",
+    "view": "PrivacyView",
+    "label": "個人情報保護方針",
+    "section": "legal",
+    "meta": {
+      "title": "個人情報保護方針",
+      "description": "当サイトのプライバシーポリシーです。個人情報の取得方法、利用目的、管理方法について定めています。",
+      "keywords": ["プライバシーポリシー", "個人情報保護方針", "個人情報", "Cookie"],
+      "breadcrumb": [
+        { "text": "個人情報保護方針" }
+      ]
+    },
+    "search": {
+      "type": "ページ"
+    }
+  }
+]

@@ -1,5 +1,5 @@
 <template>
-  <main class="page-content-wrapper">
+  <PageContainer>
     <AppBreadcrumb />
 
     <div class="events-container">
@@ -46,16 +46,18 @@
       </section>
 
     </div>
-  </main>
+  </PageContainer>
 </template>
 
 <script>
 import AppBreadcrumb from '@/components/AppBreadcrumb.vue';
+import PageContainer from '@/components/layout/PageContainer.vue';
 
 export default {
   name: 'EventsView',
   components: {
-    AppBreadcrumb
+    AppBreadcrumb,
+    PageContainer
   },
   data() {
     return {
@@ -73,19 +75,17 @@ export default {
     }
   },
   methods: {
-  getImageUrl(imageName) {
-    if (!imageName) return '';
-    try {
-      // パスを修正
-      return require(`@/assets/events/${imageName}`);
-    } catch (e) {
-      console.error(`Image not found: @/assets/events/${imageName}`);
-      return 'https://placehold.co/1920x1080/e9ecef/6c757d?text=Image+Not+Found';
-    }
-  },
+    getImageUrl(imageName) {
+      if (!imageName) return '';
+      try {
+        return require(`@/assets/events/${imageName}`);
+      } catch (e) {
+        console.error(`Image not found: @/assets/events/${imageName}`);
+        return 'https://placehold.co/1920x1080/e9ecef/6c757d?text=Image+Not+Found';
+      }
+    },
     imageLoadError(event) {
       console.error('Image failed to load:', event.target.src);
-      // 画像の読み込みに失敗した場合の代替画像
       event.target.src = 'https://placehold.co/1920x1080/e9ecef/6c757d?text=Load+Error';
     }
   }

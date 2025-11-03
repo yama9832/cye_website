@@ -1,14 +1,14 @@
 <template>
   <div>
     <HeroSection />
-    <main class="page-content-wrapper">
+    <PageContainer>
       <AppBreadcrumb />
       <EventBanner />
       <JoinCta />
       <PageLinksSection />
       <NewsSection />
       <BannerAds />
-    </main>
+    </PageContainer>
   </div>
 </template>
 
@@ -20,6 +20,7 @@ import NewsSection from '@/components/NewsSection.vue';
 import JoinCta from '@/components/JoinCta.vue';
 import BannerAds from '@/components/BannerAds.vue';
 import PageLinksSection from '@/components/PageLinksSection.vue';
+import PageContainer from '@/components/layout/PageContainer.vue';
 
 export default {
   name: 'HomeView',
@@ -30,7 +31,8 @@ export default {
     NewsSection,
     JoinCta,
     BannerAds,
-    PageLinksSection
+    PageLinksSection,
+    PageContainer
   }
 }
 </script>

@@ -2,6 +2,7 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
 import vueGtag from 'vue-gtag-next'
+import './assets/styles/base.css'
 
 const app = createApp(App)
 

@@ -11,10 +11,10 @@
 
         <nav class="navigation">
           <ul>
-            <li v-for="item in menuItems" :key="item.name" @mouseover="handleMouseOver(item)" @mouseleave="handleMouseLeave()">
+            <li v-for="item in menuItems" :key="item.name" @mouseover="handleMouseOver(item.name)" @mouseleave="handleMouseLeave">
               <span class="nav-item-name">{{ item.name }}</span>
               <transition :name="isSwitching ? '' : 'mega-menu-fade'">
-                <div class="mega-menu" v-if="activeMenu === item.name && item.children" @mouseover="handleMouseOver(item)" @mouseleave="handleMouseLeave()">
+                <div class="mega-menu" v-if="activeMenu === item.name && item.children" @mouseover="handleMouseOver(item.name)" @mouseleave="handleMouseLeave">
                   <div class="mega-menu-content">
                     <div class="mega-menu-column" v-for="category in item.children" :key="category.title">
                       <h3>{{ category.title }}</h3>
@@ -33,7 +33,7 @@
 
         <div class="header-right">
           <SearchBar />
-          <button class="hamburger-menu" @click="isMobileNavOpen = !isMobileNavOpen" aria-label="メニューを開く">
+          <button class="hamburger-menu" @click="toggleMobileNav" aria-label="メニューを開く">
             <span class="hamburger-line"></span>
             <span class="hamburger-line"></span>
             <span class="hamburger-line"></span>
@@ -67,130 +67,73 @@
   </header>
 </template>
 
-<script>
+<script setup>
+import { computed, onBeforeUnmount, ref, watch } from 'vue';
+import { useRoute } from 'vue-router';
 import SearchBar from './SearchBar.vue';
+import { navigationConfig } from '@/utils/siteData';
 
-export default {
-  name: 'SiteHeader',
-  components: {
-    SearchBar
-  },
-  data() {
-    return {
-      activeMenu: null,
-      isMobileNavOpen: false,
-      isSwitching: false,
-      menuItems: [
-        {
-          name: '基本情報',
-          children: [
-            {
-              title: '国の基本情報',
-              links: [
-                { name: '基本情報', to: '/about' },
-                { name: '構成国', to: '/nations' },
-                { name: '憲法', to: '/constitution' },
-              ],
-            },
-            {
-              title: '国の組織',
-              links: [
-                { name: '帝国議会', to: '/government/diet' },
-                { name: '府省庁', to: '/government/ministries' },
-                { name: '裁判所', to: '/government/courts' },
-              ],
-            },
-          ],
-        },
-        {
-          name: '国政情報',
-          children: [
-            {
-              title: '政策・広報',
-              links: [
-                { name: '政策', to: '/politics/policy' },
-                { name: '予算', to: '/politics/budget' },
-                { name: '広報', to: '/politics/pr' },
-              ],
-            },
-            {
-              title: '各種一覧',
-              links: [
-                { name: '国内法人', to: '/corporations' },
-              ],
-            },
-          ],
-        },
-        {
-          name: '観光・イベント',
-          children: [
-            {
-              title: '観光案内',
-              links: [
-                { name: '建築ギャラリー', to: '/gallery' }, 
-                { name: '観光案内', to: '/tourism/guide' },
-                { name: '交通情報', to: '/tourism/transport' },
-              ],
-            },
-            {
-              title: 'イベント',
-              links: [
-                { name: 'イベント情報', to: '/events' },
-                { name: 'ブログ', to: '/blog' }, 
-              ],
-            },
-          ],
-        },
-        {
-          name: '参加・お問い合わせ',
-          children: [
-            {
-              title: '連邦に参加',
-              links: [
-                { name: '製作メンバーになる', to: '/join' },
-                { name: 'サーバールール', to: '/rules' },
-                { name: 'ロール', to: '/roles' },
-              ],
-            },
-            {
-              title: 'サポート',
-              links: [
-                { name: 'よくある質問', to: '/faq' },
-                { name: 'お問い合わせ', to: '/contact' },
-              ],
-            },
-          ]
-        },
-      ],
-      menuTimer: null,
-    };
-  },
-  watch: {
-    '$route'() {
-      this.activeMenu = null;
-      this.isMobileNavOpen = false; // [追加] ルート変更時にモバイルメニューを閉じる
-    }
-  },
-  methods: {
-    handleMouseOver(item) {
-      if (this.menuTimer) {
-        clearTimeout(this.menuTimer);
-      }
-      if (this.activeMenu && this.activeMenu !== item.name) {
-        this.isSwitching = true;
-      } else {
-        this.isSwitching = false;
-      }
-      this.activeMenu = item.name;
-    },
-    handleMouseLeave() {
-      this.menuTimer = setTimeout(() => {
-        this.activeMenu = null;
-        this.isSwitching = false;
-      }, 150);
-    },
-  },
+const route = useRoute();
+const activeMenu = ref(null);
+const isMobileNavOpen = ref(false);
+const isSwitching = ref(false);
+const menuTimer = ref(null);
+
+const menuItems = computed(() =>
+  navigationConfig.primary.map((section) => ({
+    name: section.label,
+    children: section.groups
+      .map((group) => ({
+        title: group.label,
+        links: group.pages.map((page) => ({
+          name: page.label,
+          to: page.path,
+        })),
+      }))
+      .filter((group) => group.links.length > 0),
+  }))
+);
+
+const clearTimer = () => {
+  if (menuTimer.value) {
+    clearTimeout(menuTimer.value);
+    menuTimer.value = null;
+  }
 };
+
+const handleMouseOver = (name) => {
+  clearTimer();
+  if (activeMenu.value && activeMenu.value !== name) {
+    isSwitching.value = true;
+  } else {
+    isSwitching.value = false;
+  }
+  activeMenu.value = name;
+};
+
+const handleMouseLeave = () => {
+  clearTimer();
+  menuTimer.value = setTimeout(() => {
+    activeMenu.value = null;
+    isSwitching.value = false;
+  }, 150);
+};
+
+const toggleMobileNav = () => {
+  isMobileNavOpen.value = !isMobileNavOpen.value;
+};
+
+watch(
+  () => route.fullPath,
+  () => {
+    activeMenu.value = null;
+    isMobileNavOpen.value = false;
+  }
+);
+
+onBeforeUnmount(() => {
+  clearTimer();
+});
 </script>
 
 <style scoped>

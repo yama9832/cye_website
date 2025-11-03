@@ -1,5 +1,5 @@
 <template>
-  <main class="page-content-wrapper">
+  <PageContainer>
     <AppBreadcrumb />
 
     <div class="disclaimer-container">
@@ -52,16 +52,18 @@
 
       </div>
     </div>
-  </main>
+  </PageContainer>
 </template>
 
 <script>
 import AppBreadcrumb from '@/components/AppBreadcrumb.vue';
+import PageContainer from '@/components/layout/PageContainer.vue';
 
 export default {
   name: 'DisclaimerView',
   components: {
-    AppBreadcrumb
+    AppBreadcrumb,
+    PageContainer
   }
 }
 </script>

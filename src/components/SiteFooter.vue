@@ -37,56 +37,19 @@
   </footer>
 </template>
 
-<script>
-export default {
-  name: 'SiteFooter',
-  data() {
-    return {
-      footerLinks: [
-        {
-          title: '基本情報',
-          links: [
-            { name: '基本情報', to: '/about' },
-            { name: '構成国', to: '/nations' },
-            { name: '憲法', to: '/constitution' },
-            { name: '帝国議会', to: '/government/diet' },
-            { name: '府省庁', to: '/government/ministries' },
-            { name: '裁判所', to: '/government/courts' },
-          ]
-        },
-        {
-          title: '国政情報',
-          links: [
-            { name: '政策', to: '/politics/policy' },
-            { name: '予算', to: '/politics/budget' },
-            { name: '広報', to: '/politics/pr' },
-            { name: '国内法人', to: '/corporations' },
-          ]
-        },
-        {
-          title: '観光・イベント',
-          links: [
-            { name: '建築ギャラリー', to: '/gallery' }, 
-            { name: '観光案内', to: '/tourism/guide' },
-            { name: '交通情報', to: '/tourism/transport' },
-            { name: 'イベント情報', to: '/events' },
-            { name: 'ブログ', to: '/blog' },
-          ]
-        },
-        {
-          title: '参加・お問い合わせ',
-          links: [
-            { name: '製作メンバーになる', to: '/join' },
-            { name: 'サーバールール', to: '/rules' },
-            { name: 'ロール', to: '/roles' },
-            { name: 'よくある質問', to: '/faq' },
-            { name: 'お問い合わせ', to: '/contact' },
-          ]
-        }
-      ]
-    }
-  }
-}
+<script setup>
+import { computed } from 'vue';
+import { navigationConfig } from '@/utils/siteData';
+
+const footerLinks = computed(() =>
+  navigationConfig.footer.map((group) => ({
+    title: group.label,
+    links: group.pages.map((page) => ({
+      name: page.label,
+      to: page.path,
+    })),
+  }))
+);
 </script>
 
 <style scoped>

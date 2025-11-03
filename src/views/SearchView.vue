@@ -1,5 +1,5 @@
 <template>
-  <main class="page-content-wrapper">
+  <PageContainer>
     <div class="search-results-page">
       <div class="search-header">
         <h1>検索結果</h1>
@@ -24,17 +24,21 @@
         <p>「{{ query }}」に一致する情報は見つかりませんでした。</p>
       </div>
     </div>
-  </main>
+  </PageContainer>
 </template>
 
 <script>
-import { searchableData } from '@/search-data.js';
+import PageContainer from '@/components/layout/PageContainer.vue';
+import { createSearchIndex } from '@/utils/siteData';
 
 export default {
   name: 'SearchView',
+  components: {
+    PageContainer,
+  },
   data() {
     return {
-      allData: searchableData,
+      allData: createSearchIndex(),
     };
   },
   computed: {

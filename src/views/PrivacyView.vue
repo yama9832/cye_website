@@ -1,5 +1,5 @@
 <template>
-  <main class="page-content-wrapper">
+  <PageContainer>
     <AppBreadcrumb />
 
     <div class="privacy-container">
@@ -86,16 +86,18 @@
 
       </div>
     </div>
-  </main>
+  </PageContainer>
 </template>
 
 <script>
 import AppBreadcrumb from '@/components/AppBreadcrumb.vue';
+import PageContainer from '@/components/layout/PageContainer.vue';
 
 export default {
   name: 'PrivacyView',
   components: {
-    AppBreadcrumb
+    AppBreadcrumb,
+    PageContainer
   }
 }
 </script>
