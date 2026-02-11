@@ -335,7 +335,6 @@ export default {
   height: 0.25rem;
   background: #333;
   border-radius: 0.625rem;
-  transition: all 0.3s ease;
 }
 
 /* Mobile nav overlay */
