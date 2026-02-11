@@ -42,26 +42,28 @@
       </div>
     </div>
 
-    <transition name="mobile-nav-fade">
+    <!-- Overlay for mobile menu -->
+    <transition name="overlay-fade">
+      <div class="mobile-nav-overlay" v-if="isMobileNavOpen" @click="isMobileNavOpen = false"></div>
+    </transition>
+    
+    <!-- Right-side slide menu -->
+    <transition name="mobile-nav-slide">
       <div class="mobile-nav" v-if="isMobileNavOpen">
-        <ul>
-          <li v-for="item in menuItems" :key="item.name">
-            <details v-if="item.children">
-              <summary>{{ item.name }}</summary>
-              <div class="mobile-submenu">
-                <div class="mobile-menu-column" v-for="category in item.children" :key="category.title">
-                  <h4>{{ category.title }}</h4>
-                  <ul>
-                    <li v-for="link in category.links" :key="link.name">
-                      <router-link :to="link.to" @click="isMobileNavOpen = false">{{ link.name }}</router-link>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </details>
-            <router-link v-else :to="item.to" class="mobile-nav-link" @click="isMobileNavOpen = false">{{ item.name }}</router-link>
-          </li>
-        </ul>
+        <div class="mobile-nav-header">
+          <button class="close-menu" @click="isMobileNavOpen = false" aria-label="メニューを閉じる">
+            <span class="close-icon">×</span>
+          </button>
+        </div>
+        <nav class="mobile-nav-content">
+          <ul>
+            <li v-for="item in mobileMenuItems" :key="item.name">
+              <router-link :to="item.to" @click="isMobileNavOpen = false">
+                {{ item.name }}
+              </router-link>
+            </li>
+          </ul>
+        </nav>
       </div>
     </transition>
   </header>
@@ -80,6 +82,7 @@ export default {
       activeMenu: null,
       isMobileNavOpen: false,
       isSwitching: false,
+      // Desktop menu items with mega menu structure
       menuItems: [
         {
           name: '基本情報',
@@ -161,6 +164,15 @@ export default {
             },
           ]
         },
+      ],
+      // Simplified mobile menu items for hamburger menu
+      mobileMenuItems: [
+        { name: 'ホーム', to: '/' },
+        { name: '基本情報', to: '/about' },
+        { name: 'ニュース', to: '/blog' },
+        { name: 'イベント', to: '/events' },
+        { name: '参加方法', to: '/join' },
+        { name: 'お問い合わせ', to: '/contact' },
       ],
       menuTimer: null,
     };
@@ -323,86 +335,126 @@ export default {
   height: 0.25rem;
   background: #333;
   border-radius: 0.625rem;
+  transition: all 0.3s ease;
 }
-.mobile-nav {
-  position: absolute;
-  top: 100%;
+
+/* Mobile nav overlay */
+.mobile-nav-overlay {
+  position: fixed;
+  top: 0;
   left: 0;
-  width: 100%;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+/* Mobile nav panel - slides from right */
+.mobile-nav {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 280px;
+  max-width: 80%;
   background-color: #fff;
-  box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.1);
-  padding: 1rem 0;
-  border-top: 0.0625rem solid #e0e0e0;
-  max-height: calc(100vh - 5.25rem);
+  box-shadow: -2px 0 8px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.mobile-nav-header {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 1rem;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.close-menu {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.close-icon {
+  font-size: 2rem;
+  color: #333;
+  font-weight: 300;
+  line-height: 1;
+}
+
+.mobile-nav-content {
+  flex: 1;
   overflow-y: auto;
 }
-.mobile-nav ul {
+
+.mobile-nav-content ul {
   list-style: none;
   padding: 0;
   margin: 0;
 }
-.mobile-nav details {
+
+.mobile-nav-content li {
   border-bottom: 1px solid #f0f0f0;
 }
-.mobile-nav details:last-child, .mobile-nav-link:last-of-type {
+
+.mobile-nav-content li:last-child {
   border-bottom: none;
 }
-.mobile-nav summary {
-  padding: 1rem 1.5rem;
-  font-size: 1.1rem;
-  font-weight: 700;
-  cursor: pointer;
-  list-style: none;
-}
-.mobile-nav summary::-webkit-details-marker {
-  display: none;
-}
-.mobile-submenu {
-  padding: 0 1.5rem 1rem 1.5rem;
-  background-color: #f8f8f8;
-}
-.mobile-menu-column {
-  padding-top: 1rem;
-}
-.mobile-menu-column:first-child {
-  padding-top: 0;
-}
-.mobile-menu-column h4 {
+
+.mobile-nav-content a {
+  display: block;
+  padding: 1.25rem 1.5rem;
+  color: #333;
+  text-decoration: none;
   font-size: 1rem;
+  font-weight: 500;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.mobile-nav-content a:hover,
+.mobile-nav-content a.router-link-active {
+  background-color: #f8f8f8;
   color: #008037;
-  margin: 0 0 0.5rem 0;
 }
-.mobile-menu-column ul {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-.mobile-menu-column a {
-  display: block;
-  padding: 0.5rem 0;
-  color: #333;
-  text-decoration: none;
-  font-size: 0.9rem;
-}
-.mobile-nav-link {
-  display: block;
-  padding: 1rem 1.5rem;
-  font-size: 1.1rem;
-  font-weight: 700;
-  text-decoration: none;
-  color: #333;
-  border-bottom: 1px solid #f0f0f0;
-}
-.mega-menu-fade-enter-active, .mega-menu-fade-leave-active {
+
+/* Animations for overlay */
+.overlay-fade-enter-active,
+.overlay-fade-leave-active {
   transition: opacity 0.3s ease;
 }
-.mega-menu-fade-enter-from, .mega-menu-fade-leave-to {
+
+.overlay-fade-enter-from,
+.overlay-fade-leave-to {
   opacity: 0;
 }
-.mobile-nav-fade-enter-active, .mobile-nav-fade-leave-active {
+
+/* Animations for mobile nav slide */
+.mobile-nav-slide-enter-active,
+.mobile-nav-slide-leave-active {
+  transition: transform 0.3s ease;
+}
+
+.mobile-nav-slide-enter-from,
+.mobile-nav-slide-leave-to {
+  transform: translateX(100%);
+}
+
+/* Mega menu fade animation for desktop */
+.mega-menu-fade-enter-active, 
+.mega-menu-fade-leave-active {
   transition: opacity 0.3s ease;
 }
-.mobile-nav-fade-enter-from, .mobile-nav-fade-leave-to {
+
+.mega-menu-fade-enter-from, 
+.mega-menu-fade-leave-to {
   opacity: 0;
 }
 @media (min-width: 992px) {
