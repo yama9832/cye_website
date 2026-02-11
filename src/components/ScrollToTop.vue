@@ -6,8 +6,10 @@
   </transition>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import { defineComponent } from 'vue';
+
+export default defineComponent({
   name: 'ScrollToTop',
   data() {
     return {
@@ -40,7 +42,7 @@ export default {
       });
     },
   },
-};
+});
 </script>
 
 <style scoped>

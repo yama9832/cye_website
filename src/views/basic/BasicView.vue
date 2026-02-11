@@ -5,13 +5,8 @@
     <div class="about-container">
       <header class="page-header">
         <h1>基本情報</h1>
-        <p class="last-updated">更新日: 2025年6月18日</p>
+        <p class="last-updated">更新日: 2026年2月12日</p>
       </header>
-
-      <div class="construction-notice">
-        <span class="material-icons" style="font-size: 24px;">report_problem</span>
-        <p>このページは現在作成途中です。一部未完成の部分があります。</p>
-      </div>
 
       <section class="info-section">
         <h2 class="section-title">やんまー帝国連邦の概要</h2>
@@ -105,7 +100,7 @@
       <section class="info-section">
         <h2 class="section-title">構成国の紹介</h2>
         <p class="section-description">
-          やんまー帝国連邦は20の都市国家によって構成される。各都市は独自の文化や産業を持ち、連邦を様々な面から支えている。
+          やんまー帝国連邦は山摩市と水咲市を中心に構成される。各都市は独自の文化や産業を持ち、連邦を様々な面から支えている。
         </p>
         <div class="city-grid">
           <div v-for="(city, index) in cities" :key="index" class="city-card">
@@ -117,46 +112,33 @@
           </div>
         </div>
       </section>
-
     </div>
   </main>
 </template>
 
-<script>
+<script lang="ts">
+import { defineComponent } from 'vue';
 import AppBreadcrumb from '@/components/AppBreadcrumb.vue';
 
-export default {
-  name: 'AboutView',
+interface CityInfo {
+  name: string;
+  description: string;
+}
+
+export default defineComponent({
+  name: 'BasicView',
   components: {
     AppBreadcrumb
   },
-  data() {
+  data(): { cities: CityInfo[] } {
     return {
       cities: [
-        { name: '水咲市', description: '水と生きる、みずのまち' },
-        { name: 'XXXX市', description: '都市の説明' },
-        { name: 'XXXX市', description: '都市の説明' },
-        { name: 'XXXX市', description: '都市の説明' },
-        { name: 'XXXX市', description: '都市の説明' },
-        { name: 'XXXX市', description: '都市の説明' },
-        { name: 'XXXX市', description: '都市の説明' },
-        { name: 'XXXX市', description: '都市の説明' },
-        { name: 'XXXX市', description: '都市の説明' },
-        { name: 'XXXX市', description: '都市の説明' },
-        { name: 'XXXX市', description: '都市の説明' },
-        { name: 'XXXX市', description: '都市の説明' },
-        { name: 'XXXX市', description: '都市の説明' },
-        { name: 'XXXX市', description: '都市の説明' },
-        { name: 'XXXX市', description: '都市の説明' },
-        { name: 'XXXX市', description: '都市の説明' },
-        { name: 'XXXX市', description: '都市の説明' },
-        { name: 'XXXX市', description: '都市の説明' },
-        { name: 'XXXX市', description: '都市の説明' },
-        { name: 'XXXX市', description: '都市の説明' },
+        { name: '山摩市', description: '連邦直轄領として政治と行政の中枢を担う都市。' },
+        { name: '水咲市', description: '港湾と交通の要衝として発展した臨海都市。' }
       ]
-    }
+    };
   }
-}
+});
 </script>
 
 <style scoped>
@@ -181,22 +163,6 @@ export default {
   color: #6c757d;
   text-align: right;
   margin-top: 0.5rem;
-}
-
-.construction-notice {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  background-color: #fffbe6;
-  color: #856404;
-  border: 1px solid #ffeeba;
-  border-radius: 8px;
-  padding: 1rem 1.5rem;
-  margin-bottom: 3rem;
-}
-.construction-notice p {
-  margin: 0;
-  font-weight: 500;
 }
 
 .info-section {
@@ -347,8 +313,8 @@ export default {
 .image-placeholder img {
   width: 100%;
   max-width: 1000px;
-  height: auto; 
-  display: block; 
+  height: auto;
+  display: block;
   margin: 20px auto;
 }
 .placeholder-text {

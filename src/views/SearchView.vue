@@ -27,35 +27,45 @@
   </main>
 </template>
 
-<script>
-import { searchableData } from '@/search-data.js';
+<script lang="ts">
+import { defineComponent } from 'vue';
+import type { LocationQueryValue } from 'vue-router';
+import { searchableData } from '@/search-data';
+import type { SearchItem } from '@/search-data';
 
-export default {
+export default defineComponent({
   name: 'SearchView',
-  data() {
+  data(): { allData: SearchItem[] } {
     return {
       allData: searchableData,
     };
   },
   computed: {
-    query() {
+    query(): string {
       // URLのクエリパラメータから検索語を取得
-      return this.$route.query.q || '';
+      const queryParam = this.$route.query.q as
+        | LocationQueryValue
+        | LocationQueryValue[]
+        | undefined;
+      if (Array.isArray(queryParam)) {
+        return queryParam[0] || '';
+      }
+      return queryParam || '';
     },
-    searchResults() {
+    searchResults(): SearchItem[] {
       if (!this.query) {
         return [];
       }
       const lowerCaseQuery = this.query.toLowerCase();
       // タイトルまたは説明に検索語が含まれるものをフィルタリング
-      return this.allData.filter(item => {
+      return this.allData.filter((item: SearchItem) => {
         const titleMatch = item.title.toLowerCase().includes(lowerCaseQuery);
         const descriptionMatch = item.description ? item.description.toLowerCase().includes(lowerCaseQuery) : false;
         return titleMatch || descriptionMatch;
       });
     },
   },
-};
+});
 </script>
 
 <style scoped>

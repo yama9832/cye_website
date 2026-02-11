@@ -13,14 +13,17 @@
     </ul>
   </nav>
 </template>
-<script>
-export default {
+<script lang="ts">
+import { defineComponent } from 'vue';
+
+export default defineComponent({
   name: 'BasePagination',
   props: {
     currentPage: { type: Number, required: true },
     totalPages: { type: Number, required: true }
-  }
-}
+  },
+  emits: ['page-changed']
+});
 </script>
 <style scoped>
 .pagination-container { display: flex; justify-content: center; margin-top: 2rem; }

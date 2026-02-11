@@ -29,7 +29,7 @@
         </div>
         <div class="accordion">
           <div v-for="(item, index) in ministries" :key="index" class="accordion-item">
-            <button @click="toggleAccordion(index)" class="accordion-header" :aria-expanded="item.open.toString()">
+            <button @click="toggleAccordion(index)" class="accordion-header" :aria-expanded="item.open">
               <span>{{ item.name }}</span>
               <span class="material-icons">{{ item.open ? 'expand_less' : 'expand_more' }}</span>
             </button>
@@ -46,15 +46,22 @@
   </main>
 </template>
 
-<script>
+<script lang="ts">
+import { defineComponent } from 'vue';
 import AppBreadcrumb from '@/components/AppBreadcrumb.vue';
 
-export default {
+interface MinistryItem {
+  name: string;
+  description: string;
+  open: boolean;
+}
+
+export default defineComponent({
   name: 'MinistriesView',
   components: {
     AppBreadcrumb
   },
-  data() {
+  data(): { ministries: MinistryItem[] } {
     return {
       ministries: [
         { name: '内閣府', description: '内閣の重要政策に関する企画立案・総合調整、特定分野の事務を担う機関。経済財政政策や防災などを所管し、内閣総理大臣を直接補佐します。', open: false },
@@ -78,16 +85,16 @@ export default {
     };
   },
   computed: {
-    areAllOpen() {
+    areAllOpen(): boolean {
       // すべてのアコーディオンが開いているかチェック
       return this.ministries.every(item => item.open);
     }
   },
   methods: {
-    toggleAccordion(index) {
+    toggleAccordion(index: number): void {
       this.ministries[index].open = !this.ministries[index].open;
     },
-    toggleAll() {
+    toggleAll(): void {
       // 現在の状態（すべて開いているか）の逆の状態を新しい状態とする
       const newState = !this.areAllOpen;
       // すべてのアコーディオンの開閉状態を新しい状態に更新
@@ -96,7 +103,7 @@ export default {
       });
     }
   }
-}
+});
 </script>
 
 <style scoped>

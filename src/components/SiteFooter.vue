@@ -4,7 +4,10 @@
       <div class="footer-content">
         <div class="page-links">
           <div v-for="category in footerLinks" :key="category.title" class="link-category">
-            <h3>{{ category.title }}</h3>
+            <h3>
+              <router-link v-if="category.to" :to="category.to">{{ category.title }}</router-link>
+              <span v-else>{{ category.title }}</span>
+            </h3>
             <ul>
               <li v-for="link in category.links" :key="link.name">
                 <router-link :to="link.to">{{ link.name }}</router-link>
@@ -13,13 +16,13 @@
           </div>
         </div>
         <div class="social-links">
-          <a href="https://www.youtube.com/@yanma-empire" target="_blank" aria-label="YouTube">
+          <a href="https://www.youtube.com/@yanma-empire" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
             <img src="@/assets/youtube_logo.png" alt="YouTube">
           </a>
-          <a href="https://x.com/Yanma_Empire" target="_blank" aria-label="X (formerly Twitter)">
+          <a href="https://x.com/Yanma_Empire" target="_blank" rel="noopener noreferrer" aria-label="X (formerly Twitter)">
             <img src="@/assets/x_logo.png" alt="X (formerly Twitter)">
           </a>
-          <a href="https://www.instagram.com/yanma_empire" target="_blank" aria-label="Instagram">
+          <a href="https://www.instagram.com/yanma_empire" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
             <img src="@/assets/instagram_logo.png" alt="Instagram">
           </a>
         </div>
@@ -27,7 +30,7 @@
     </div>
     <div class="footer-bottom">
       <div class="footer-content">
-        <p class="copyright">&copy; 2022-2025 Commonwealth of Yanmar Empire. All Rights Reserved.</p>
+        <p class="copyright">&copy; 2022-2026 Commonwealth of Yanmar Empire. All Rights Reserved.</p>
         <div class="legal-links">
           <router-link to="/disclaimer">免責事項</router-link>
           <router-link to="/privacy">個人情報保護方針</router-link>
@@ -37,56 +40,63 @@
   </footer>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import { defineComponent } from 'vue';
+
+export default defineComponent({
   name: 'SiteFooter',
   data() {
     return {
       footerLinks: [
         {
           title: '基本情報',
+          to: '/basic',
           links: [
-            { name: '基本情報', to: '/about' },
-            { name: '構成国', to: '/nations' },
-            { name: '憲法', to: '/constitution' },
-            { name: '帝国議会', to: '/government/diet' },
-            { name: '府省庁', to: '/government/ministries' },
-            { name: '裁判所', to: '/government/courts' },
+            { name: '憲法', to: '/basic/constitution' },
+            { name: '帝国議会', to: '/basic/diet' },
+            { name: '府省庁', to: '/basic/ministries' },
+            { name: '国内法人', to: '/basic/corporations' },
           ]
         },
         {
-          title: '国政情報',
+          title: 'ニュース',
+          to: '/news',
           links: [
-            { name: '政策', to: '/politics/policy' },
-            { name: '予算', to: '/politics/budget' },
-            { name: '広報', to: '/politics/pr' },
-            { name: '国内法人', to: '/corporations' },
+            { name: 'お知らせ', to: { path: '/news', query: { tag: 'お知らせ' } } },
+            { name: 'ニュース', to: { path: '/news', query: { tag: 'ニュース' } } },
+            { name: '動画投稿', to: { path: '/news', query: { tag: '動画投稿' } } },
+            { name: 'そのほか', to: { path: '/news', query: { tag: 'そのほか' } } },
           ]
         },
         {
-          title: '観光・イベント',
+          title: 'イベント',
+          to: '/events',
           links: [
-            { name: '建築ギャラリー', to: '/gallery' }, 
-            { name: '観光案内', to: '/tourism/guide' },
-            { name: '交通情報', to: '/tourism/transport' },
-            { name: 'イベント情報', to: '/events' },
-            { name: 'ブログ', to: '/blog' },
+            { name: '開催中', to: { path: '/events', query: { tag: '開催中' } } },
+            { name: '開催予定', to: { path: '/events', query: { tag: '開催予定' } } },
+            { name: '終了', to: { path: '/events', query: { tag: '終了' } } },
           ]
         },
         {
-          title: '参加・お問い合わせ',
+          title: '参加方法',
+          to: '/participation',
           links: [
-            { name: '製作メンバーになる', to: '/join' },
-            { name: 'サーバールール', to: '/rules' },
-            { name: 'ロール', to: '/roles' },
-            { name: 'よくある質問', to: '/faq' },
+            { name: 'ルール', to: '/participation/rules' },
+            { name: 'ロール', to: '/participation/roles' },
+            { name: 'よくある質問', to: '/participation/faq' },
+          ]
+        },
+        {
+          title: 'お問い合わせ',
+          to: '/contact',
+          links: [
             { name: 'お問い合わせ', to: '/contact' },
           ]
         }
       ]
-    }
+    };
   }
-}
+});
 </script>
 
 <style scoped>
@@ -133,6 +143,14 @@ export default {
   margin-top: 0;
   margin-bottom: 1rem;
   font-weight: 700;
+}
+.link-category h3 a {
+  color: inherit;
+  text-decoration: none;
+}
+.link-category h3 a:hover {
+  color: #008037;
+  text-decoration: underline;
 }
 .link-category ul {
   list-style: none;

@@ -46,7 +46,7 @@
         <section class="info-section">
           <h2 class="section-title">AIの利用について</h2>
           <p>
-            当サイトでは、「Gemini」が生成したコードを一部使用してWebサイト制作を行っています。
+            当サイトでは、生成AIが作成したコードを一部使用してWebサイト制作を行っています。
           </p>
         </section>
 
@@ -55,15 +55,16 @@
   </main>
 </template>
 
-<script>
+<script lang="ts">
+import { defineComponent } from 'vue';
 import AppBreadcrumb from '@/components/AppBreadcrumb.vue';
 
-export default {
+export default defineComponent({
   name: 'DisclaimerView',
   components: {
     AppBreadcrumb
   }
-}
+});
 </script>
 
 <style scoped>

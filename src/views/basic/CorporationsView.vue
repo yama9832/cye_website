@@ -24,7 +24,7 @@
       <div class="accordion">
         <div v-for="(category, catIndex) in categories" :key="category.id" class="accordion-item">
           <!-- Category Header -->
-          <button @click="toggleCategory(catIndex)" class="accordion-header" :aria-expanded="category.open.toString()">
+          <button @click="toggleCategory(catIndex)" class="accordion-header" :aria-expanded="category.open">
             <span>{{ category.name }}</span>
             <span class="material-icons">{{ category.open ? 'expand_less' : 'expand_more' }}</span>
           </button>
@@ -48,7 +48,7 @@
               <!-- With Groups: Nested Accordion -->
               <div v-else class="nested-accordion">
                  <div v-for="(group, groupIndex) in category.groups" :key="group.id" class="accordion-item-nested">
-                    <button @click="toggleGroup(catIndex, groupIndex)" class="accordion-header-nested" :aria-expanded="group.open.toString()">
+                    <button @click="toggleGroup(catIndex, groupIndex)" class="accordion-header-nested" :aria-expanded="group.open">
                       <span>{{ group.name }}</span>
                       <span class="material-icons">{{ group.open ? 'expand_less' : 'expand_more' }}</span>
                     </button>
@@ -77,15 +77,37 @@
   </main>
 </template>
 
-<script>
+<script lang="ts">
+import { defineComponent } from 'vue';
 import AppBreadcrumb from '@/components/AppBreadcrumb.vue';
 
-export default {
+interface Corporation {
+  name: string;
+  image?: string;
+  description: string;
+}
+
+interface CorporationGroup {
+  id: string;
+  name: string;
+  open: boolean;
+  corporations: Corporation[];
+}
+
+interface CorporationCategory {
+  id: string;
+  name: string;
+  open: boolean;
+  corporations?: Corporation[];
+  groups?: CorporationGroup[];
+}
+
+export default defineComponent({
   name: 'CorporationsView',
   components: {
     AppBreadcrumb
   },
-  data() {
+  data(): { categories: CorporationCategory[] } {
     return {
       categories: [
         {
@@ -202,7 +224,7 @@ export default {
     };
   },
    computed: {
-    areAllOpen() {
+    areAllOpen(): boolean {
       return this.categories.every(cat => {
         if (!cat.groups) {
           return cat.open;
@@ -212,7 +234,7 @@ export default {
     }
   },
   methods: {
-    getImageUrl(imageName) {
+    getImageUrl(imageName?: string): string {
       if (!imageName) return 'https://placehold.co/1920x1080/e9ecef/6c757d?text=No+Image';
       try {
         return require(`@/assets/corporations/${imageName}`);
@@ -221,16 +243,28 @@ export default {
         return 'https://placehold.co/1920x1080/e9ecef/6c757d?text=Image+Not+Found';
       }
     },
-    imageLoadError(event) {
-        event.target.src = 'https://placehold.co/1920x1080/e9ecef/6c757d?text=Image+Load+Error';
+    imageLoadError(event: Event): void {
+      const target = event.target as HTMLImageElement | null;
+      if (target) {
+        target.src = 'https://placehold.co/1920x1080/e9ecef/6c757d?text=Image+Load+Error';
+      }
     },
-    toggleCategory(catIndex) {
-      this.categories[catIndex].open = !this.categories[catIndex].open;
+    toggleCategory(catIndex: number): void {
+      const category = this.categories[catIndex];
+      if (!category) {
+        return;
+      }
+      category.open = !category.open;
     },
-    toggleGroup(catIndex, groupIndex) {
-      this.categories[catIndex].groups[groupIndex].open = !this.categories[catIndex].groups[groupIndex].open;
+    toggleGroup(catIndex: number, groupIndex: number): void {
+      const category = this.categories[catIndex];
+      const group = category?.groups?.[groupIndex];
+      if (!group) {
+        return;
+      }
+      group.open = !group.open;
     },
-    toggleAll() {
+    toggleAll(): void {
       const newState = !this.areAllOpen;
       this.categories.forEach(cat => {
         cat.open = newState;
@@ -242,7 +276,7 @@ export default {
       });
     }
   }
-}
+});
 </script>
 
 <style scoped>

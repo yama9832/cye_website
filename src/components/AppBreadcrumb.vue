@@ -19,8 +19,10 @@
   </nav>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import { defineComponent } from 'vue';
+
+export default defineComponent({
   name: 'AppBreadcrumb',
   computed: {
     breadcrumbs() {
@@ -28,17 +30,17 @@ export default {
       if (!this.$route.meta.breadcrumb || this.$route.meta.breadcrumb.length === 0) {
         return [];
       }
-      
+
       // 先頭に「トップ」を追加
       const crumbs = [{ text: 'トップ', to: '/' }];
-      
+
       // ルーターで定義したパンくずリストを追加
       crumbs.push(...this.$route.meta.breadcrumb);
-      
+
       return crumbs;
     },
   },
-};
+});
 </script>
 
 <style scoped>

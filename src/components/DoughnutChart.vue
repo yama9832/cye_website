@@ -2,7 +2,8 @@
   <Doughnut :data="data" :options="options" :plugins="plugins" />
 </template>
 
-<script>
+<script lang="ts">
+import { defineComponent } from 'vue';
 import {
   Chart as ChartJS,
   ArcElement,
@@ -16,7 +17,7 @@ import { Doughnut } from 'vue-chartjs';
 // Chart.jsに必要な要素とデータラベルプラグインを登録します
 ChartJS.register(ArcElement, Tooltip, Legend, Title, ChartDataLabels);
 
-export default {
+export default defineComponent({
   name: 'DoughnutChart',
   components: {
     Doughnut
@@ -46,5 +47,5 @@ export default {
         default: () => []
     }
   }
-}
+});
 </script>

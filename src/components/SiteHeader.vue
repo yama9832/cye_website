@@ -11,186 +11,249 @@
 
         <nav class="navigation">
           <ul>
-            <li v-for="item in menuItems" :key="item.name" @mouseover="handleMouseOver(item)" @mouseleave="handleMouseLeave()">
-              <span class="nav-item-name">{{ item.name }}</span>
-              <transition :name="isSwitching ? '' : 'mega-menu-fade'">
-                <div class="mega-menu" v-if="activeMenu === item.name && item.children" @mouseover="handleMouseOver(item)" @mouseleave="handleMouseLeave()">
-                  <div class="mega-menu-content">
-                    <div class="mega-menu-column" v-for="category in item.children" :key="category.title">
-                      <h3>{{ category.title }}</h3>
-                      <ul>
-                        <li v-for="link in category.links" :key="link.name">
-                          <router-link :to="link.to">{{ link.name }}</router-link>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </transition>
+            <li v-for="item in menuItems" :key="item.name">
+              <router-link
+                :to="item.to"
+                class="nav-item-name nav-link"
+                :class="{ 'is-active': isMenuActive(item) }"
+              >
+                {{ item.name }}
+              </router-link>
             </li>
           </ul>
         </nav>
 
-        <div class="header-right">
-          <SearchBar />
-          <button class="hamburger-menu" @click="isMobileNavOpen = !isMobileNavOpen" aria-label="メニューを開く">
-            <span class="hamburger-line"></span>
-            <span class="hamburger-line"></span>
-            <span class="hamburger-line"></span>
+        <div class="header-actions">
+          <button
+            class="header-icon-button"
+            @click="openSearchMenu"
+            aria-label="サイト内検索を開く"
+            :aria-expanded="isMobileNavOpen.toString()"
+          >
+            <span class="material-icons">search</span>
+            <span class="header-icon-label">サイト内検索</span>
+          </button>
+          <button
+            class="header-icon-button"
+            @click="toggleMobileNav"
+            aria-label="メニューを開く"
+            :aria-expanded="isMobileNavOpen.toString()"
+            aria-controls="site-mobile-nav"
+          >
+            <span class="hamburger-icon">
+              <span class="hamburger-line"></span>
+              <span class="hamburger-line"></span>
+              <span class="hamburger-line"></span>
+            </span>
+            <span class="header-icon-label">メニュー</span>
           </button>
         </div>
       </div>
     </div>
 
+    <div v-if="activeSubmenu" class="subnav">
+      <div class="subnav-inner">
+        <button class="subnav-toggle" @click="toggleSubnav" type="button">
+          {{ activeSubmenu.name }}のカテゴリを選択する
+        </button>
+        <div
+          class="subnav-links"
+          :class="{ 'is-open': isSubnavOpen, 'is-three': activeSubmenu && activeSubmenu.name === '参加方法' }"
+        >
+          <router-link
+            v-for="link in flattenLinks(activeSubmenu.children)"
+            :key="link.name"
+            :to="link.to"
+            class="subnav-link"
+          >
+            {{ link.name }}
+          </router-link>
+        </div>
+      </div>
+    </div>
+
     <transition name="mobile-nav-fade">
-      <div class="mobile-nav" v-if="isMobileNavOpen">
+      <div class="mobile-nav-overlay" v-if="isMobileNavOpen" @click="closeMobileNav"></div>
+    </transition>
+    <transition name="mobile-nav-slide">
+      <div class="mobile-nav" v-if="isMobileNavOpen" id="site-mobile-nav">
+        <div class="mobile-nav-header">
+          <span class="mobile-nav-title">メニュー</span>
+          <button class="mobile-nav-close" @click="closeMobileNav" aria-label="メニューを閉じる">
+            ×
+          </button>
+        </div>
+        <div class="mobile-nav-search">
+          <SearchBar />
+        </div>
         <ul>
           <li v-for="item in menuItems" :key="item.name">
-            <details v-if="item.children">
-              <summary>{{ item.name }}</summary>
-              <div class="mobile-submenu">
-                <div class="mobile-menu-column" v-for="category in item.children" :key="category.title">
-                  <h4>{{ category.title }}</h4>
-                  <ul>
-                    <li v-for="link in category.links" :key="link.name">
-                      <router-link :to="link.to" @click="isMobileNavOpen = false">{{ link.name }}</router-link>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </details>
-            <router-link v-else :to="item.to" class="mobile-nav-link" @click="isMobileNavOpen = false">{{ item.name }}</router-link>
+            <router-link :to="item.to" class="mobile-nav-link" @click="closeMobileNav">
+              <span class="mobile-nav-text">{{ item.name }}</span>
+            </router-link>
           </li>
         </ul>
+        <div class="mobile-social-links">
+          <a href="https://www.youtube.com/@yanma-empire" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+            <img src="@/assets/youtube_logo.png" alt="YouTube">
+          </a>
+          <a href="https://x.com/Yanma_Empire" target="_blank" rel="noopener noreferrer" aria-label="X (formerly Twitter)">
+            <img src="@/assets/x_logo.png" alt="X (formerly Twitter)">
+          </a>
+          <a href="https://www.instagram.com/yanma_empire" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+            <img src="@/assets/instagram_logo.png" alt="Instagram">
+          </a>
+        </div>
       </div>
     </transition>
   </header>
 </template>
 
-<script>
+<script lang="ts">
+import { defineComponent } from 'vue';
 import SearchBar from './SearchBar.vue';
 
-export default {
+export default defineComponent({
   name: 'SiteHeader',
   components: {
     SearchBar
   },
   data() {
     return {
-      activeMenu: null,
       isMobileNavOpen: false,
-      isSwitching: false,
+      isSubnavOpen: false,
       menuItems: [
         {
+          name: 'トップ',
+          to: '/',
+        },
+        {
           name: '基本情報',
+          to: '/basic',
           children: [
             {
-              title: '国の基本情報',
+              title: '基本情報',
               links: [
-                { name: '基本情報', to: '/about' },
-                { name: '構成国', to: '/nations' },
-                { name: '憲法', to: '/constitution' },
+                { name: '憲法', to: '/basic/constitution' },
+                { name: '帝国議会', to: '/basic/diet' },
+                { name: '府省庁', to: '/basic/ministries' },
+                { name: '国内法人', to: '/basic/corporations' },
               ],
-            },
-            {
-              title: '国の組織',
-              links: [
-                { name: '帝国議会', to: '/government/diet' },
-                { name: '府省庁', to: '/government/ministries' },
-                { name: '裁判所', to: '/government/courts' },
-              ],
-            },
+            }
           ],
         },
         {
-          name: '国政情報',
+          name: 'ニュース',
+          to: '/news',
+          showSubnav: false,
           children: [
             {
-              title: '政策・広報',
+              title: 'ニュース',
               links: [
-                { name: '政策', to: '/politics/policy' },
-                { name: '予算', to: '/politics/budget' },
-                { name: '広報', to: '/politics/pr' },
+                { name: 'お知らせ', to: '/news/announcements' },
+                { name: 'ニュース', to: '/news' },
+                { name: '動画投稿', to: '/news/videos' },
+                { name: 'そのほか', to: '/news/others' },
               ],
-            },
-            {
-              title: '各種一覧',
-              links: [
-                { name: '国内法人', to: '/corporations' },
-              ],
-            },
+            }
           ],
         },
         {
-          name: '観光・イベント',
+          name: 'イベント',
+          to: '/events',
+          showSubnav: false,
           children: [
-            {
-              title: '観光案内',
-              links: [
-                { name: '建築ギャラリー', to: '/gallery' }, 
-                { name: '観光案内', to: '/tourism/guide' },
-                { name: '交通情報', to: '/tourism/transport' },
-              ],
-            },
             {
               title: 'イベント',
               links: [
-                { name: 'イベント情報', to: '/events' },
-                { name: 'ブログ', to: '/blog' }, 
+                { name: '開催中', to: '/events' },
+                { name: '開催予定', to: '/events/upcoming' },
+                { name: '終了', to: '/events/past' },
               ],
-            },
+            }
           ],
         },
         {
-          name: '参加・お問い合わせ',
+          name: '参加方法',
+          to: '/participation',
           children: [
             {
-              title: '連邦に参加',
+              title: '参加方法',
               links: [
-                { name: '製作メンバーになる', to: '/join' },
-                { name: 'サーバールール', to: '/rules' },
-                { name: 'ロール', to: '/roles' },
+                { name: 'ルール', to: '/participation/rules' },
+                { name: 'ロール', to: '/participation/roles' },
+                { name: 'よくある質問', to: '/participation/faq' },
               ],
-            },
-            {
-              title: 'サポート',
-              links: [
-                { name: 'よくある質問', to: '/faq' },
-                { name: 'お問い合わせ', to: '/contact' },
-              ],
-            },
+            }
           ]
         },
+        {
+          name: 'お問い合わせ',
+          to: '/contact'
+        },
       ],
-      menuTimer: null,
+      menuTimer: null as number | null,
     };
   },
   watch: {
     '$route'() {
-      this.activeMenu = null;
       this.isMobileNavOpen = false; // [追加] ルート変更時にモバイルメニューを閉じる
+      this.isSubnavOpen = false;
+    }
+  },
+  computed: {
+    activeSubmenu() {
+      const currentPath = this.$route.path;
+      return this.menuItems.find((item) => {
+        if (!item.children || item.showSubnav === false) {
+          return false;
+        }
+        if (item.to && (currentPath === item.to || currentPath.startsWith(`${item.to}/`))) {
+          return true;
+        }
+        return item.children.some((category) =>
+          (category.links || []).some((link) => currentPath === link.to || currentPath.startsWith(`${link.to}/`))
+        );
+      }) || null;
     }
   },
   methods: {
-    handleMouseOver(item) {
-      if (this.menuTimer) {
-        clearTimeout(this.menuTimer);
-      }
-      if (this.activeMenu && this.activeMenu !== item.name) {
-        this.isSwitching = true;
-      } else {
-        this.isSwitching = false;
-      }
-      this.activeMenu = item.name;
+    flattenLinks(children) {
+      return children.flatMap((category) => category.links || []);
     },
-    handleMouseLeave() {
-      this.menuTimer = setTimeout(() => {
-        this.activeMenu = null;
-        this.isSwitching = false;
-      }, 150);
+    isMenuActive(item) {
+      const currentPath = this.$route.path;
+      if (item.to && (currentPath === item.to || currentPath.startsWith(`${item.to}/`))) {
+        return true;
+      }
+      if (item.children) {
+        return item.children.some((category) =>
+          (category.links || []).some((link) => currentPath === link.to || currentPath.startsWith(`${link.to}/`))
+        );
+      }
+      return false;
+    },
+    toggleMobileNav() {
+      this.isMobileNavOpen = !this.isMobileNavOpen;
+    },
+    closeMobileNav() {
+      this.isMobileNavOpen = false;
+    },
+    openSearchMenu() {
+      this.isMobileNavOpen = true;
+      this.$nextTick(() => {
+        const input = this.$el.querySelector('.mobile-nav .search-box input');
+        if (input) {
+          input.focus();
+          input.scrollIntoView({ block: 'center', behavior: 'smooth' });
+        }
+      });
+    },
+    toggleSubnav() {
+      this.isSubnavOpen = !this.isSubnavOpen;
     },
   },
-};
+});
 </script>
 
 <style scoped>
@@ -212,15 +275,16 @@ export default {
 }
 
 .main-header-content {
-  max-width: 80rem;
+  max-width: 100%;
   width: 100%;
   height: 100%;
-  margin: 0 auto;
+  margin: 0;
   padding: 0 2.5rem;
   box-sizing: border-box;
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
   align-items: center;
+  gap: 2rem;
 }
 
 .logo-area {
@@ -234,16 +298,19 @@ export default {
 }
 .navigation {
   display: none;
-  margin: 0 auto;
+  width: 100%;
 }
 .navigation ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
   display: flex;
+  justify-content: flex-end;
+  gap: 2rem;
+  width: 100%;
 }
 .navigation>ul>li {
-  padding: 1.25rem;
+  padding: 1.25rem 0.75rem;
 }
 .nav-item-name {
   text-decoration: none;
@@ -251,138 +318,164 @@ export default {
   font-size: 1rem;
   transition: color 0.3s;
   cursor: default;
+  position: relative;
+  padding-bottom: 0.4rem;
+}
+.nav-item-name::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 100%;
+  height: 0.15rem;
+  background-color: #008037;
+  transform: translateX(-50%) scaleX(0);
+  transform-origin: center;
+  transition: transform 0.25s ease;
+}
+.nav-link {
+  cursor: pointer;
 }
 .navigation>ul>li:hover>.nav-item-name {
   color: #008037;
+}
+.navigation>ul>li:hover>.nav-item-name::after {
+  transform: translateX(-50%) scaleX(1);
+}
+.nav-item-name.is-active::after {
+  transform: translateX(-50%) scaleX(1);
 }
 .mega-menu {
   position: absolute;
   top: 5.25rem;
   left: 0;
   right: 0;
-  background-color: #fff;
+  background-color: #f1f1f1;
   box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.1);
   border-top: 0.1875rem solid #008037;
   padding: 1.25rem 2.5rem;
   box-sizing: border-box;
 }
 .mega-menu-content {
-  display: flex;
-  gap: 2.5rem;
-  max-width: 75rem;
+  max-width: 90rem;
   margin: 0 auto;
-}
-.mega-menu-column {
-  min-width: 11.25rem;
-}
-.mega-menu-column h3 {
-  font-size: 1rem;
-  color: #008037;
-  margin-top: 0;
-  margin-bottom: 0.9375rem;
-  padding-bottom: 0.625rem;
-  border-bottom: 0.0625rem solid #e0e0e0;
-  font-weight: 700;
-}
-.mega-menu-column ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
   display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
+  justify-content: center;
 }
-.mega-menu-column ul li a {
+.mega-menu-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+}
+.mega-menu-link {
   text-decoration: none;
   color: #333;
-  font-size: 0.875rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  padding: 0.25rem 0.5rem;
 }
-.mega-menu-column ul li a:hover, .mega-menu-column ul li a.router-link-exact-active {
+.mega-menu-link:hover, .mega-menu-link.router-link-exact-active {
   text-decoration: underline;
   color: #008037;
 }
-.header-right {
+.header-actions {
   display: flex;
-  align-items: center;
-  gap: 1.5rem;
+  align-items: stretch;
+  gap: 1.25rem;
 }
-.hamburger-menu {
+.header-icon-button {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
-  width: 2rem;
-  height: 2rem;
+  align-items: center;
+  gap: 0.2rem;
   background: transparent;
   border: none;
   cursor: pointer;
-  padding: 0;
-  z-index: 110;
+  color: #333;
+  padding: 0.25rem 0.5rem;
+  width: 4.25rem;
+  height: 4.25rem;
+  justify-content: center;
+}
+.header-icon-button .material-icons {
+  font-size: 1.5rem;
+  line-height: 1;
+}
+.header-icon-label {
+  font-size: 0.75rem;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+.hamburger-icon {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  height: 1.5rem;
+  justify-content: center;
 }
 .hamburger-line {
-  width: 2rem;
-  height: 0.25rem;
+  width: 1.5rem;
+  height: 0.18rem;
   background: #333;
   border-radius: 0.625rem;
 }
+.mobile-nav-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+  z-index: 120;
+}
 .mobile-nav {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  width: 100%;
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  width: 22rem;
+  max-width: 90vw;
   background-color: #fff;
-  box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.1);
-  padding: 1rem 0;
-  border-top: 0.0625rem solid #e0e0e0;
-  max-height: calc(100vh - 5.25rem);
+  box-shadow: -0.25rem 0 0.75rem rgba(0, 0, 0, 0.1);
+  padding: 1.5rem 0 1rem 0;
+  border-left: 0.0625rem solid #e0e0e0;
   overflow-y: auto;
+  z-index: 130;
+}
+.mobile-nav-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1.5rem 1rem 1.5rem;
+  border-bottom: 1px solid #f0f0f0;
+}
+.mobile-nav-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #333;
+}
+.mobile-nav-close {
+  background: transparent;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #333;
+  line-height: 1;
+}
+.mobile-nav-search {
+  padding: 1rem 1.5rem;
+}
+.mobile-nav-search :deep(.search-box) {
+  width: 100%;
+  border-radius: 999px;
+  border-color: #e0e0e0;
+}
+.mobile-nav-search :deep(.search-box input) {
+  font-size: 0.95rem;
+  padding: 0.65rem 0.9rem;
 }
 .mobile-nav ul {
   list-style: none;
   padding: 0;
   margin: 0;
-}
-.mobile-nav details {
-  border-bottom: 1px solid #f0f0f0;
-}
-.mobile-nav details:last-child, .mobile-nav-link:last-of-type {
-  border-bottom: none;
-}
-.mobile-nav summary {
-  padding: 1rem 1.5rem;
-  font-size: 1.1rem;
-  font-weight: 700;
-  cursor: pointer;
-  list-style: none;
-}
-.mobile-nav summary::-webkit-details-marker {
-  display: none;
-}
-.mobile-submenu {
-  padding: 0 1.5rem 1rem 1.5rem;
-  background-color: #f8f8f8;
-}
-.mobile-menu-column {
-  padding-top: 1rem;
-}
-.mobile-menu-column:first-child {
-  padding-top: 0;
-}
-.mobile-menu-column h4 {
-  font-size: 1rem;
-  color: #008037;
-  margin: 0 0 0.5rem 0;
-}
-.mobile-menu-column ul {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-.mobile-menu-column a {
-  display: block;
-  padding: 0.5rem 0;
-  color: #333;
-  text-decoration: none;
-  font-size: 0.9rem;
 }
 .mobile-nav-link {
   display: block;
@@ -392,6 +485,97 @@ export default {
   text-decoration: none;
   color: #333;
   border-bottom: 1px solid #f0f0f0;
+  position: relative;
+}
+.mobile-nav-link:last-of-type {
+  border-bottom: none;
+}
+.mobile-social-links {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  padding: 1.25rem 1.5rem 0.75rem 1.5rem;
+}
+.mobile-social-links img {
+  height: 1.5rem;
+  width: auto;
+  opacity: 0.75;
+  transition: opacity 0.3s ease;
+}
+.mobile-social-links a:hover img {
+  opacity: 1;
+}
+.mobile-nav-text {
+  position: relative;
+  display: inline-block;
+  padding-bottom: 0.35rem;
+}
+.mobile-nav-link.router-link-active .mobile-nav-text::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 0.15rem;
+  background-color: #008037;
+}
+.subnav {
+  width: 100%;
+  background-color: #f1f1f1;
+  border-top: 0.0625rem solid #008037;
+  border-bottom: 0.0625rem solid #e0e0e0;
+}
+.subnav-inner {
+  width: 100%;
+  max-width: 80rem;
+  margin: 0 auto;
+  padding: 0.75rem 2.5rem;
+  box-sizing: border-box;
+}
+.subnav-toggle {
+  display: none;
+  width: 100%;
+  background: transparent;
+  border: none;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #333;
+  padding: 0.5rem 0;
+  text-align: center;
+  cursor: pointer;
+}
+.subnav-links {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0;
+}
+.subnav-links.is-three {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+.subnav-link {
+  text-decoration: none;
+  color: #333;
+  font-size: 1rem;
+  font-weight: 400;
+  position: relative;
+  padding: 0.6rem 0;
+  text-align: center;
+  display: block;
+}
+.subnav-link::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 100%;
+  height: 0.15rem;
+  background-color: #008037;
+  transform: translateX(-50%) scaleX(0);
+  transform-origin: center;
+  transition: transform 0.25s ease;
+}
+.subnav-link:hover::after, .subnav-link.router-link-active::after {
+  transform: translateX(-50%) scaleX(1);
 }
 .mega-menu-fade-enter-active, .mega-menu-fade-leave-active {
   transition: opacity 0.3s ease;
@@ -405,12 +589,15 @@ export default {
 .mobile-nav-fade-enter-from, .mobile-nav-fade-leave-to {
   opacity: 0;
 }
+.mobile-nav-slide-enter-active, .mobile-nav-slide-leave-active {
+  transition: transform 0.3s ease;
+}
+.mobile-nav-slide-enter-from, .mobile-nav-slide-leave-to {
+  transform: translateX(100%);
+}
 @media (min-width: 992px) {
   .navigation {
     display: flex;
-  }
-  .hamburger-menu {
-    display: none;
   }
 }
 @media (max-width: 991px) {
@@ -422,8 +609,26 @@ export default {
   .site-logo {
     height: 3rem;
   }
-  .header-right > .search-box {
+  .header-icon-label {
     display: none;
+  }
+  .subnav-inner {
+    padding: 0.5rem 1.5rem 1rem 1.5rem;
+  }
+  .subnav-toggle {
+    display: block;
+  }
+  .subnav-links {
+    grid-template-columns: 1fr;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+  }
+  .subnav-links.is-open {
+    max-height: 20rem;
+  }
+  .subnav-link {
+    padding: 0.75rem 0;
   }
 }
 </style>

@@ -241,11 +241,37 @@
   </main>
 </template>
 
-<script>
+<script lang="ts">
+import { defineComponent } from 'vue';
 import AppBreadcrumb from '@/components/AppBreadcrumb.vue';
 import DoughnutChart from '@/components/DoughnutChart.vue';
 
-export default {
+interface PartyInfo {
+  name: string;
+  abbr: string;
+  seats: number;
+  color: string;
+}
+
+interface ChamberData {
+  ruling: PartyInfo[];
+  oppositionKyotou: PartyInfo[];
+  oppositionShoha: PartyInfo[];
+  rulingTotal: number;
+  oppositionTotal: number;
+}
+
+interface ChartData {
+  labels: string[];
+  datasets: Array<{
+    data: number[];
+    backgroundColor: string[];
+    borderWidth: number;
+    borderColor: string;
+  }>;
+}
+
+export default defineComponent({
   name: 'DietView',
   components: {
     AppBreadcrumb,
@@ -269,6 +295,8 @@ export default {
       ruling: [ { name: '自由山間党', abbr: '自山', seats: 163, color: partyColors.jiyuuSankan } ],
       oppositionKyotou: [ { name: '自由ヤンマシア解放戦線', abbr: '解放', seats: 22, color: partyColors.yammaKyosan }, { name: '山間民主党', abbr: '山民', seats: 17, color: partyColors.sankanMinshu } ],
       oppositionShoha: [ { name: '山間勇者の会', abbr: '山勇会', seats: 4, color: partyColors.sankanYuusha }, { name: 'やんまーから国民を守る党', abbr: 'や国党', seats: 2, color: partyColors.yanmaKokumin }, { name: '無所属', abbr: '無所属', seats: 7, color: partyColors.mushozoku } ],
+      rulingTotal: 0,
+      oppositionTotal: 0,
     };
     jouinData.rulingTotal = jouinData.ruling.reduce((sum, p) => sum + p.seats, 0);
     jouinData.oppositionTotal = [...jouinData.oppositionKyotou, ...jouinData.oppositionShoha].reduce((sum, p) => sum + p.seats, 0);
@@ -282,11 +310,13 @@ export default {
         { name: 'やんまーから国民を守る党', abbr: 'や国党', seats: 3, color: partyColors.yanmaKokumin },
         { name: '無所属', abbr: '無所属', seats: 3, color: partyColors.mushozoku } 
       ],
+      rulingTotal: 0,
+      oppositionTotal: 0,
     };
     kainData.rulingTotal = kainData.ruling.reduce((sum, p) => sum + p.seats, 0);
     kainData.oppositionTotal = [...kainData.oppositionKyotou, ...kainData.oppositionShoha].reduce((sum, p) => sum + p.seats, 0);
     
-    const createChartData = (data) => {
+    const createChartData = (data: ChamberData): ChartData => {
         const allParties = [...data.ruling, ...data.oppositionKyotou, ...data.oppositionShoha];
         return {
             labels: allParties.map(p => p.abbr),
@@ -324,7 +354,7 @@ export default {
       chartOptions
     }
   }
-}
+});
 </script>
 
 <style scoped>

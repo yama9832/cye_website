@@ -33,7 +33,7 @@
             <li>サブアカウントは一人一つまでとします。</li>
             <li>当サーバーに関係のない宣伝行為は控えてください。</li>
             <li>通知は各自で設定してください。</li>
-            <li>当サーバーでは役職システムを導入しており、それぞれロールを付与しています。<br><span class="note">※詳細は<router-link to="/roles">「ロール」</router-link>に記載しているので、必ず確認してください。</span></li>
+            <li>当サーバーでは役職システムを導入しており、それぞれロールを付与しています。<br><span class="note">※詳細は<router-link to="/participation/roles">「ロール」</router-link>に記載しているので、必ず確認してください。</span></li>
             <li>当サーバー参加資格を有していない者は参加できません。</li>
             <li>参加資格は以下とします。
               <ul>
@@ -145,15 +145,16 @@
   </main>
 </template>
 
-<script>
+<script lang="ts">
+import { defineComponent } from 'vue';
 import AppBreadcrumb from '@/components/AppBreadcrumb.vue';
 
-export default {
+export default defineComponent({
   name: 'RulesView',
   components: {
     AppBreadcrumb
   }
-}
+});
 </script>
 
 <style scoped>
@@ -161,10 +162,7 @@ export default {
 
 .rules-container {
   margin: 0 auto;
-  background-color: #fff;
-  padding: 2.5rem 3rem;
-  border-radius: 8px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+  padding: 0;
 }
 
 .page-header {
@@ -265,12 +263,6 @@ a:hover {
 
 
 /* レスポンシブ対応 */
-@media (max-width: 992px) {
-
-  .rules-container {
-    padding: 2rem;
-  }
-}
 @media (max-width: 768px) {
   .page-header h1 {
     font-size: 2rem;

@@ -5,6 +5,13 @@
         <img :src="slide.src" :alt="slide.alt" loading="lazy">
       </div>
     </div>
+    <div class="hero-title-wrap">
+      <div class="hero-title">
+        私達だけの国を<br>
+        マインクラフトの世界で<br>
+        作り上げよう！
+      </div>
+    </div>
     <button @click="prevSlide" class="nav-button prev" aria-label="前のスライドへ">&#10094;</button>
     <button @click="nextSlide" class="nav-button next" aria-label="次のスライドへ">&#10095;</button>
     <div class="dots-container">
@@ -19,8 +26,10 @@
   </div>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import { defineComponent } from 'vue';
+
+export default defineComponent({
   name: 'HeroSection',
   data() {
     return {
@@ -30,7 +39,7 @@ export default {
         { id: 2, src: require('@/assets/slide2.webp'), alt: 'スライド2' },
         { id: 3, src: require('@/assets/slide3.webp'), alt: 'スライド3' },
       ],
-      timer: null,
+      timer: null as number | null,
     };
   },
   mounted() {
@@ -53,19 +62,21 @@ export default {
       this.resetAutoPlay();
     },
     startAutoPlay() {
-      this.timer = setInterval(() => {
+      this.timer = window.setInterval(() => {
         this.nextSlide();
       }, 5000);
     },
     stopAutoPlay() {
-      clearInterval(this.timer);
+      if (this.timer !== null) {
+        window.clearInterval(this.timer);
+      }
     },
     resetAutoPlay() {
       this.stopAutoPlay();
       this.startAutoPlay();
     },
   },
-};
+});
 </script>
 
 <style scoped>
@@ -91,6 +102,28 @@ export default {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+.hero-title-wrap {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  transform: translateY(-50%);
+  margin: 0 auto;
+  width: 100%;
+  max-width: 80rem;
+  padding: 0 2.5rem;
+  box-sizing: border-box;
+  z-index: 10;
+}
+.hero-title {
+  color: #fff;
+  font-size: clamp(1.75rem, 3.4vw, 2.9rem);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-align: left;
+  line-height: 2;
+  text-shadow: 0 0.15rem 0.4rem rgba(0, 0, 0, 0.45);
 }
 .nav-button {
   position: absolute;
@@ -131,5 +164,7 @@ export default {
 }
 @media (max-width: 768px) {
   .hero-slideshow { height: 40vh; }
+  .hero-title-wrap { padding: 0 1.5rem; }
+  .nav-button { display: none; }
 }
 </style>

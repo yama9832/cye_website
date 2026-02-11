@@ -12,8 +12,10 @@
   </form>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import { defineComponent } from 'vue';
+
+export default defineComponent({
   name: 'SearchBar',
   data() {
     return {
@@ -25,13 +27,13 @@ export default {
       if (!this.searchQuery) {
         return;
       }
-      this.$router.push({ 
-        name: 'search', 
-        query: { q: this.searchQuery } 
+      this.$router.push({
+        name: 'search',
+        query: { q: this.searchQuery }
       });
     },
   },
-}
+});
 </script>
 
 <style scoped>

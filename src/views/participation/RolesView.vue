@@ -187,15 +187,16 @@
   </main>
 </template>
 
-<script>
+<script lang="ts">
+import { defineComponent } from 'vue';
 import AppBreadcrumb from '@/components/AppBreadcrumb.vue';
 
-export default {
+export default defineComponent({
   name: 'RolesView',
   components: {
     AppBreadcrumb
   }
-}
+});
 </script>
 
 <style scoped>

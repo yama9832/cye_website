@@ -4,7 +4,7 @@
 
     <div class="join-container">
       <header class="page-header">
-        <h1>製作メンバーになる</h1>
+        <h1>参加方法</h1>
         <p class="header-description">やんまー帝国連邦の活動に参加し、一緒に国を創りませんか？</p>
       </header>
 
@@ -12,18 +12,17 @@
         <div class="notice-banner">
           <span class="material-icons" aria-hidden="true">construction</span>
           <div class="notice-text">
-            <h2>現在、受付を停止しています</h2>
+            <h2>現在、募集停止中です</h2>
             <p>サーバーの再構築を行っております。再開まで今しばらくお待ちください。</p>
           </div>
         </div>
       </section>
 
-      <!-- 参加資格 -->
       <section class="info-section">
         <h2 class="section-title">
           <span class="material-icons">check_circle</span>
           参加資格
-        </h2> 
+        </h2>
         <div class="card-grid">
           <div class="card">
             <div class="card-icon">
@@ -33,23 +32,22 @@
             <p class="card-text">DiscordとMinecraft(Java/Bedrock Edition)のアカウントをお持ちの方。</p>
           </div>
           <div class="card">
-          <div class="card-icon">
+            <div class="card-icon">
               <span class="material-icons">cake</span>
-          </div>
+            </div>
             <h3 class="card-title">年齢</h3>
             <p class="card-text">原則として、満14歳以上の方。</p>
           </div>
           <div class="card">
-          <div class="card-icon">
+            <div class="card-icon">
               <span class="material-icons">verified_user</span>
-          </div>
+            </div>
             <h3 class="card-title">マナー</h3>
             <p class="card-text">他のサーバーやコミュニティで問題行動を起こしていない方。</p>
           </div>
         </div>
       </section>
 
-      <!-- 参加までの流れ -->
       <section class="info-section">
         <h2 class="section-title">
           <span class="material-icons">alt_route</span>
@@ -61,7 +59,7 @@
             <div class="step-content">
               <h3>Discordサーバーに参加</h3>
               <p>まずは公式Discordサーバーにご参加ください。サーバー内のチャンネルをご確認お願いします。</p>
-              <span class="cta-button cta-button--disabled" aria-disabled="true">準備中</span>
+              <span class="cta-button cta-button--disabled" aria-disabled="true">募集停止中</span>
             </div>
           </div>
           <div class="step-item">
@@ -81,14 +79,13 @@
           <div class="step-item">
             <div class="step-number">4</div>
             <div class="step-content">
-              <h3>建築・製作開始！</h3>
-              <p>ようこそ、やんまー帝国連邦へ！あなたの創造力で、都市国家を築きましょう。</p>
+              <h3>建築・製作開始</h3>
+              <p>ようこそ、やんまー帝国連邦へ。あなたの創造力で、都市国家を築きましょう。</p>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- 注意事項 -->
       <section class="info-section">
         <h2 class="section-title">
           <span class="material-icons">warning</span>
@@ -106,20 +103,19 @@
   </main>
 </template>
 
-<script>
+<script lang="ts">
+import { defineComponent } from 'vue';
 import AppBreadcrumb from '@/components/AppBreadcrumb.vue';
 
-export default {
-  name: 'JoinView',
+export default defineComponent({
+  name: 'ParticipationView',
   components: {
     AppBreadcrumb
   }
-}
+});
 </script>
 
 <style scoped>
-
-
 .join-container {
   margin: 0 auto;
 }
@@ -128,7 +124,6 @@ export default {
   border-bottom: 2px solid #008037;
   padding-bottom: 1rem;
   margin-bottom: 3rem;
-  text-align: center;
 }
 
 .page-header h1 {
@@ -138,11 +133,12 @@ export default {
 }
 
 .header-description {
-  font-size: 1.1rem;
-  color: #6c757d;
-  max-width: 600px;
-  margin: 0 auto;
+  margin-top: 1rem;
+  font-size: 1rem;
+  line-height: 1.8;
+  color: #333;
 }
+
 
 .notice-section {
   margin-bottom: 2.5rem;
@@ -186,12 +182,13 @@ export default {
 }
 
 .section-title .material-icons {
-    font-size: 1.75rem;
+  font-size: 1.75rem;
 }
+
 .card-icon .material-icons {
-    font-size: 2em;
+  font-size: 2em;
 }
-/* 参加資格カード */
+
 .card-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -222,10 +219,6 @@ export default {
   gap: 1rem;
   height: 32px;
 }
-.card-icon img, .card-icon svg {
-  height: 32px;
-  width: 32px;
-}
 
 .card-title {
   font-size: 1.25rem;
@@ -241,7 +234,6 @@ export default {
   line-height: 1.6;
 }
 
-/* 参加までの流れ */
 .step-list {
   display: flex;
   flex-direction: column;
@@ -313,7 +305,6 @@ export default {
   transform: none;
 }
 
-/* 注意事項 */
 .notes-list {
   list-style-type: none;
   padding-left: 1.5rem;
@@ -322,6 +313,7 @@ export default {
   border-radius: 8px;
   padding: 1.5rem 2rem;
 }
+
 .notes-list li {
   position: relative;
   padding-left: 1.25rem;
@@ -329,9 +321,11 @@ export default {
   line-height: 1.8;
   color: #555;
 }
+
 .notes-list li:last-child {
-    margin-bottom: 0;
+  margin-bottom: 0;
 }
+
 .notes-list li::before {
   content: "・";
   position: absolute;
@@ -340,29 +334,19 @@ export default {
   font-weight: bold;
 }
 
-
-/* レスポンシブ対応 */
-@media (max-width: 992px) {
-
-  .section-title {
-    font-size: 1.75rem;
-  }
-  .card-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
 @media (max-width: 768px) {
   .page-header h1 {
     font-size: 2rem;
   }
+
   .step-number {
-      width: 1.8rem;
-      height: 1.8rem;
-      font-size: 0.9rem;
+    width: 1.8rem;
+    height: 1.8rem;
+    font-size: 0.9rem;
   }
+
   .step-item {
-      gap: 1rem;
+    gap: 1rem;
   }
 }
 </style>

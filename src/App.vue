@@ -8,21 +8,20 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
+import { defineComponent } from 'vue';
 import SiteHeader from './components/SiteHeader.vue';
 import SiteFooter from './components/SiteFooter.vue';
-// ScrollToTopコンポーネントをインポート
 import ScrollToTop from './components/ScrollToTop.vue';
 
-export default {
+export default defineComponent({
   name: 'App',
   components: {
     SiteHeader,
     SiteFooter,
-    // ScrollToTopコンポーネントを登録
     ScrollToTop
   }
-}
+});
 </script>
 
 <style>
@@ -35,6 +34,13 @@ body {
   box-sizing: border-box;
   background-color: #f9f9f9;
   font-family: 'Noto Sans JP', sans-serif;
+  overflow-y: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+body::-webkit-scrollbar {
+  width: 0;
+  height: 0;
 }
 
 #app {
