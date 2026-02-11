@@ -194,10 +194,10 @@ export default defineComponent({
 
 .news-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 320px));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 2rem;
   padding-bottom: 3rem;
-  justify-content: start;
+  justify-content: center;
 }
 
 .news-card {
