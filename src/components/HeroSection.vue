@@ -1,8 +1,14 @@
 <template>
   <div class="hero-slideshow">
     <div class="slides-container" :style="{ transform: `translateX(-${currentIndex * 100}%)` }">
-      <div v-for="slide in slides" :key="slide.id" class="slide">
-        <img :src="slide.src" :alt="slide.alt" loading="lazy">
+      <div v-for="(slide, index) in slides" :key="slide.id" class="slide">
+        <img
+          :src="slide.src"
+          :alt="slide.alt"
+          :loading="index === 0 ? 'eager' : 'lazy'"
+          :fetchpriority="index === 0 ? 'high' : 'low'"
+          decoding="async"
+        >
       </div>
     </div>
     <div class="hero-title-wrap">

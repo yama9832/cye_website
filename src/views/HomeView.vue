@@ -11,12 +11,13 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineAsyncComponent, defineComponent } from 'vue';
 import HeroSection from '@/components/HeroSection.vue';
-import AppBreadcrumb from '@/components/AppBreadcrumb.vue';
-import NewsSection from '@/components/NewsSection.vue';
-import JoinCta from '@/components/JoinCta.vue';
-import PageLinksSection from '@/components/PageLinksSection.vue';
+
+const AppBreadcrumb = defineAsyncComponent(() => import('@/components/AppBreadcrumb.vue'));
+const NewsSection = defineAsyncComponent(() => import('@/components/NewsSection.vue'));
+const JoinCta = defineAsyncComponent(() => import('@/components/JoinCta.vue'));
+const PageLinksSection = defineAsyncComponent(() => import('@/components/PageLinksSection.vue'));
 
 export default defineComponent({
   name: 'HomeView',
