@@ -17,6 +17,9 @@
       <div class="article-body">
         <template v-for="(block, index) in article.content" :key="`block-${index}`">
           <p v-if="block.type === 'text'">{{ block.value }}</p>
+          <p v-else-if="block.type === 'link'">
+            <router-link :to="block.to" class="article-link">{{ block.text }}</router-link>
+          </p>
           <figure v-else-if="block.type === 'image'">
             <img :src="resolveImage(block.src)" :alt="block.alt || article.title" />
             <figcaption v-if="block.caption">{{ block.caption }}</figcaption>
@@ -37,11 +40,13 @@ import AppBreadcrumb from '@/components/AppBreadcrumb.vue';
 import newsData from '@/data/news.json';
 
 interface NewsContentBlock {
-  type: 'text' | 'image';
+  type: 'text' | 'image' | 'link';
   value?: string;
   src?: string;
   alt?: string;
   caption?: string;
+  text?: string;
+  to?: string;
 }
 
 interface NewsItem {
@@ -147,6 +152,17 @@ export default defineComponent({
   padding-bottom: 3rem;
   color: #495057;
   line-height: 1.6;
+}
+
+.article-link {
+  color: #008037;
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.article-link:hover {
+  color: #00652b;
 }
 
 .article-body img {

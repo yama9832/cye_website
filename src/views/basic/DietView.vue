@@ -18,6 +18,7 @@
         <h2 class="section-title">議員構成図</h2>
         <div class="chart-wrapper">
           <h3 class="chart-title">上院</h3>
+          <p class="election-date">前回選挙日: 2025年07月20日</p>
           <div class="chart-grid">
             <div class="party-list ruling">
               <div class="party-group-title">与党</div>
@@ -34,7 +35,7 @@
               <div class="majority-line">過半数 108</div>
               <DoughnutChart :data="jouinChartData" :options="chartOptions"/>
               <div class="chart-info">
-                <div class="total-seats">定数 <strong>215</strong></div>
+                <div class="total-seats">定数 <strong>214</strong></div>
               </div>
             </div>
             <div class="party-list opposition">
@@ -65,6 +66,7 @@
         </div>
         <div class="chart-wrapper">
           <h3 class="chart-title">下院</h3>
+          <p class="election-date">前回選挙日: 2026年02月08日</p>
           <div class="chart-grid">
             <div class="party-list ruling">
               <div class="party-group-title">与党</div>
@@ -115,7 +117,7 @@
       <section class="chamber-section">
         <h2 class="section-title">政党別議席数（上院）</h2>
         <div class="table-container">
-            <p class="table-caption">定数215</p>
+            <p class="table-caption">定数214</p>
             <div class="table-wrapper">
               <table>
                 <thead>
@@ -131,43 +133,43 @@
                     <td>与党</td>
                     <td>自由山間党</td>
                     <td>中道右派</td>
-                    <td>163議席</td>
+                    <td>108議席</td>
                   </tr>
                   <tr>
                     <td>野党第一党</td>
                     <td>自由ヤンマシア解放戦線 (旧山間共産党)</td>
                     <td>急進左派</td>
-                    <td>22議席</td>
+                    <td>46議席</td>
                   </tr>
                   <tr>
                     <td>野党第二党</td>
                     <td>山間民主党</td>
                     <td>中道左派</td>
-                    <td>17議席</td>
+                    <td>36議席</td>
                   </tr>
                    <tr>
                     <td>野党第三党</td>
                     <td>山間勇者の会</td>
                     <td>中道左派</td>
-                    <td>4議席</td>
+                    <td>8議席</td>
                   </tr>
                   <tr>
                     <td>野党諸派</td>
                     <td>殲滅党</td>
                     <td>アナキズム</td>
-                    <td>-議席</td>
+                    <td>3議席</td>
                   </tr>
                   <tr>
                     <td>野党諸派</td>
                     <td>やんまーから国民を守る党</td>
                     <td>ポピュリズム</td>
-                    <td>2議席</td>
+                    <td>4議席</td>
                   </tr>
                   <tr>
                     <td>その他</td>
                     <td>無所属・諸派</td>
                     <td>-</td>
-                    <td>7議席</td>
+                    <td>9議席</td>
                   </tr>
                 </tbody>
               </table>
@@ -194,43 +196,37 @@
                     <td>与党</td>
                     <td>自由山間党</td>
                     <td>中道右派</td>
-                    <td>163議席</td>
+                    <td>247議席</td>
                   </tr>
                   <tr>
                     <td>野党第一党</td>
                     <td>自由ヤンマシア解放戦線 (旧山間共産党)</td>
                     <td>急進左派</td>
-                    <td>107議席</td>
+                    <td>40議席</td>
                   </tr>
                   <tr>
                     <td>野党第二党</td>
                     <td>山間民主党</td>
                     <td>中道左派</td>
-                    <td>32議席</td>
+                    <td>24議席</td>
                   </tr>
                    <tr>
                     <td>野党第三党</td>
                     <td>山間勇者の会</td>
                     <td>中道左派</td>
-                    <td>14議席</td>
-                  </tr>
-                   <tr>
-                    <td>野党諸派</td>
-                    <td>殲滅党</td>
-                    <td>アナキズム</td>
-                    <td>3議席</td>
+                    <td>10議席</td>
                   </tr>
                   <tr>
                     <td>野党諸派</td>
                     <td>やんまーから国民を守る党</td>
                     <td>ポピュリズム</td>
-                    <td>3議席</td>
+                    <td>2議席</td>
                   </tr>
                   <tr>
                     <td>その他</td>
-                    <td>無所属</td>
+                    <td>無所属・諸派</td>
                     <td>-</td>
-                    <td>3議席</td>
+                    <td>2議席</td>
                   </tr>
                 </tbody>
               </table>
@@ -292,9 +288,9 @@ export default defineComponent({
     };
 
     const jouinData = {
-      ruling: [ { name: '自由山間党', abbr: '自山', seats: 163, color: partyColors.jiyuuSankan } ],
-      oppositionKyotou: [ { name: '自由ヤンマシア解放戦線', abbr: '解放', seats: 22, color: partyColors.yammaKyosan }, { name: '山間民主党', abbr: '山民', seats: 17, color: partyColors.sankanMinshu } ],
-      oppositionShoha: [ { name: '山間勇者の会', abbr: '山勇会', seats: 4, color: partyColors.sankanYuusha }, { name: 'やんまーから国民を守る党', abbr: 'や国党', seats: 2, color: partyColors.yanmaKokumin }, { name: '無所属', abbr: '無所属', seats: 7, color: partyColors.mushozoku } ],
+      ruling: [ { name: '自由山間党', abbr: '自山', seats: 108, color: partyColors.jiyuuSankan } ],
+      oppositionKyotou: [ { name: '自由ヤンマシア解放戦線', abbr: '解放', seats: 46, color: partyColors.yammaKyosan }, { name: '山間民主党', abbr: '山民', seats: 36, color: partyColors.sankanMinshu } ],
+      oppositionShoha: [ { name: '山間勇者の会', abbr: '山勇会', seats: 8, color: partyColors.sankanYuusha }, { name: '殲滅党', abbr: '殲滅', seats: 3, color: partyColors.senmetsu }, { name: 'やんまーから国民を守る党', abbr: 'や国党', seats: 4, color: partyColors.yanmaKokumin }, { name: '無所属', abbr: '無所属', seats: 9, color: partyColors.mushozoku } ],
       rulingTotal: 0,
       oppositionTotal: 0,
     };
@@ -302,13 +298,12 @@ export default defineComponent({
     jouinData.oppositionTotal = [...jouinData.oppositionKyotou, ...jouinData.oppositionShoha].reduce((sum, p) => sum + p.seats, 0);
 
     const kainData = {
-      ruling: [ { name: '自由山間党', abbr: '自山', seats: 163, color: partyColors.jiyuuSankan } ],
-      oppositionKyotou: [ { name: '自由ヤンマシア解放戦線', abbr: '解放', seats: 107, color: partyColors.yammaKyosan }, { name: '山間民主党', abbr: '山民', seats: 32, color: partyColors.sankanMinshu } ],
+      ruling: [ { name: '自由山間党', abbr: '自山', seats: 247, color: partyColors.jiyuuSankan } ],
+      oppositionKyotou: [ { name: '自由ヤンマシア解放戦線', abbr: '解放', seats: 40, color: partyColors.yammaKyosan }, { name: '山間民主党', abbr: '山民', seats: 24, color: partyColors.sankanMinshu } ],
       oppositionShoha: [ 
-        { name: '山間勇者の会', abbr: '山勇会', seats: 14, color: partyColors.sankanYuusha }, 
-        { name: '殲滅党', abbr: '殲滅', seats: 3, color: partyColors.senmetsu },
-        { name: 'やんまーから国民を守る党', abbr: 'や国党', seats: 3, color: partyColors.yanmaKokumin },
-        { name: '無所属', abbr: '無所属', seats: 3, color: partyColors.mushozoku } 
+        { name: '山間勇者の会', abbr: '山勇会', seats: 10, color: partyColors.sankanYuusha }, 
+        { name: 'やんまーから国民を守る党', abbr: 'や国党', seats: 2, color: partyColors.yanmaKokumin },
+        { name: '無所属', abbr: '無所属', seats: 2, color: partyColors.mushozoku } 
       ],
       rulingTotal: 0,
       oppositionTotal: 0,
@@ -495,6 +490,12 @@ export default defineComponent({
   color: #343a40;
   margin: 0 0 2.5rem 0;
   font-weight: bold;
+}
+.election-date {
+  text-align: center;
+  margin: -2rem 0 2.5rem 0;
+  color: #6c757d;
+  font-size: 0.95rem;
 }
 .chart-grid {
   display: grid;

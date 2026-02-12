@@ -68,7 +68,7 @@
         <ol class="article-ol">
           <li>憲法改正、法律、政令及び条約を公布すること。</li>
           <li>国会を召集すること。</li>
-          <li>上院を解散すること。</li>
+          <li>下院を解散すること。</li>
           <li>国会議員の総選挙の施行を公示すること。</li>
           <li>国務大臣及び法律の定めるその他の官吏の任免並びに全権委任状及び大使及び公使の信任状を認証すること。</li>
           <li>大赦、特赦、減刑、刑の執行の免除及び復権を認証すること。</li>
@@ -279,7 +279,7 @@
 
       <div class="article">
         <h3 class="article-title">第四十二条【議会の構成】</h3>
-        <p class="article-text">帝国議会は、上院及び下院の両議院でこれを構成する。</p>
+        <p class="article-text">帝国議会は、下院及び上院の両議院でこれを構成する。</p>
       </div>
 
       <div class="article">
@@ -294,13 +294,13 @@
       </div>
 
       <div class="article">
-        <h3 class="article-title">第四十五条【上院議員の任期】</h3>
-        <p class="article-text">上院議員の任期は、四年とする。ただし、上院解散の場合には、その期間満了前に終了する。</p>
+        <h3 class="article-title">第四十五条【下院議員の任期】</h3>
+        <p class="article-text">下院議員の任期は、四年とする。ただし、下院解散の場合には、その期間満了前に終了する。</p>
       </div>
 
       <div class="article">
-        <h3 class="article-title">第四十六条【下院議員の任期】</h3>
-        <p class="article-text">下院議員の任期は、六年とし、三年ごとに議員の半数を改選する。</p>
+        <h3 class="article-title">第四十六条【上院議員の任期】</h3>
+        <p class="article-text">上院議員の任期は、六年とし、三年ごとに議員の半数を改選する。</p>
       </div>
 
       <div class="article">
@@ -340,8 +340,8 @@
 
       <div class="article">
         <h3 class="article-title">第五十四条【解散・総選挙・特別会】</h3>
-        <p class="article-text">上院が解散されたときは、解散の日から四十日以内に、上院議員の総選挙を行い、その選挙の日から三十日以内に、国会を召集しなければならない。</p>
-        <p class="article-text">2 上院が解散されたときは、下院は、同時に閉会となる。</p>
+        <p class="article-text">下院が解散されたときは、解散の日から四十日以内に、下院議員の総選挙を行い、その選挙の日から三十日以内に、国会を召集しなければならない。</p>
+        <p class="article-text">2 下院が解散されたときは、上院は、同時に閉会となる。</p>
       </div>
 
       <div class="article">
@@ -372,7 +372,7 @@
 
       <div class="article">
         <h3 class="article-title">第六十条【予算の議決】</h3>
-        <p class="article-text">予算は、さきに上院に提出しなければならない。</p>
+        <p class="article-text">予算は、さきに下院に提出しなければならない。</p>
       </div>
 
       <div class="article">
@@ -423,12 +423,12 @@
 
       <div class="article">
         <h3 class="article-title">第六十九条【内閣不信任】</h3>
-        <p class="article-text">内閣は、上院で不信任の決議案を可決し、又は信任の決議案を否決したときは、十日以内に上院が解散されない限り、総辞職をしなければならない。</p>
+        <p class="article-text">内閣は、下院で不信任の決議案を可決し、又は信任の決議案を否決したときは、十日以内に下院が解散されない限り、総辞職をしなければならない。</p>
       </div>
 
       <div class="article">
         <h3 class="article-title">第七十条【総辞職】</h3>
-        <p class="article-text">内閣総理大臣が欠けたとき、又は上院議員総選挙の後に初めて国会の召集があったときは、内閣は、総辞職をしなければならない。</p>
+        <p class="article-text">内閣総理大臣が欠けたとき、又は下院議員総選挙の後に初めて国会の召集があったときは、内閣は、総辞職をしなければならない。</p>
       </div>
 
       <div class="article">
@@ -620,13 +620,13 @@
       </div>
 
       <div class="article">
-        <h3 class="article-title">第百一条【下院未成立の間の国会】</h3>
-        <p class="article-text">この憲法施行の際、下院がまだ成立していないときは、その成立するまでの間、上院は、国会としての権限を行う。</p>
+        <h3 class="article-title">第百一条【上院未成立の間の国会】</h3>
+        <p class="article-text">この憲法施行の際、上院がまだ成立していないときは、その成立するまでの間、下院は、国会としての権限を行う。</p>
       </div>
 
       <div class="article">
-        <h3 class="article-title">第百二条【第一期下院議員の任期】</h3>
-        <p class="article-text">この憲法による第一期の下院議員のうち、その半数の者の任期は、これを三年とする。その議員は、法律の定めるところにより、これを定める。</p>
+        <h3 class="article-title">第百二条【第一期上院議員の任期】</h3>
+        <p class="article-text">この憲法による第一期の上院議員のうち、その半数の者の任期は、これを三年とする。その議員は、法律の定めるところにより、これを定める。</p>
       </div>
 
       <div class="article">
