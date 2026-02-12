@@ -12,6 +12,8 @@ interface AppRouteMeta {
   fullTitle?: string;
   description?: string;
   keywords?: string;
+  robots?: string;
+  image?: string;
   breadcrumb?: BreadcrumbItem[];
 }
 
@@ -36,7 +38,8 @@ const routes: Array<RouteRecordRaw> = [
       breadcrumb: [{ text: '検索結果' }],
       title: 'サイト内検索',
       description: 'やんまー帝国連邦公式サイト内のコンテンツを検索します。',
-      keywords: '検索, サイト内検索'
+      keywords: '検索, サイト内検索',
+      robots: 'noindex,follow'
     }
   },
   /* 基本情報 */
@@ -221,7 +224,8 @@ const routes: Array<RouteRecordRaw> = [
     name: 'not-found',
     component: () => import(/* webpackChunkName: "not-found" */ '../views/NotFoundView.vue'),
     meta: {
-      title: '404 - ページが見つかりません'
+      title: '404 - ページが見つかりません',
+      robots: 'noindex,nofollow'
     }
   }
 ];
@@ -243,7 +247,9 @@ router.afterEach((to) => {
   nextTick(() => {
     const siteName = 'やんまー帝国連邦';
     const defaultDescription = 'Minecraft(マインクラフト)で架空国家を運営するプロジェクト「やんまー帝国連邦」の公式サイト。現代都市開発やマルチプレイに興味がある方はぜひご覧ください。';
+    const defaultKeywords = 'やんまー帝国連邦,マイクラ,Minecraft,架空国家,国家運営,都市国家,都市開発,参加,コミュニティ,現代都市,マルチプレイ,Java,BE,統合版,クロスプレイ';
     const baseUrl = 'https://yanma-empire.net';
+    const defaultImage = `${baseUrl}/image.webp`;
     const meta = to.meta as AppRouteMeta;
 
     // タイトルの設定
@@ -257,8 +263,19 @@ router.afterEach((to) => {
     }
 
     const metaKeywords = document.querySelector<HTMLMetaElement>('#meta-keywords');
-    if (meta.keywords && metaKeywords) {
-      metaKeywords.setAttribute('content', meta.keywords);
+    if (metaKeywords) {
+      metaKeywords.setAttribute('content', meta.keywords || defaultKeywords);
+    }
+
+    const metaRobots = document.querySelector<HTMLMetaElement>('#meta-robots');
+    if (metaRobots) {
+      metaRobots.setAttribute('content', meta.robots || 'index,follow');
+    }
+
+    const canonicalLink = document.querySelector<HTMLLinkElement>('#canonical-link');
+    if (canonicalLink) {
+      const canonicalUrl = new URL(to.fullPath, baseUrl).href;
+      canonicalLink.setAttribute('href', canonicalUrl);
     }
 
     // OGPタグの更新
@@ -270,6 +287,18 @@ router.afterEach((to) => {
 
     const ogUrl = document.querySelector<HTMLMetaElement>('meta[property="og:url"]');
     if (ogUrl) ogUrl.setAttribute('content', window.location.href);
+
+    const ogImage = document.querySelector<HTMLMetaElement>('meta[property="og:image"]');
+    if (ogImage) ogImage.setAttribute('content', meta.image || defaultImage);
+
+    const twitterTitle = document.querySelector<HTMLMetaElement>('meta[name="twitter:title"]');
+    if (twitterTitle) twitterTitle.setAttribute('content', pageTitle);
+
+    const twitterDescription = document.querySelector<HTMLMetaElement>('meta[name="twitter:description"]');
+    if (twitterDescription) twitterDescription.setAttribute('content', meta.description || defaultDescription);
+
+    const twitterImage = document.querySelector<HTMLMetaElement>('meta[name="twitter:image"]');
+    if (twitterImage) twitterImage.setAttribute('content', meta.image || defaultImage);
 
     // --- ▼▼▼ 構造化データ(JSON-LD)の生成 ▼▼▼ ---
     const structuredData: { "@context": string; "@graph": Array<Record<string, unknown>> } = {
@@ -283,10 +312,31 @@ router.afterEach((to) => {
       url: baseUrl,
       name: 'やんまー帝国連邦公式サイト',
       description: 'Minecraftの架空国家プロジェクト「やんまー帝国連邦」の公式サイトです。',
+      inLanguage: 'ja-JP',
+      image: meta.image || defaultImage,
       potentialAction: {
         '@type': 'SearchAction',
         target: `${baseUrl}/search?q={search_term_string}`,
         'query-input': 'required name=search_term_string'
+      }
+    });
+
+    structuredData['@graph'].push({
+      '@type': 'Organization',
+      name: 'やんまー帝国連邦',
+      url: baseUrl,
+      logo: `${baseUrl}/favicon.ico`
+    });
+
+    structuredData['@graph'].push({
+      '@type': 'WebPage',
+      name: pageTitle,
+      url: new URL(to.fullPath, baseUrl).href,
+      description: meta.description || defaultDescription,
+      inLanguage: 'ja-JP',
+      isPartOf: {
+        '@type': 'WebSite',
+        url: baseUrl
       }
     });
 
