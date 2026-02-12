@@ -1,7 +1,7 @@
 <template>
   <section class="page-links-section">
     <div class="page-links-grid">
-      <router-link to="/basic" class="page-link-card">
+      <router-link to="/about" class="page-link-card">
         <div class="card-icon">
           <span class="material-icons">account_balance</span>
         </div>

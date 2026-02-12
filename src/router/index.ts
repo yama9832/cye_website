@@ -41,9 +41,9 @@ const routes: Array<RouteRecordRaw> = [
   },
   /* 基本情報 */
   {
-    path: '/basic',
-    name: 'basic',
-    component: () => import(/* webpackChunkName: "basic" */ '../views/basic/BasicView.vue'),
+    path: '/about',
+    name: 'about',
+    component: () => import(/* webpackChunkName: "about" */ '../views/about/AboutView.vue'),
     meta: {
       breadcrumb: [{ text: '基本情報' }],
       title: '基本情報',
@@ -51,42 +51,42 @@ const routes: Array<RouteRecordRaw> = [
     }
   },
   {
-    path: '/basic/constitution',
+    path: '/about/constitution',
     name: 'constitution',
-    component: () => import(/* webpackChunkName: "constitution" */ '../views/basic/ConstitutionView.vue'),
+    component: () => import(/* webpackChunkName: "constitution" */ '../views/about/ConstitutionView.vue'),
     meta: {
-      breadcrumb: [{ text: '基本情報', to: '/basic' }, { text: '憲法' }],
+      breadcrumb: [{ text: '基本情報', to: '/about' }, { text: '憲法' }],
       title: '憲法'
     }
   },
   {
-    path: '/basic/diet',
+    path: '/about/diet',
     name: 'diet',
-    component: () => import(/* webpackChunkName: "diet" */ '../views/basic/DietView.vue'),
+    component: () => import(/* webpackChunkName: "diet" */ '../views/about/DietView.vue'),
     meta: {
-      breadcrumb: [{ text: '基本情報', to: '/basic' }, { text: '帝国議会' }],
+      breadcrumb: [{ text: '基本情報', to: '/about' }, { text: '帝国議会' }],
       title: '帝国議会',
       description: 'やんまー帝国連邦の立法府、帝国議会の構成や役割について。上院・下院の議席情報、政党情報など、架空国家の政治設定を紹介します。',
       keywords: '架空国家, 帝国議会, 政治, 政党, 上院, 下院, 議席, 立法府, マイクラ, 国家運営'
     }
   },
   {
-    path: '/basic/ministries',
+    path: '/about/ministries',
     name: 'ministries',
-    component: () => import(/* webpackChunkName: "ministries" */ '../views/basic/MinistriesView.vue'),
+    component: () => import(/* webpackChunkName: "ministries" */ '../views/about/MinistriesView.vue'),
     meta: {
-      breadcrumb: [{ text: '基本情報', to: '/basic' }, { text: '府省庁' }],
+      breadcrumb: [{ text: '基本情報', to: '/about' }, { text: '府省庁' }],
       title: '府省庁',
       description: 'やんまー帝国連邦の行政を担う各府省庁の役割と組織を紹介。架空国家における詳細な省庁設定。',
       keywords: '架空国家, 府省庁, 行政, 内閣, 省庁, 設定, やんまー帝国連邦'
     }
   },
   {
-    path: '/basic/corporations',
+    path: '/about/corporations',
     name: 'corporations',
-    component: () => import(/* webpackChunkName: "corporations" */ '../views/basic/CorporationsView.vue'),
+    component: () => import(/* webpackChunkName: "corporations" */ '../views/about/CorporationsView.vue'),
     meta: {
-      breadcrumb: [{ text: '基本情報', to: '/basic' }, { text: '国内法人' }],
+      breadcrumb: [{ text: '基本情報', to: '/about' }, { text: '国内法人' }],
       title: '国内法人一覧',
       description: 'やんまー帝国連邦で活動する主要な法人、企業、団体を紹介。架空の企業設定や経済活動に興味がある方向け。',
       keywords: '架空国家, 企業, 法人, 団体, 経済, 設定, マイクラ'

@@ -126,7 +126,7 @@ interface CityInfo {
 }
 
 export default defineComponent({
-  name: 'BasicView',
+  name: 'AboutView',
   components: {
     AppBreadcrumb
   },

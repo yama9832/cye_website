@@ -23,7 +23,7 @@
 			{
 				"type": "link",
 				"text": "結果はこちらから",
-				"to": "/basic/diet"
+				"to": "/about/diet"
 			}
 		]
 	},
@@ -78,7 +78,7 @@
 			{
 				"type": "link",
 				"text": "結果はこちらから",
-				"to": "/basic/diet"
+				"to": "/about/diet"
 			}
 		]
 	},

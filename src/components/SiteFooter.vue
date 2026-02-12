@@ -50,12 +50,12 @@ export default defineComponent({
       footerLinks: [
         {
           title: '基本情報',
-          to: '/basic',
+          to: '/about',
           links: [
-            { name: '憲法', to: '/basic/constitution' },
-            { name: '帝国議会', to: '/basic/diet' },
-            { name: '府省庁', to: '/basic/ministries' },
-            { name: '国内法人', to: '/basic/corporations' },
+            { name: '憲法', to: '/about/constitution' },
+            { name: '帝国議会', to: '/about/diet' },
+            { name: '府省庁', to: '/about/ministries' },
+            { name: '国内法人', to: '/about/corporations' },
           ]
         },
         {
