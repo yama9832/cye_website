@@ -1,5 +1,18 @@
-const fs = require('fs');
-const path = require('path');
+import fs from 'fs';
+import path from 'path';
+
+interface NewsItem {
+  slug?: string;
+  url?: string;
+  date?: string;
+}
+
+interface SitemapEntry {
+  loc: string;
+  lastmod: string;
+  changefreq: 'daily' | 'weekly' | 'monthly';
+  priority: '1.0' | '0.7' | '0.6';
+}
 
 const baseUrl = 'https://yanma-empire.net';
 const today = new Date().toISOString().split('T')[0];
@@ -23,22 +36,22 @@ const staticRoutes = [
 ];
 
 const newsPath = path.join(__dirname, '..', 'src', 'data', 'news.json');
-const newsItems = JSON.parse(fs.readFileSync(newsPath, 'utf8'));
+const newsItems = JSON.parse(fs.readFileSync(newsPath, 'utf8')) as NewsItem[];
 
-const urls = [];
+const urls: SitemapEntry[] = [];
 
-staticRoutes.forEach((route) => {
+for (const route of staticRoutes) {
   urls.push({
     loc: `${baseUrl}${route}`,
     lastmod: today,
     changefreq: route === '/' ? 'daily' : 'weekly',
     priority: route === '/' ? '1.0' : '0.7'
   });
-});
+}
 
-newsItems.forEach((item) => {
+for (const item of newsItems) {
   if (!item.slug || item.url) {
-    return;
+    continue;
   }
   urls.push({
     loc: `${baseUrl}/news/${item.slug}`,
@@ -46,9 +59,9 @@ newsItems.forEach((item) => {
     changefreq: 'monthly',
     priority: '0.6'
   });
-});
+}
 
-const escapeXml = (value) => value.replace(/[<>&'"]/g, (char) => {
+const escapeXml = (value: string) => value.replace(/[<>&'"]/g, (char) => {
   switch (char) {
     case '<':
       return '&lt;';

@@ -15,7 +15,8 @@
       </header>
 
       <div class="article-body">
-        <template v-for="(block, index) in article.content" :key="`block-${index}`">
+        <div v-if="hasMarkdown" class="markdown-body" v-html="renderedMarkdown"></div>
+        <template v-else v-for="(block, index) in article.content || []" :key="`block-${index}`">
           <p v-if="block.type === 'text'">{{ block.value }}</p>
           <p v-else-if="block.type === 'link'">
             <router-link :to="block.to" class="article-link">{{ block.text }}</router-link>
@@ -25,6 +26,10 @@
             <figcaption v-if="block.caption">{{ block.caption }}</figcaption>
           </figure>
         </template>
+      </div>
+
+      <div class="article-note">
+        <p>本記事の作成にあたり、生成AIを用いる場合があります。ご了承の上ご覧ください。</p>
       </div>
     </div>
 
@@ -36,8 +41,14 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
+import MarkdownIt from 'markdown-it';
 import AppBreadcrumb from '@/components/AppBreadcrumb.vue';
 import newsData from '@/data/news.json';
+
+const markdownRenderer = new MarkdownIt({
+  breaks: true,
+  linkify: true
+});
 
 interface NewsContentBlock {
   type: 'text' | 'image' | 'link';
@@ -58,7 +69,8 @@ interface NewsItem {
   slug?: string;
   url?: string;
   thumbnail?: string;
-  content: NewsContentBlock[];
+  content?: NewsContentBlock[];
+  markdown?: string;
 }
 
 export default defineComponent({
@@ -71,6 +83,15 @@ export default defineComponent({
       const slugParam = this.$route.params.slug;
       const slug = Array.isArray(slugParam) ? slugParam[0] : slugParam;
       return (newsData as NewsItem[]).find((item: NewsItem) => item.slug === slug) || null;
+    },
+    hasMarkdown(): boolean {
+      return Boolean(this.article?.markdown);
+    },
+    renderedMarkdown(): string {
+      if (!this.article?.markdown) {
+        return '';
+      }
+      return markdownRenderer.render(this.article.markdown);
     }
   },
   methods: {
@@ -152,6 +173,52 @@ export default defineComponent({
   padding-bottom: 3rem;
   color: #495057;
   line-height: 1.6;
+}
+
+.article-note {
+  border-top: 1px solid #e2e6e1;
+  margin-top: 2rem;
+  padding-top: 1rem;
+  color: #6c757d;
+  font-size: 0.9rem;
+}
+
+.article-note p {
+  margin: 0;
+}
+
+.markdown-body :deep(h2),
+.markdown-body :deep(h3) {
+  margin: 1.8rem 0 0.75rem;
+  color: #343a40;
+}
+
+.markdown-body :deep(p) {
+  margin: 0;
+}
+
+.markdown-body :deep(ul),
+.markdown-body :deep(ol) {
+  padding-left: 1.5rem;
+  margin: 0;
+}
+
+.markdown-body :deep(a) {
+  color: #008037;
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.markdown-body :deep(blockquote) {
+  margin: 0;
+  padding: 1rem 1.25rem;
+  background: #eef7f1;
+  border-radius: 12px;
+}
+
+.markdown-body :deep(blockquote p) {
+  margin: 0;
 }
 
 .article-link {

@@ -38,9 +38,10 @@ npm run lint
 - `summary`: 一覧用の要約
 - `tags`: `お知らせ` / `ニュース` / `動画投稿` / `そのほか`
 - `thumbnail`: サムネイル画像パス（`src/assets` からの相対パス）
-- `content`: 本文ブロック配列
+- `content`: 本文ブロック配列（Markdownを使う場合は省略可）
 	- `type: "text"` のとき `value`
 	- `type: "image"` のとき `src` と任意の `caption`
+- `markdown`: Markdown本文（`content` より優先されます）
 
 ### 例
 ```json
@@ -52,10 +53,7 @@ npm run lint
 	"summary": "お知らせの要約がここに入ります。",
 	"tags": ["お知らせ"],
 	"thumbnail": "news/example.webp",
-	"content": [
-		{ "type": "text", "value": "本文テキスト" },
-		{ "type": "image", "src": "news/example.webp", "caption": "画像キャプション" }
-	]
+	"markdown": "## 見出し\n\n本文テキスト\n\n- 箇条書き\n- 箇条書き"
 }
 ```
 
