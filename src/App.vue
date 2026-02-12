@@ -50,6 +50,18 @@ body::-webkit-scrollbar {
   color: #2c3e50;
 }
 
+.material-icons {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1em;
+  height: 1em;
+  line-height: 1;
+  overflow: hidden;
+  flex-shrink: 0;
+  vertical-align: middle;
+}
+
 /* ページのメインコンテンツ領域の共通スタイル */
 .page-content-wrapper {
   max-width: 80rem; 

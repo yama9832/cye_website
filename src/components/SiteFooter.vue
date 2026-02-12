@@ -17,13 +17,37 @@
         </div>
         <div class="social-links">
           <a href="https://www.youtube.com/@yanma-empire" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
-            <img src="@/assets/youtube_logo.png" alt="YouTube">
+            <img
+              src="@/assets/optimized/youtube-24.png"
+              srcset="@/assets/optimized/youtube-24.png 1x, @/assets/optimized/youtube-48.png 2x"
+              alt="YouTube"
+              width="24"
+              height="24"
+              loading="lazy"
+              decoding="async"
+            >
           </a>
           <a href="https://x.com/Yanma_Empire" target="_blank" rel="noopener noreferrer" aria-label="X (formerly Twitter)">
-            <img src="@/assets/x_logo.png" alt="X (formerly Twitter)">
+            <img
+              src="@/assets/optimized/x-24.png"
+              srcset="@/assets/optimized/x-24.png 1x, @/assets/optimized/x-48.png 2x"
+              alt="X (formerly Twitter)"
+              width="24"
+              height="24"
+              loading="lazy"
+              decoding="async"
+            >
           </a>
           <a href="https://www.instagram.com/yanma_empire" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-            <img src="@/assets/instagram_logo.png" alt="Instagram">
+            <img
+              src="@/assets/optimized/instagram-24.png"
+              srcset="@/assets/optimized/instagram-24.png 1x, @/assets/optimized/instagram-48.png 2x"
+              alt="Instagram"
+              width="24"
+              height="24"
+              loading="lazy"
+              decoding="async"
+            >
           </a>
         </div>
       </div>
