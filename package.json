@@ -5,7 +5,8 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "ts-node --transpile-only -P scripts/tsconfig.json scripts/generate-sitemap.ts && vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "split:news": "node scripts/split-news-by-day-range.js"
   },
   "dependencies": {
     "chart.js": "^4.5.0",
