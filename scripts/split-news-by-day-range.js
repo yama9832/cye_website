@@ -3,12 +3,6 @@ const path = require('path');
 const matter = require('gray-matter');
 
 const NEWS_DIR = path.join(__dirname, '../src/data/news');
-const BUCKETS = [
-  { name: '1-7', min: 1, max: 7 },
-  { name: '8-14', min: 8, max: 14 },
-  { name: '15-21', min: 15, max: 21 },
-  { name: '22-31', min: 22, max: 31 }
-];
 
 function getMarkdownFilesRecursively(targetDir) {
   const entries = fs.readdirSync(targetDir, { withFileTypes: true });
@@ -29,49 +23,43 @@ function getMarkdownFilesRecursively(targetDir) {
   return files;
 }
 
-function parseDayFromDate(value) {
+function resolveYearMonthFromDate(value) {
   if (value == null) {
     return null;
   }
 
   if (value instanceof Date && !Number.isNaN(value.getTime())) {
-    return value.getDate();
+    const year = value.getFullYear();
+    const month = String(value.getMonth() + 1).padStart(2, '0');
+    return `${year}-${month}`;
   }
 
   const dateText = String(value).trim();
-  const parts = dateText.split('-');
-  if (parts.length !== 3) {
+  const match = dateText.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+  if (!match) {
     return null;
   }
 
-  const day = Number(parts[2]);
+  const year = match[1];
+  const month = Number(match[2]);
+  const day = Number(match[3]);
+
+  if (!Number.isInteger(month) || month < 1 || month > 12) {
+    return null;
+  }
+
   if (!Number.isInteger(day) || day < 1 || day > 31) {
     return null;
   }
 
-  return day;
+  return `${year}-${String(month).padStart(2, '0')}`;
 }
 
-function resolveBucket(day) {
-  return BUCKETS.find((bucket) => day >= bucket.min && day <= bucket.max) || null;
-}
-
-function ensureBucketDirs() {
-  for (const bucket of BUCKETS) {
-    const dirPath = path.join(NEWS_DIR, bucket.name);
-    if (!fs.existsSync(dirPath)) {
-      fs.mkdirSync(dirPath, { recursive: true });
-    }
-  }
-}
-
-function splitNewsByDayRange() {
+function splitNewsByYearMonth() {
   if (!fs.existsSync(NEWS_DIR)) {
     console.error(`ニュースフォルダが見つかりません: ${NEWS_DIR}`);
     process.exit(1);
   }
-
-  ensureBucketDirs();
 
   const files = getMarkdownFilesRecursively(NEWS_DIR);
   let movedCount = 0;
@@ -81,29 +69,28 @@ function splitNewsByDayRange() {
     const raw = fs.readFileSync(filePath, 'utf-8');
     const { data } = matter(raw);
 
-    const day = parseDayFromDate(data.date);
-    if (day == null) {
+    const yearMonth = resolveYearMonthFromDate(data.date);
+    if (yearMonth == null) {
       console.warn(`dateを解析できないためスキップ: ${fileName}`);
       continue;
     }
 
-    const bucket = resolveBucket(day);
-    if (!bucket) {
-      console.warn(`日付範囲外のためスキップ: ${fileName}`);
-      continue;
+    const targetDir = path.join(NEWS_DIR, yearMonth);
+    if (!fs.existsSync(targetDir)) {
+      fs.mkdirSync(targetDir, { recursive: true });
     }
 
-    const destination = path.join(NEWS_DIR, bucket.name, fileName);
+    const destination = path.join(targetDir, fileName);
     if (path.resolve(filePath) === path.resolve(destination)) {
       continue;
     }
 
     fs.renameSync(filePath, destination);
     movedCount += 1;
-    console.log(`移動: ${fileName} -> ${bucket.name}/`);
+    console.log(`移動: ${fileName} -> ${yearMonth}/`);
   }
 
-  console.log(`完了: ${movedCount}件を7日区切りに分割しました。`);
+  console.log(`完了: ${movedCount}件を年月フォルダに分割しました。`);
 }
 
-splitNewsByDayRange();
+splitNewsByYearMonth();
