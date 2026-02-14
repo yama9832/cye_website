@@ -43,7 +43,8 @@
 import { defineComponent } from 'vue';
 import MarkdownIt from 'markdown-it';
 import AppBreadcrumb from '@/components/AppBreadcrumb.vue';
-import newsData from '@/data/news.json';
+
+const NEWS_API_BASE = 'https://news-api.yamamoto-200517.workers.dev/api/news';
 
 const markdownRenderer = new MarkdownIt({
   breaks: true,
@@ -78,12 +79,12 @@ export default defineComponent({
   components: {
     AppBreadcrumb
   },
+  data(): { article: NewsItem | null } {
+    return {
+      article: null
+    };
+  },
   computed: {
-    article(): NewsItem | null {
-      const slugParam = this.$route.params.slug;
-      const slug = Array.isArray(slugParam) ? slugParam[0] : slugParam;
-      return (newsData as NewsItem[]).find((item: NewsItem) => item.slug === slug) || null;
-    },
     hasMarkdown(): boolean {
       return Boolean(this.article?.markdown);
     },
@@ -94,7 +95,33 @@ export default defineComponent({
       return markdownRenderer.render(this.article.markdown);
     }
   },
+  mounted() {
+    this.fetchArticle();
+  },
+  watch: {
+    '$route.path'() {
+      this.fetchArticle();
+    }
+  },
   methods: {
+    async fetchArticle() {
+      const slug = this.$route.path.split('/').filter(Boolean).pop();
+      if (!slug) {
+        this.article = null;
+        return;
+      }
+
+      try {
+        const response = await fetch(`${NEWS_API_BASE}/${encodeURIComponent(slug)}`);
+        if (!response.ok) {
+          throw new Error(`Failed to fetch article: ${response.status}`);
+        }
+        this.article = await response.json();
+      } catch (error) {
+        console.error('ニュース記事の取得に失敗しました:', error);
+        this.article = null;
+      }
+    },
     formatDate(date: string): string {
       return typeof date === 'string' ? date.replace(/-/g, '.') : date;
     },

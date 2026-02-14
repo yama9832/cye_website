@@ -57,7 +57,8 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import AppBreadcrumb from '@/components/AppBreadcrumb.vue';
-import newsData from '@/data/news.json';
+
+const NEWS_API_BASE = 'https://news-api.yamamoto-200517.workers.dev/api/news';
 
 interface NewsItem {
   id: number | string;
@@ -78,7 +79,7 @@ export default defineComponent({
   data(): { activeTag: string; newsItems: NewsItem[] } {
     return {
       activeTag: 'すべて',
-      newsItems: newsData as NewsItem[]
+      newsItems: []
     };
   },
   computed: {
@@ -96,7 +97,18 @@ export default defineComponent({
       return this.sortedNews.filter((item: NewsItem) => (item.tags || []).includes(this.activeTag));
     }
   },
-  mounted() {
+  async mounted() {
+    try {
+      const response = await fetch(NEWS_API_BASE);
+      if (!response.ok) {
+        throw new Error(`Failed to fetch news: ${response.status}`);
+      }
+      this.newsItems = await response.json();
+    } catch (error) {
+      console.error('ニュース一覧の取得に失敗しました:', error);
+      this.newsItems = [];
+    }
+
     this.applyTagFromRoute();
   },
   watch: {

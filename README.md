@@ -28,33 +28,41 @@ npm run lint
 ```
 
 ## ニュース記事の追加方法
-ニュースは [src/data/news.json](src/data/news.json) に追加します。表示順は `date` の降順です。
+ニュースは [src/data/news](src/data/news) 配下に、1記事1ファイルのMarkdown（front matter付き）で追加します。表示順は `date` の降順です。
 
-### 追加する項目
-- `id`: 一意の数値または文字列
+### 追加する項目（front matter）
 - `slug`: 記事URL用の英数字（`/news/<slug>`）
 - `date`: `YYYY-MM-DD`
 - `title`: タイトル
 - `summary`: 一覧用の要約
 - `tags`: `お知らせ` / `ニュース` / `動画投稿` / `そのほか`
 - `thumbnail`: サムネイル画像パス（`src/assets` からの相対パス）
-- `content`: 本文ブロック配列（Markdownを使う場合は省略可）
-	- `type: "text"` のとき `value`
-	- `type: "image"` のとき `src` と任意の `caption`
-- `markdown`: Markdown本文（`content` より優先されます）
 
 ### 例
-```json
-{
-	"id": 8,
-	"slug": "example-news",
-	"date": "2026-02-12",
-	"title": "新しいお知らせ",
-	"summary": "お知らせの要約がここに入ります。",
-	"tags": ["お知らせ"],
-	"thumbnail": "news/example.webp",
-	"markdown": "## 見出し\n\n本文テキスト\n\n- 箇条書き\n- 箇条書き"
-}
+```md
+---
+slug: example-news
+date: 2026-02-12
+title: 新しいお知らせ
+summary: お知らせの要約がここに入ります。
+tags:
+  - お知らせ
+thumbnail: news/example.webp
+---
+
+## 見出し
+
+本文テキスト
+
+- 箇条書き
+- 箇条書き
+```
+
+### 同期方法
+Cloudflare側へ反映する場合は、Markdown作成後に以下を実行します。
+
+```
+node src/sync-news.js
 ```
 
 ### 画像の置き場所

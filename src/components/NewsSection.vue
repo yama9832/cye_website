@@ -44,7 +44,17 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import BasePagination from './BasePagination.vue';
-import newsData from '@/data/news.json';
+
+interface NewsItem {
+  id: number | string;
+  title: string;
+  date: string;
+  tags: string[];
+  slug?: string;
+  url?: string;
+}
+
+const NEWS_API_BASE = 'https://news-api.yamamoto-200517.workers.dev/api/news';
 
 export default defineComponent({
   name: 'NewsSection',
@@ -55,27 +65,39 @@ export default defineComponent({
     return {
       currentPage: 1,
       itemsPerPage: 5,
-      newsItems: newsData
+      newsItems: [] as NewsItem[]
     };
   },
+  async mounted() {
+    try {
+      const response = await fetch(NEWS_API_BASE);
+      if (!response.ok) {
+        throw new Error(`Failed to fetch news: ${response.status}`);
+      }
+      this.newsItems = await response.json();
+    } catch (error) {
+      console.error('ニュースの取得に失敗しました:', error);
+      this.newsItems = [];
+    }
+  },
   computed: {
-    sortedNews() {
-      return [...this.newsItems].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+    sortedNews(): NewsItem[] {
+      return [...this.newsItems].sort((a: NewsItem, b: NewsItem) => new Date(b.date).getTime() - new Date(a.date).getTime());
     },
-    totalPages() {
+    totalPages(): number {
       return Math.ceil(this.sortedNews.length / this.itemsPerPage);
     },
-    paginatedNews() {
+    paginatedNews(): NewsItem[] {
       const start = (this.currentPage - 1) * this.itemsPerPage;
       const end = start + this.itemsPerPage;
       return this.sortedNews.slice(start, end);
     }
   },
   methods: {
-    changePage(page) {
+    changePage(page: number) {
       this.currentPage = page;
     },
-    getTagClass(tag) {
+    getTagClass(tag: string): string {
       const tagMap = {
         'お知らせ': 'tag-info',
         'ニュース': 'tag-pr',
@@ -84,19 +106,19 @@ export default defineComponent({
       };
       return tagMap[tag] || 'tag-default';
     },
-    formatDate(date) {
+    formatDate(date: string): string {
       return typeof date === 'string' ? date.replace(/-/g, '.') : date;
     },
-    getPrimaryTag(item) {
+    getPrimaryTag(item: NewsItem): string {
       return Array.isArray(item.tags) && item.tags.length > 0 ? item.tags[0] : 'そのほか';
     },
-    getItemLink(item) {
+    getItemLink(item: NewsItem): string {
       if (item.url) {
         return item.url;
       }
       return item.slug ? `/news/${item.slug}` : '/news';
     },
-    isExternal(url) {
+    isExternal(url?: string): boolean {
       return typeof url === 'string' && url.startsWith('http');
     }
   }
