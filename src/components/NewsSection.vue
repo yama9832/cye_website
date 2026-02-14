@@ -44,6 +44,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import BasePagination from './BasePagination.vue';
+import { NEWS_API_BASE } from '@/config/newsApi';
 
 interface NewsItem {
   id: number | string;
@@ -53,8 +54,6 @@ interface NewsItem {
   slug?: string;
   url?: string;
 }
-
-const NEWS_API_BASE = 'https://news-api.yamamoto-200517.workers.dev/api/news';
 
 export default defineComponent({
   name: 'NewsSection',
@@ -107,7 +106,10 @@ export default defineComponent({
       return tagMap[tag] || 'tag-default';
     },
     formatDate(date: string): string {
-      return typeof date === 'string' ? date.replace(/-/g, '.') : date;
+      if (typeof date !== 'string') {
+        return date;
+      }
+      return date.split('T')[0].replace(/-/g, '.');
     },
     getPrimaryTag(item: NewsItem): string {
       return Array.isArray(item.tags) && item.tags.length > 0 ? item.tags[0] : 'そのほか';

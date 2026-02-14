@@ -17,6 +17,12 @@ npm install
 npm run serve
 ```
 
+ローカルの `news-api` を使う場合は `.env.local` を作成し、以下を設定してください。
+
+```
+VUE_APP_NEWS_API_BASE=http://127.0.0.1:8788/api/news
+```
+
 ## ビルド
 ```
 npm run build
@@ -62,7 +68,13 @@ thumbnail: news/example.webp
 Cloudflare側へ反映する場合は、Markdown作成後に以下を実行します。
 
 ```
-node src/sync-news.js
+NEWS_API_SYNC_SECRET=<your-secret> node src/sync-news.js
+```
+
+必要に応じて同期先を変更する場合は `NEWS_API_SYNC_URL` を指定できます。
+
+```
+NEWS_API_SYNC_URL=http://127.0.0.1:8788/api/news/sync NEWS_API_SYNC_SECRET=<your-secret> node src/sync-news.js
 ```
 
 ### 画像の置き場所

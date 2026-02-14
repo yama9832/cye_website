@@ -43,8 +43,7 @@
 import { defineComponent } from 'vue';
 import MarkdownIt from 'markdown-it';
 import AppBreadcrumb from '@/components/AppBreadcrumb.vue';
-
-const NEWS_API_BASE = 'https://news-api.yamamoto-200517.workers.dev/api/news';
+import { NEWS_API_BASE } from '@/config/newsApi';
 
 const markdownRenderer = new MarkdownIt({
   breaks: true,
@@ -123,7 +122,10 @@ export default defineComponent({
       }
     },
     formatDate(date: string): string {
-      return typeof date === 'string' ? date.replace(/-/g, '.') : date;
+      if (typeof date !== 'string') {
+        return date;
+      }
+      return date.split('T')[0].replace(/-/g, '.');
     },
     resolveImage(path?: string): string {
       if (!path) {

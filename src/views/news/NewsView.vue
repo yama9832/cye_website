@@ -57,8 +57,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import AppBreadcrumb from '@/components/AppBreadcrumb.vue';
-
-const NEWS_API_BASE = 'https://news-api.yamamoto-200517.workers.dev/api/news';
+import { NEWS_API_BASE } from '@/config/newsApi';
 
 interface NewsItem {
   id: number | string;
@@ -127,7 +126,10 @@ export default defineComponent({
       this.activeTag = this.tagOptions.includes(tag) ? tag : 'すべて';
     },
     formatDate(date: string): string {
-      return typeof date === 'string' ? date.replace(/-/g, '.') : date;
+      if (typeof date !== 'string') {
+        return date;
+      }
+      return date.split('T')[0].replace(/-/g, '.');
     },
     resolveImage(path?: string): string {
       if (!path) {
