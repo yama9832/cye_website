@@ -9,9 +9,11 @@
     "split:news": "node scripts/split-news-by-day-range.js"
   },
   "dependencies": {
+    "@types/dompurify": "^3.0.5",
     "chart.js": "^4.5.0",
     "chartjs-plugin-datalabels": "^2.2.0",
     "core-js": "^3.8.3",
+    "dompurify": "^3.3.1",
     "gray-matter": "^4.0.3",
     "markdown-it": "^14.1.0",
     "vue": "^3.2.13",
@@ -22,6 +24,7 @@
   "devDependencies": {
     "@babel/core": "^7.12.16",
     "@babel/eslint-parser": "^7.12.16",
+    "@types/markdown-it": "^14.1.2",
     "@typescript-eslint/eslint-plugin": "^7.18.0",
     "@typescript-eslint/parser": "^7.18.0",
     "@vue/cli-plugin-babel": "5.0.9",

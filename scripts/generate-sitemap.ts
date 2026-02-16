@@ -36,7 +36,10 @@ const staticRoutes = [
 ];
 
 const newsPath = path.join(__dirname, '..', 'src', 'data', 'news.json');
-const newsItems = JSON.parse(fs.readFileSync(newsPath, 'utf8')) as NewsItem[];
+let newsItems: NewsItem[] = [];
+if (fs.existsSync(newsPath)) {
+  newsItems = JSON.parse(fs.readFileSync(newsPath, 'utf8')) as NewsItem[];
+}
 
 const urls: SitemapEntry[] = [];
 

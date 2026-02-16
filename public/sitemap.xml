@@ -2,128 +2,92 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://yanma-empire.net/</loc>
-    <lastmod>2026-02-14</lastmod>
+    <lastmod>2026-02-16</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://yanma-empire.net/about</loc>
-    <lastmod>2026-02-14</lastmod>
+    <lastmod>2026-02-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://yanma-empire.net/about/constitution</loc>
-    <lastmod>2026-02-14</lastmod>
+    <lastmod>2026-02-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://yanma-empire.net/about/diet</loc>
-    <lastmod>2026-02-14</lastmod>
+    <lastmod>2026-02-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://yanma-empire.net/about/ministries</loc>
-    <lastmod>2026-02-14</lastmod>
+    <lastmod>2026-02-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://yanma-empire.net/about/corporations</loc>
-    <lastmod>2026-02-14</lastmod>
+    <lastmod>2026-02-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://yanma-empire.net/news</loc>
-    <lastmod>2026-02-14</lastmod>
+    <lastmod>2026-02-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://yanma-empire.net/events</loc>
-    <lastmod>2026-02-14</lastmod>
+    <lastmod>2026-02-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://yanma-empire.net/participation</loc>
-    <lastmod>2026-02-14</lastmod>
+    <lastmod>2026-02-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://yanma-empire.net/participation/rules</loc>
-    <lastmod>2026-02-14</lastmod>
+    <lastmod>2026-02-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://yanma-empire.net/participation/roles</loc>
-    <lastmod>2026-02-14</lastmod>
+    <lastmod>2026-02-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://yanma-empire.net/participation/faq</loc>
-    <lastmod>2026-02-14</lastmod>
+    <lastmod>2026-02-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://yanma-empire.net/contact</loc>
-    <lastmod>2026-02-14</lastmod>
+    <lastmod>2026-02-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://yanma-empire.net/disclaimer</loc>
-    <lastmod>2026-02-14</lastmod>
+    <lastmod>2026-02-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://yanma-empire.net/privacy</loc>
-    <lastmod>2026-02-14</lastmod>
+    <lastmod>2026-02-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://yanma-empire.net/news/senate-election-2026</loc>
-    <lastmod>2026-02-09</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://yanma-empire.net/news/server-rebuild-and-recruitment-stop-2025</loc>
-    <lastmod>2025-08-02</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://yanma-empire.net/news/lower-house-election-2025</loc>
-    <lastmod>2025-07-21</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://yanma-empire.net/news/sister-city-agreement-nikoku</loc>
-    <lastmod>2024-09-21</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://yanma-empire.net/news/server-rules-revision-2024</loc>
-    <lastmod>2024-08-02</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://yanma-empire.net/news/homepage-renewal</loc>
-    <lastmod>2026-02-12</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
   </url>
 </urlset>
