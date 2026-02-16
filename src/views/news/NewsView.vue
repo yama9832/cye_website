@@ -21,10 +21,17 @@
       </button>
     </div>
 
+    <BasePagination
+      v-if="totalPages > 1"
+      :currentPage="currentPage"
+      :totalPages="totalPages"
+      @page-changed="changePage"
+    />
+
     <div v-if="filteredNews.length" class="news-grid">
       <component
         :is="isExternal(item.url) ? 'a' : 'router-link'"
-        v-for="item in filteredNews"
+        v-for="item in paginatedNews"
         :key="item.id"
         class="news-card"
         :to="!isExternal(item.url) ? getItemLink(item) : null"
@@ -48,7 +55,14 @@
       </component>
     </div>
 
-    <div v-else class="empty-state">
+    <BasePagination
+      v-if="totalPages > 1"
+      :currentPage="currentPage"
+      :totalPages="totalPages"
+      @page-changed="changePage"
+    />
+
+    <div v-if="!filteredNews.length" class="empty-state">
       <p>選択中のタグに該当する記事はありません。</p>
     </div>
   </main>
@@ -57,6 +71,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import AppBreadcrumb from '@/components/AppBreadcrumb.vue';
+import BasePagination from '@/components/BasePagination.vue';
 import { NEWS_API_BASE } from '@/config/newsApi';
 
 interface NewsItem {
@@ -73,12 +88,15 @@ interface NewsItem {
 export default defineComponent({
   name: 'NewsView',
   components: {
-    AppBreadcrumb
+    AppBreadcrumb,
+    BasePagination
   },
-  data(): { activeTag: string; newsItems: NewsItem[] } {
+  data(): { activeTag: string; newsItems: NewsItem[]; currentPage: number; itemsPerPage: number } {
     return {
       activeTag: 'すべて',
-      newsItems: []
+      newsItems: [],
+      currentPage: 1,
+      itemsPerPage: 15
     };
   },
   computed: {
@@ -94,6 +112,14 @@ export default defineComponent({
         return this.sortedNews;
       }
       return this.sortedNews.filter((item: NewsItem) => (item.tags || []).includes(this.activeTag));
+    },
+    totalPages(): number {
+      return Math.ceil(this.filteredNews.length / this.itemsPerPage);
+    },
+    paginatedNews(): NewsItem[] {
+      const start = (this.currentPage - 1) * this.itemsPerPage;
+      const end = start + this.itemsPerPage;
+      return this.filteredNews.slice(start, end);
     }
   },
   async mounted() {
@@ -113,9 +139,16 @@ export default defineComponent({
   watch: {
     '$route.query.tag'() {
       this.applyTagFromRoute();
+    },
+    activeTag() {
+      this.currentPage = 1;
     }
   },
   methods: {
+    changePage(page: number) {
+      const safePage = Math.max(1, Math.min(page, this.totalPages || 1));
+      this.currentPage = safePage;
+    },
     applyTagFromRoute() {
       const rawTag = this.$route.query.tag;
       const tag = typeof rawTag === 'string' ? rawTag : '';
@@ -124,6 +157,7 @@ export default defineComponent({
         return;
       }
       this.activeTag = this.tagOptions.includes(tag) ? tag : 'すべて';
+      this.currentPage = 1;
     },
     formatDate(date: string): string {
       if (typeof date !== 'string') {

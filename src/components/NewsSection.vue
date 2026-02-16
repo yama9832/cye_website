@@ -80,21 +80,25 @@ export default defineComponent({
     }
   },
   computed: {
+    limitedSortedNews(): NewsItem[] {
+      return this.sortedNews.slice(0, 30);
+    },
     sortedNews(): NewsItem[] {
       return [...this.newsItems].sort((a: NewsItem, b: NewsItem) => new Date(b.date).getTime() - new Date(a.date).getTime());
     },
     totalPages(): number {
-      return Math.ceil(this.sortedNews.length / this.itemsPerPage);
+      return Math.ceil(this.limitedSortedNews.length / this.itemsPerPage);
     },
     paginatedNews(): NewsItem[] {
       const start = (this.currentPage - 1) * this.itemsPerPage;
       const end = start + this.itemsPerPage;
-      return this.sortedNews.slice(start, end);
+      return this.limitedSortedNews.slice(start, end);
     }
   },
   methods: {
     changePage(page: number) {
-      this.currentPage = page;
+      const safePage = Math.max(1, Math.min(page, this.totalPages || 1));
+      this.currentPage = safePage;
     },
     getTagClass(tag: string): string {
       const tagMap = {

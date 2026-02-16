@@ -5,95 +5,65 @@
     <div class="join-container">
       <header class="page-header">
         <h1>参加方法</h1>
-        <p class="header-description">やんまー帝国連邦の活動に参加し、一緒に国を創りませんか？</p>
+        <p class="last-updated">最終更新日: 2026年2月17日</p>
+        <p class="header-description">やんまー帝国連邦への参加条件と、参加までの流れをご案内します。</p>
       </header>
 
-      <section class="notice-section" aria-live="polite">
-        <div class="notice-banner">
-          <span class="material-icons" aria-hidden="true">construction</span>
-          <div class="notice-text">
-            <h2>現在、募集停止中です</h2>
-            <p>サーバーの再構築を行っております。再開まで今しばらくお待ちください。</p>
-          </div>
+      <section class="recruitment-notice" aria-live="polite">
+        <div class="notice-panel">
+          <p class="notice-subtitle">ご迷惑をおかけしております</p>
+          <p class="notice-main">工事中</p>
+          <p class="notice-en">UNDER CONSTRUCTION</p>
+          <p class="notice-description">サーバー再構築中のため、新規参加受付を一時停止しています。募集再開時はDiscordとサイトのお知らせでご案内します。</p>
         </div>
       </section>
 
-      <section class="info-section">
-        <h2 class="section-title">
-          <span class="material-icons">check_circle</span>
-          参加資格
-        </h2>
-        <div class="card-grid">
-          <div class="card">
-            <div class="card-icon">
-              <span class="material-icons">account_box</span>
-            </div>
-            <h3 class="card-title">アカウント</h3>
-            <p class="card-text">DiscordとMinecraft(Java/Bedrock Edition)のアカウントをお持ちの方。</p>
-          </div>
-          <div class="card">
-            <div class="card-icon">
-              <span class="material-icons">cake</span>
-            </div>
-            <h3 class="card-title">年齢</h3>
-            <p class="card-text">原則として、満14歳以上の方。</p>
-          </div>
-          <div class="card">
-            <div class="card-icon">
-              <span class="material-icons">verified_user</span>
-            </div>
-            <h3 class="card-title">マナー</h3>
-            <p class="card-text">他のサーバーやコミュニティで問題行動を起こしていない方。</p>
-          </div>
+      <p class="intro-text">
+        参加前に
+        <router-link to="/participation/rules">サーバールール</router-link>と
+        <router-link to="/participation/roles">ロール</router-link>を確認し、以下の案内に沿ってお手続きください。
+      </p>
+
+      <section class="info-section eligibility-section">
+        <h2 class="section-title">参加資格</h2>
+        <p class="section-description">次の条件をすべて満たす方が対象です。</p>
+
+        <div class="eligibility-grid">
+          <article class="eligibility-card">
+            <h3 class="card-title">アカウント要件</h3>
+            <p class="card-text">DiscordとMinecraft（Java版または統合版）のアカウントを所有していること。</p>
+          </article>
+          <article class="eligibility-card">
+            <h3 class="card-title">年齢要件</h3>
+            <p class="card-text">参加申し込み時点で満14歳以上であること。</p>
+          </article>
+          <article class="eligibility-card">
+            <h3 class="card-title">コミュニティ適性</h3>
+            <p class="card-text">他のサーバーやコミュニティで重大な問題行動がないこと。</p>
+          </article>
+        </div>
+
+        <div class="eligibility-note">
+          <p>※ 条件を満たしていても、運営上の理由により募集を停止する場合があります。</p>
         </div>
       </section>
 
-      <section class="info-section">
-        <h2 class="section-title">
-          <span class="material-icons">alt_route</span>
-          参加までの流れ
-        </h2>
-        <div class="step-list">
-          <div class="step-item">
-            <div class="step-number">1</div>
-            <div class="step-content">
-              <h3>Discordサーバーに参加</h3>
-              <p>まずは公式Discordサーバーにご参加ください。サーバー内のチャンネルをご確認お願いします。</p>
-              <span class="cta-button cta-button--disabled" aria-disabled="true">募集停止中</span>
-            </div>
-          </div>
-          <div class="step-item">
-            <div class="step-number">2</div>
-            <div class="step-content">
-              <h3>自己紹介</h3>
-              <p>専用チャンネルで簡単な自己紹介をお願いします。テンプレートに沿ってご記入ください。</p>
-            </div>
-          </div>
-          <div class="step-item">
-            <div class="step-number">3</div>
-            <div class="step-content">
-              <h3>Minecraftサーバーに参加</h3>
-              <p>運営部に参加したい旨をメンションで送ってください。運営部が参加手続きを行います。</p>
-            </div>
-          </div>
-          <div class="step-item">
-            <div class="step-number">4</div>
-            <div class="step-content">
-              <h3>建築・製作開始</h3>
-              <p>ようこそ、やんまー帝国連邦へ。あなたの創造力で、都市国家を築きましょう。</p>
-            </div>
-          </div>
-        </div>
+      <section class="info-section flow-section">
+        <h2 class="section-title">参加までの流れ</h2>
+        <p class="section-description">募集再開後は、次の手順でご参加ください。</p>
+        <ol class="flow-list">
+          <li><span class="flow-heading">募集再開の告知を確認</span> 公式サイトまたはDiscordのお知らせで、受付再開日と参加方法をご確認ください。</li>
+          <li><span class="flow-heading">Discordサーバーに参加</span> 参加リンクから入室し、案内チャンネル・ルール・ロール説明を確認してください。</li>
+          <li><span class="flow-heading">自己紹介と参加意思の連絡</span> 指定テンプレートで自己紹介を投稿し、運営部へ参加希望を連絡してください。</li>
+          <li><span class="flow-heading">案内完了後に活動開始</span> 案内と権限付与が完了したら、Minecraftサーバーで建築・制作を開始できます。</li>
+        </ol>
       </section>
 
       <section class="info-section">
-        <h2 class="section-title">
-          <span class="material-icons">warning</span>
-          注意事項
-        </h2>
+        <h2 class="section-title">注意事項</h2>
         <ul class="notes-list">
           <li>当サーバーはクロスプレイ対応サーバーです。Java版・統合版どちらでも参加できます。</li>
-          <li>サーバー参加に審査はありません。参加後すぐに建築をすることができます。</li>
+          <li>参加後は<router-link to="/participation/rules">サーバールール</router-link>および運営部の指示に従ってください。</li>
           <li>サーバー内での活動は、公式サイトやSNSで紹介させていただく場合があります。</li>
           <li>他の参加者への迷惑行為や、サーバールールに違反した場合は、権限の剥奪や追放措置を取ることがあります。</li>
           <li>その他、不明な点があれば運営部メンバーまでお気軽にご質問ください。</li>
@@ -139,170 +109,178 @@ export default defineComponent({
   color: #333;
 }
 
+.last-updated {
+  font-size: 0.875rem;
+  color: #6c757d;
+  text-align: right;
+  margin: 0;
+}
 
-.notice-section {
+.recruitment-notice {
+  background: repeating-linear-gradient(
+    -45deg,
+    #2b1b1b,
+    #2b1b1b 22px,
+    #f1a500 22px,
+    #f1a500 44px
+  );
+  border-radius: 8px;
+  padding: 1.2rem;
+  margin-bottom: 1.5rem;
+}
+
+.notice-panel {
+  background-color: #ededed;
+  border-radius: 6px;
+  text-align: center;
+  padding: 1.5rem 1rem;
+}
+
+.notice-subtitle {
+  margin: 0;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #2b1b1b;
+}
+
+.notice-main {
+  margin: 0.25rem 0;
+  font-size: clamp(3rem, 12vw, 6rem);
+  font-weight: 900;
+  color: #000;
+  letter-spacing: 0.15em;
+  -webkit-text-stroke: 5px #f5e700;
+  paint-order: stroke fill;
+  line-height: 1.05;
+}
+
+.notice-en {
+  margin: 0;
+  font-size: 2.1rem;
+  font-weight: 900;
+  color: #2b1b1b;
+  letter-spacing: 0.03em;
+}
+
+.notice-description {
+  margin: 1rem 0 0;
+  padding-top: 1rem;
+  border-top: 1px solid #d3d3d3;
+  color: #333;
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.intro-text {
+  font-size: 1rem;
+  line-height: 1.8;
+  color: #333;
+  background-color: #fff;
+  border: 1px solid #008037;
+  border-radius: 8px;
+  padding: 1.5rem;
   margin-bottom: 2.5rem;
 }
 
-.notice-banner {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  background-color: #fff3cd;
-  color: #856404;
-  border: 1px solid #ffeeba;
-  border-radius: 8px;
-  padding: 1.5rem;
-}
-
-.notice-text h2 {
-  margin: 0 0 0.25rem 0;
-  font-size: 1.4rem;
-}
-
-.notice-text p {
-  margin: 0;
-  line-height: 1.6;
+.intro-text a {
+  color: #008037;
+  text-decoration: none;
+  font-weight: 700;
 }
 
 .info-section {
   margin-bottom: 4rem;
 }
 
+.eligibility-section {
+  margin-top: 2rem;
+}
+
+.section-description {
+  margin-top: -1rem;
+  margin-bottom: 1.5rem;
+  line-height: 1.8;
+  color: #555;
+}
+
 .section-title {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  font-size: 2rem;
+  font-size: 1.75rem;
   color: #008037;
   margin-top: 0;
-  margin-bottom: 2rem;
-  padding-bottom: 0.5rem;
-  border-bottom: 1px solid #e0e0e0;
+  margin-bottom: 1.75rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid #e9ecef;
 }
 
-.section-title .material-icons {
-  font-size: 1.75rem;
-}
-
-.card-icon .material-icons {
-  font-size: 2em;
-}
-
-.card-grid {
+.eligibility-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1.5rem;
 }
 
-.card {
-  background-color: #fff;
+.eligibility-card {
+  background-color: #f8fbf8;
   border: 1px solid #e9ecef;
   border-radius: 8px;
-  padding: 2rem;
-  text-align: center;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-}
-
-.card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 20px rgba(40,167,69,0.1);
-}
-
-.card-icon {
-  margin-bottom: 1rem;
-  color: #008037;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
-  height: 32px;
+  padding: 1.5rem;
+  min-height: 180px;
 }
 
 .card-title {
-  font-size: 1.25rem;
+  font-size: 1.15rem;
   font-weight: 700;
   color: #343a40;
-  margin: 0 0 0.5rem 0;
+  margin: 0 0 0.75rem;
 }
 
 .card-text {
-  font-size: 0.95rem;
+  font-size: 1rem;
   color: #555;
   margin: 0;
-  line-height: 1.6;
+  line-height: 1.8;
 }
 
-.step-list {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-}
-
-.step-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 1.5rem;
-}
-
-.step-number {
-  flex-shrink: 0;
-  width: 2rem;
-  height: 2rem;
-  background-color: #008037;
-  color: #fff;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-weight: 700;
-  font-size: 1rem;
-  border: 3px solid #f9f9f9;
-}
-
-.step-content {
-  background-color: #fff;
-  padding: 1.5rem;
-  border-radius: 8px;
+.eligibility-note {
+  margin-top: 1rem;
+  padding: 0.9rem 1rem;
   border: 1px solid #e9ecef;
-  flex-grow: 1;
+  border-radius: 8px;
+  background-color: #f8fbf8;
 }
 
-.step-content h3 {
-  margin: 0 0 0.5rem 0;
-  font-size: 1.2rem;
-  color: #343a40;
-}
-
-.step-content p {
+.eligibility-note p {
   margin: 0;
   line-height: 1.7;
   color: #555;
 }
 
-.cta-button {
-  display: inline-block;
-  background-color: #008037;
-  color: #fff;
-  padding: 0.6rem 1.5rem;
-  text-decoration: none;
-  border-radius: 0.25rem;
+.flow-section {
+  background-color: #f8fbf8;
+  border: 1px solid #e9ecef;
+  border-radius: 10px;
+  padding: 1.75rem;
+}
+
+.flow-list {
+  margin: 0;
+  padding: 0 0 0 1.5rem;
+  list-style: decimal;
+}
+
+.flow-list li {
+  margin-bottom: 1rem;
+  color: #555;
+  line-height: 1.8;
+}
+
+.flow-list li:last-child {
+  margin-bottom: 0;
+}
+
+.flow-heading {
   font-weight: 700;
-  transition: background-color 0.3s, transform 0.2s;
-  margin-top: 1rem;
-}
-
-.cta-button:hover {
-  background-color: #006029;
-  transform: translateY(-2px);
-}
-
-.cta-button--disabled {
-  background-color: #adb5bd;
-  cursor: not-allowed;
-  pointer-events: none;
-  transform: none;
+  color: #343a40;
+  margin-right: 0.35rem;
 }
 
 .notes-list {
@@ -334,19 +312,44 @@ export default defineComponent({
   font-weight: bold;
 }
 
+.notes-list a {
+  color: #008037;
+  text-decoration: none;
+  font-weight: 700;
+}
+
 @media (max-width: 768px) {
   .page-header h1 {
     font-size: 2rem;
   }
 
-  .step-number {
-    width: 1.8rem;
-    height: 1.8rem;
-    font-size: 0.9rem;
+  .section-title {
+    font-size: 1.5rem;
   }
 
-  .step-item {
-    gap: 1rem;
+  .notice-subtitle {
+    font-size: 1.3rem;
+  }
+
+  .notice-main {
+    -webkit-text-stroke: 3px #f5e700;
+    letter-spacing: 0.06em;
+  }
+
+  .notice-en {
+    font-size: 1.4rem;
+  }
+
+  .eligibility-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .eligibility-card {
+    min-height: unset;
+  }
+
+  .flow-section {
+    padding: 1.25rem;
   }
 }
 </style>
